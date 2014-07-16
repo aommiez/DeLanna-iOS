@@ -22,6 +22,7 @@
 		36131652196BA14B00DB175C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36131636196BA14A00DB175C /* CoreData.framework */; };
 		3613165A196BA14B00DB175C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36131658196BA14B00DB175C /* InfoPlist.strings */; };
 		3613165C196BA14B00DB175C /* DeLannaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3613165B196BA14B00DB175C /* DeLannaTests.m */; };
+		36940842197641410071EFA6 /* UtilitySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36940841197641410071EFA6 /* UtilitySDK.framework */; };
 		527BF2D61974E3830005BFF9 /* PFOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF2D41974E3830005BFF9 /* PFOverViewController.m */; };
 		527BF2D71974E3830005BFF9 /* PFOverViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2D51974E3830005BFF9 /* PFOverViewController_Wide.xib */; };
 		527BF3051974E41D0005BFF9 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2E81974E41D0005BFF9 /* default.jpg */; };
@@ -101,6 +102,7 @@
 		36131657196BA14B00DB175C /* DeLannaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeLannaTests-Info.plist"; sourceTree = "<group>"; };
 		36131659196BA14B00DB175C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3613165B196BA14B00DB175C /* DeLannaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeLannaTests.m; sourceTree = "<group>"; };
+		36940841197641410071EFA6 /* UtilitySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UtilitySDK.framework; path = ../Frameworks/UtilitySDK.framework; sourceTree = "<group>"; };
 		527BF2D31974E3830005BFF9 /* PFOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFOverViewController.h; sourceTree = "<group>"; };
 		527BF2D41974E3830005BFF9 /* PFOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFOverViewController.m; sourceTree = "<group>"; };
 		527BF2D51974E3830005BFF9 /* PFOverViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFOverViewController_Wide.xib; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36940842197641410071EFA6 /* UtilitySDK.framework in Frameworks */,
 				36131633196BA14A00DB175C /* CoreGraphics.framework in Frameworks */,
 				36131637196BA14A00DB175C /* CoreData.framework in Frameworks */,
 				36131635196BA14A00DB175C /* UIKit.framework in Frameworks */,
@@ -214,6 +217,7 @@
 		3613162F196BA14A00DB175C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36940841197641410071EFA6 /* UtilitySDK.framework */,
 				36131630196BA14A00DB175C /* Foundation.framework */,
 				36131632196BA14A00DB175C /* CoreGraphics.framework */,
 				36131634196BA14A00DB175C /* UIKit.framework */,
@@ -755,6 +759,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
 				INFOPLIST_FILE = "DeLanna/DeLanna-Info.plist";
@@ -771,6 +779,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
 				INFOPLIST_FILE = "DeLanna/DeLanna-Info.plist";
