@@ -47,16 +47,16 @@
     if(IS_WIDESCREEN){
         
         PFTabBarItemButton *item0 = [self.tabBarViewController.itemButtons objectAtIndex:0];
-        [item0 setHighlightedImage:[UIImage imageNamed:@"ic_update_on"]];
-        [item0 setStanbyImage:[UIImage imageNamed:@"ic_update_off"]];
+        [item0 setHighlightedImage:[UIImage imageNamed:@"ic_overview_on"]];
+        [item0 setStanbyImage:[UIImage imageNamed:@"ic_overview_off"]];
         
         PFTabBarItemButton *item1 = [self.tabBarViewController.itemButtons objectAtIndex:1];
-        [item1 setHighlightedImage:[UIImage imageNamed:@"ic_menu_on"]];
-        [item1 setStanbyImage:[UIImage imageNamed:@"ic_menu_off"]];
+        [item1 setHighlightedImage:[UIImage imageNamed:@"ic_roomtype_on"]];
+        [item1 setStanbyImage:[UIImage imageNamed:@"ic_roomtype_off"]];
         
         PFTabBarItemButton *item2 = [self.tabBarViewController.itemButtons objectAtIndex:2];
-        [item2 setHighlightedImage:[UIImage imageNamed:@"ic_member_on"]];
-        [item2 setStanbyImage:[UIImage imageNamed:@"ic_member_off"]];
+        [item2 setHighlightedImage:[UIImage imageNamed:@"ic_services_on"]];
+        [item2 setStanbyImage:[UIImage imageNamed:@"ic_services_off"]];
         
         PFTabBarItemButton *item3 = [self.tabBarViewController.itemButtons objectAtIndex:3];
         [item3 setHighlightedImage:[UIImage imageNamed:@"ic_contact_on"]];
@@ -65,16 +65,16 @@
     }else{
         
         PFTabBarItemButton *item0 = [self.tabBarViewController.itemButtons objectAtIndex:0];
-        [item0 setHighlightedImage:[UIImage imageNamed:@"ic_update_on"]];
-        [item0 setStanbyImage:[UIImage imageNamed:@"ic_update_off"]];
+        [item0 setHighlightedImage:[UIImage imageNamed:@"ic_overview_on"]];
+        [item0 setStanbyImage:[UIImage imageNamed:@"ic_overview_off"]];
         
         PFTabBarItemButton *item1 = [self.tabBarViewController.itemButtons objectAtIndex:1];
-        [item1 setHighlightedImage:[UIImage imageNamed:@"ic_menu_on"]];
-        [item1 setStanbyImage:[UIImage imageNamed:@"ic_menu_off"]];
+        [item1 setHighlightedImage:[UIImage imageNamed:@"ic_roomtype_on"]];
+        [item1 setStanbyImage:[UIImage imageNamed:@"ic_roomtype_off"]];
         
         PFTabBarItemButton *item2 = [self.tabBarViewController.itemButtons objectAtIndex:2];
-        [item2 setHighlightedImage:[UIImage imageNamed:@"ic_member_on"]];
-        [item2 setStanbyImage:[UIImage imageNamed:@"ic_member_off"]];
+        [item2 setHighlightedImage:[UIImage imageNamed:@"ic_services_on"]];
+        [item2 setStanbyImage:[UIImage imageNamed:@"ic_services_off"]];
         
         PFTabBarItemButton *item3 = [self.tabBarViewController.itemButtons objectAtIndex:3];
         [item3 setHighlightedImage:[UIImage imageNamed:@"ic_contact_on"]];
@@ -211,6 +211,14 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (void)HideTabbar {
+    [self.tabBarViewController hideTabBarWithAnimation:YES];
+}
+
+- (void)ShowTabbar {
+    [self.tabBarViewController showTabBarWithAnimation:YES];
 }
 
 - (void)resetApp

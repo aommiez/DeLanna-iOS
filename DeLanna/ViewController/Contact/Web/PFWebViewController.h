@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PFWebViewController : UIViewController
+@protocol PFWebViewControllerDelegate <NSObject>
+
+- (void) PFWebViewControllerBack;
+
+@end
+
+@interface PFWebViewController : UIViewController <UIWebViewDelegate>
+
+@property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) IBOutlet UIView *waitView;
+@property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property NSString *url;
 
 @end

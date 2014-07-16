@@ -12,6 +12,15 @@
 
 #import "PFRoomTypeCell.h"
 
+#import "PFDetailRoomtypeViewController.h"
+
+@protocol PFRoomTypeViewControllerDelegate <NSObject>
+
+- (void)HideTabbar;
+- (void)ShowTabbar;
+
+@end
+
 @interface PFRoomTypeViewController : UIViewController
 
 @property (assign, nonatomic) id delegate;
