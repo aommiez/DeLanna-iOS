@@ -10,4 +10,8 @@
 
 @interface PFLanguageViewController : UIViewController
 
+@property (assign, nonatomic) id delegate;
+
+@property (strong, nonatomic) IBOutlet UIButton *saveButton;
+
 @end

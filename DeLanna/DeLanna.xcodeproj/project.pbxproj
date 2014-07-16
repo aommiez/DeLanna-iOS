@@ -87,13 +87,15 @@
 		520C24D8197655B00078C547 /* ic_services_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24C8197655B00078C547 /* ic_services_off@2x.png */; };
 		520C24D9197655B00078C547 /* ic_services_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24C9197655B00078C547 /* ic_services_on@2x.png */; };
 		520C24DE19765BA30078C547 /* PFLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24DC19765BA30078C547 /* PFLanguageViewController.m */; };
-		520C24DF19765BA30078C547 /* PFLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520C24DD19765BA30078C547 /* PFLanguageViewController.xib */; };
+		520C24DF19765BA30078C547 /* PFLanguageViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520C24DD19765BA30078C547 /* PFLanguageViewController_Wide.xib */; };
 		520C24E119765C6C0078C547 /* ic_corect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24E019765C6C0078C547 /* ic_corect@2x.png */; };
 		520C24EA1976615F0078C547 /* bt_reservation.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24E71976615F0078C547 /* bt_reservation.png */; };
 		520C24EB1976615F0078C547 /* bt_reservation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24E81976615F0078C547 /* bt_reservation@2x.png */; };
 		520C24EC1976615F0078C547 /* icon_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24E91976615F0078C547 /* icon_share@2x.png */; };
 		520C24EF197664060078C547 /* bt_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24ED197664060078C547 /* bt_setting.png */; };
 		520C24F0197664060078C547 /* bt_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24EE197664060078C547 /* bt_setting@2x.png */; };
+		520C24F51976706E0078C547 /* PFOverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24F31976706E0078C547 /* PFOverViewCell.m */; };
+		520C24F61976706E0078C547 /* PFOverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520C24F41976706E0078C547 /* PFOverViewCell.xib */; };
 		527BF3051974E41D0005BFF9 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2E81974E41D0005BFF9 /* default.jpg */; };
 		527BF3161974E41D0005BFF9 /* Notification_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2FB1974E41D0005BFF9 /* Notification_icon@2x.png */; };
 		527BF3171974E41D0005BFF9 /* Setting_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2FC1974E41D0005BFF9 /* Setting_icon@2x.png */; };
@@ -219,13 +221,16 @@
 		520C24C9197655B00078C547 /* ic_services_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_services_on@2x.png"; sourceTree = "<group>"; };
 		520C24DB19765BA30078C547 /* PFLanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFLanguageViewController.h; sourceTree = "<group>"; };
 		520C24DC19765BA30078C547 /* PFLanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFLanguageViewController.m; sourceTree = "<group>"; };
-		520C24DD19765BA30078C547 /* PFLanguageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFLanguageViewController.xib; sourceTree = "<group>"; };
+		520C24DD19765BA30078C547 /* PFLanguageViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFLanguageViewController_Wide.xib; sourceTree = "<group>"; };
 		520C24E019765C6C0078C547 /* ic_corect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_corect@2x.png"; sourceTree = "<group>"; };
 		520C24E71976615F0078C547 /* bt_reservation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_reservation.png; sourceTree = "<group>"; };
 		520C24E81976615F0078C547 /* bt_reservation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_reservation@2x.png"; sourceTree = "<group>"; };
 		520C24E91976615F0078C547 /* icon_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_share@2x.png"; sourceTree = "<group>"; };
 		520C24ED197664060078C547 /* bt_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_setting.png; sourceTree = "<group>"; };
 		520C24EE197664060078C547 /* bt_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_setting@2x.png"; sourceTree = "<group>"; };
+		520C24F21976706E0078C547 /* PFOverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFOverViewCell.h; sourceTree = "<group>"; };
+		520C24F31976706E0078C547 /* PFOverViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFOverViewCell.m; sourceTree = "<group>"; };
+		520C24F41976706E0078C547 /* PFOverViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFOverViewCell.xib; sourceTree = "<group>"; };
 		527BF2E81974E41D0005BFF9 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		527BF2FB1974E41D0005BFF9 /* Notification_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_icon@2x.png"; sourceTree = "<group>"; };
 		527BF2FC1974E41D0005BFF9 /* Setting_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setting_icon@2x.png"; sourceTree = "<group>"; };
@@ -427,6 +432,7 @@
 		520C2453197654A50078C547 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				520C24F1197670580078C547 /* Cell */,
 				520C2454197654A50078C547 /* PFOverViewController.h */,
 				520C2455197654A50078C547 /* PFOverViewController.m */,
 				520C2456197654A50078C547 /* PFOverViewController_Wide.xib */,
@@ -500,9 +506,9 @@
 			isa = PBXGroup;
 			children = (
 				520C246B197654A50078C547 /* Cell */,
-				520C246F197654A50078C547 /* Detailservice */,
-				520C2473197654A50078C547 /* Foldertype */,
 				520C247B197654A50078C547 /* Service */,
+				520C2473197654A50078C547 /* Foldertype */,
+				520C246F197654A50078C547 /* Detailservice */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -615,7 +621,7 @@
 			children = (
 				520C24DB19765BA30078C547 /* PFLanguageViewController.h */,
 				520C24DC19765BA30078C547 /* PFLanguageViewController.m */,
-				520C24DD19765BA30078C547 /* PFLanguageViewController.xib */,
+				520C24DD19765BA30078C547 /* PFLanguageViewController_Wide.xib */,
 			);
 			path = Language;
 			sourceTree = "<group>";
@@ -628,6 +634,16 @@
 				520C24E91976615F0078C547 /* icon_share@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		520C24F1197670580078C547 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				520C24F21976706E0078C547 /* PFOverViewCell.h */,
+				520C24F31976706E0078C547 /* PFOverViewCell.m */,
+				520C24F41976706E0078C547 /* PFOverViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		527BF2CE1974DE230005BFF9 /* ViewController */ = {
@@ -800,6 +816,7 @@
 				520C249F197654A60078C547 /* PFRoomTypeViewController_Wide.xib in Resources */,
 				520C24D2197655B00078C547 /* ic_contact_off@2x.png in Resources */,
 				520C24D5197655B00078C547 /* ic_overview_on@2x.png in Resources */,
+				520C24F61976706E0078C547 /* PFOverViewCell.xib in Resources */,
 				520C2489197654A60078C547 /* ic_mail.png in Resources */,
 				520C24D0197655B00078C547 /* ic_services_off.png in Resources */,
 				520C24D9197655B00078C547 /* ic_services_on@2x.png in Resources */,
@@ -823,7 +840,7 @@
 				520C24CE197655B00078C547 /* ic_roomtype_off.png in Resources */,
 				520C2492197654A60078C547 /* PFMapViewController_Wide.xib in Resources */,
 				520C248D197654A60078C547 /* ic_website.png in Resources */,
-				520C24DF19765BA30078C547 /* PFLanguageViewController.xib in Resources */,
+				520C24DF19765BA30078C547 /* PFLanguageViewController_Wide.xib in Resources */,
 				520C24CB197655B00078C547 /* ic_contact_on.png in Resources */,
 				520C248F197654A60078C547 /* Powered.png in Resources */,
 				3613163D196BA14A00DB175C /* InfoPlist.strings in Resources */,
@@ -878,6 +895,7 @@
 				520C247F197654A60078C547 /* PFContactViewController.m in Sources */,
 				527BF3371974FD7A0005BFF9 /* CRGradientNavigationBar.m in Sources */,
 				527BF3241974E6130005BFF9 /* AMBlurView.m in Sources */,
+				520C24F51976706E0078C547 /* PFOverViewCell.m in Sources */,
 				520C24A4197654A60078C547 /* PFFoldertypeCell.m in Sources */,
 				520C2493197654A60078C547 /* PFWebViewController.m in Sources */,
 				527BF3261974E6130005BFF9 /* UIImage+BoxBlur.m in Sources */,

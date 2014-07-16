@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"Setting";
+    
     self.tableView.tableHeaderView = self.headerView;
 }
 
@@ -38,6 +40,18 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (IBAction)settingTapped:(id)sender{
+    
+    PFLanguageViewController *languageView = [[PFLanguageViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController_Wide" bundle:nil];
+    } else {
+        languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController" bundle:nil];
+    }
+    languageView.delegate = self;
+    [self.navigationController pushViewController:languageView animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

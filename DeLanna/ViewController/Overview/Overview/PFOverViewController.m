@@ -39,6 +39,9 @@
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Setting_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
     self.navItem.leftBarButtonItem = leftButton;
+    
+    UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
+    self.tableView.tableFooterView = fv;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +65,29 @@
     }
     settingView.delegate = self;
     [self.navController pushViewController:settingView animated:YES];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 260;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFOverViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFOverViewCell"];
+    if(cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PFOverViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    return cell;
 }
 
 - (void) PFSettingViewControllerBack {

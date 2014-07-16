@@ -21,7 +21,7 @@
 @interface PFDetailRoomtypeViewController : UIViewController
 
 @property (assign, nonatomic) id delegate;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *footerView;

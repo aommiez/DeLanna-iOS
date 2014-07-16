@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PFLanguageViewController.h"
+
 @protocol PFSettingViewControllerDelegate <NSObject>
 
 - (void) PFSettingViewControllerBack;
@@ -20,5 +22,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
+
+- (IBAction)settingTapped:(id)sender;
 
 @end

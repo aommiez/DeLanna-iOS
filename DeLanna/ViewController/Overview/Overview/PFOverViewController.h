@@ -10,6 +10,8 @@
 
 #import "CRGradientNavigationBar.h"
 
+#import "PFOverViewCell.h"
+
 #import "PFSettingViewController.h"
 
 @protocol PFOverViewControllerDelegate <NSObject>
