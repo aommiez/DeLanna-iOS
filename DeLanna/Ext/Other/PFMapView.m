@@ -107,4 +107,5 @@
     // set the region like normal
     [self setRegion:region animated:animated];
 }
+
 @end

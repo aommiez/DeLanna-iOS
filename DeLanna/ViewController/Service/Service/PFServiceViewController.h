@@ -12,7 +12,7 @@
 
 #import "PFServiceCell.h"
 
-@interface PFServiceViewController : UIViewController
+@interface PFServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFServiceCellDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) IBOutlet UINavigationController *navController;

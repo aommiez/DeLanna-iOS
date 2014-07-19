@@ -21,7 +21,7 @@
 
 @end
 
-@interface PFRoomTypeViewController : UIViewController
+@interface PFRoomTypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFRoomTypeCellDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) IBOutlet UINavigationController *navController;

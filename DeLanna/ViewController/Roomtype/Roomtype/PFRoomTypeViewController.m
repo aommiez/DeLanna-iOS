@@ -67,13 +67,31 @@
         cell = [nib objectAtIndex:0];
     }
     
+    cell.delegate = self;
+    
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
-    
     return cell;
 }
+
+- (void)ButtonTappedOnCell:(id)sender {
+    NSIndexPath *indepath = [self.tableView indexPathForCell:sender];
+    NSLog(@"%@",indepath);
+    
+    [self.delegate HideTabbar];
+    
+    PFDetailRoomtypeViewController *detailroomtypeView = [[PFDetailRoomtypeViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        detailroomtypeView = [[PFDetailRoomtypeViewController alloc] initWithNibName:@"PFDetailRoomtypeViewController_Wide" bundle:nil];
+    } else {
+        detailroomtypeView = [[PFDetailRoomtypeViewController alloc] initWithNibName:@"PFDetailRoomtypeViewController" bundle:nil];
+    }
+    detailroomtypeView.delegate = self;
+    [self.navController pushViewController:detailroomtypeView animated:YES];
+}
+
+/*
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -88,6 +106,8 @@
     detailroomtypeView.delegate = self;
     [self.navController pushViewController:detailroomtypeView animated:YES];
 }
+ 
+*/
 
 - (void) PFDetailRoomtypeViewControllerBack {
     [self.delegate ShowTabbar];

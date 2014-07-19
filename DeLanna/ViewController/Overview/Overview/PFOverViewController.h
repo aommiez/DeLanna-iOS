@@ -13,6 +13,7 @@
 #import "PFOverViewCell.h"
 
 #import "PFSettingViewController.h"
+#import "PFDetailOverViewController.h"
 
 @protocol PFOverViewControllerDelegate <NSObject>
 
@@ -23,7 +24,7 @@
 
 @end
 
-@interface PFOverViewController : UIViewController
+@interface PFOverViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFOverViewCellDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) IBOutlet UINavigationController *navController;
@@ -31,5 +32,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 @end

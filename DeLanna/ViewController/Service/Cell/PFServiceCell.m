@@ -30,4 +30,8 @@
     self.bgView.layer.shadowOpacity = 0.1;
 }
 
+- (IBAction)selectTapped:(id)sender {
+    [self.delegate ButtonTappedOnCell:self];
+}
+
 @end

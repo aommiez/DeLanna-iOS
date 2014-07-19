@@ -40,8 +40,10 @@
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Setting_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
     self.navItem.leftBarButtonItem = leftButton;
     
+    self.tableView.tableHeaderView = self.headerView;
     UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
     self.tableView.tableFooterView = fv;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,13 +86,51 @@
         cell = [nib objectAtIndex:0];
     }
     
+    cell.delegate = self;
+    
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
 }
 
+- (void)ButtonTappedOnCell:(id)sender {
+    NSIndexPath *indepath = [self.tableView indexPathForCell:sender];
+    NSLog(@"%@",indepath);
+    
+    [self.delegate HideTabbar];
+    
+    PFDetailOverViewController *detailoverView = [[PFDetailOverViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        detailoverView = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController_Wide" bundle:nil];
+    } else {
+        detailoverView = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController" bundle:nil];
+    }
+    detailoverView.delegate = self;
+    [self.navController pushViewController:detailoverView animated:YES];
+}
+
+/*
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.delegate HideTabbar];
+    
+    PFDetailOverViewController *detailoverView = [[PFDetailOverViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        detailoverView = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController_Wide" bundle:nil];
+    } else {
+        detailoverView = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController" bundle:nil];
+    }
+    detailoverView.delegate = self;
+    [self.navController pushViewController:detailoverView animated:YES];
+}
+*/
+
 - (void) PFSettingViewControllerBack {
+    [self.delegate ShowTabbar];
+}
+
+- (void) PFDetailOverViewControllerBack {
     [self.delegate ShowTabbar];
 }
 

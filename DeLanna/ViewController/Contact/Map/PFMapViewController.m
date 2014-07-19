@@ -34,6 +34,20 @@
     [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                            [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightButton;
+
+    CLLocationCoordinate2D location;
+    location.latitude = 18.789622;
+	location.longitude = 98.982788;
+    
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = location;
+    point.title = @"De Lanna Hotel";
+    
+    [self.mapView addAnnotation:point];
+    [self.mapView selectAnnotation:point animated:NO];
+    
+    [self.mapView setCenterCoordinate:location zoomLevel:13 animated:NO];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,11 +60,37 @@
 }
 
 - (void)getDistance {
-    [[[UIAlertView alloc] initWithTitle:@"De Lanna Hotel"
-                                message:@"Coming soon."
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
+    [self.locationManager startUpdatingLocation];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    self.currentLocation = newLocation;
+    CLLocationCoordinate2D location;
+    
+	location.latitude = 18.789622;
+	location.longitude = 98.982788;
+    [self.locationManager stopUpdatingLocation];
+    [CMMapLauncher launchMapApp:CMMapAppAppleMaps
+              forDirectionsFrom:[CMMapPoint mapPointWithName:@"Origin"
+                                                  coordinate:newLocation.coordinate]
+                             to:[CMMapPoint mapPointWithName:@"Destination"
+                                                  coordinate:location]];
+    return;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

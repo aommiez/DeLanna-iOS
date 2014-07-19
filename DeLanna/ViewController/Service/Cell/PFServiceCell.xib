@@ -17,13 +17,23 @@
                         <rect key="frame" x="10" y="10" width="300" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku9-RE-kLh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="chapter_box03.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lfh-80-7CX"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6E-Z5-s6p">
                                 <rect key="frame" x="10" y="10" width="280" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id8-MD-FpP">
                         <rect key="frame" x="5" y="180" width="250" height="40"/>
@@ -41,11 +51,14 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.53333333329999999" green="0.30980392159999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="Type" destination="B82-bR-8Jz" id="aZj-8P-WfR"/>
                 <outlet property="bgView" destination="92S-gi-9RB" id="N0X-vE-qLE"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chapter_box03.png" width="320" height="220"/>
+    </resources>
 </document>

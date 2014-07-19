@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFOverViewController">
             <connections>
+                <outlet property="headerView" destination="QlF-rB-r8B" id="Srl-an-RDg"/>
                 <outlet property="navBar" destination="O2Y-jA-MqZ" id="slS-eA-T1A"/>
                 <outlet property="navController" destination="RfB-VY-bF7" id="UgQ-gQ-Vyg"/>
                 <outlet property="navItem" destination="jfI-kF-4gQ" id="03r-Ug-bR8"/>
@@ -83,5 +84,32 @@
                 </viewController>
             </viewControllers>
         </navigationController>
+        <view contentMode="scaleToFill" id="QlF-rB-r8B">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="262"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="gsa-Dy-rGM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De Lanna" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LSr-Vc-il2">
+                    <rect key="frame" x="10" y="185" width="300" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.96862745098039216" green="0.58039215686274503" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="afsgfgfhgffghfghffhfhfhgfghfghfghfghfghfghfgfghfhfhgfhfhg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hgt-gA-oXT">
+                    <rect key="frame" x="10" y="210" width="300" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.54509803921568623" green="0.36862745098039218" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
 </document>

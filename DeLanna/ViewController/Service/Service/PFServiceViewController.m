@@ -67,12 +67,19 @@
         cell = [nib objectAtIndex:0];
     }
     
+    cell.delegate = self;
+    
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.Type.text = @"Thai massage";
     
     return cell;
+}
+
+- (void)ButtonTappedOnCell:(id)sender {
+    NSIndexPath *indepath = [self.tableView indexPathForCell:sender];
+    NSLog(@"%@",indepath);
 }
 
 @end

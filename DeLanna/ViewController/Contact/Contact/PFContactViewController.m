@@ -51,6 +51,11 @@
     CALayer *reserveButton = [self.reserveButton layer];
     [reserveButton setMasksToBounds:YES];
     [reserveButton setCornerRadius:7.0f];
+    
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    [self.DelannaApi getContact];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +65,24 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)PFDelannaApi:(id)sender getContactResponse:(NSDictionary *)response {
+    self.obj = response;
+    NSLog(@"%@",response);
+    
+    self.phoneTxt.text = [response objectForKey:@"phone"];
+    self.websiteTxt.text = [response objectForKey:@"website"];
+    self.emailTxt.text = [response objectForKey:@"email"];
+}
+
+- (void)PFDelannaApi:(id)sender getContactErrorResponse:(NSString *)errorResponse {
+    NSLog(@"%@",errorResponse);
+}
+
+- (IBAction)fullimageTapped:(id)sender{
+    [self.delegate PFImageViewController:self viewPicture:@"http://www.delannahotel.com/images/map.jpg"];
+    
 }
 
 - (IBAction)mapTapped:(id)sender{
@@ -77,23 +100,13 @@
 }
 
 - (IBAction)phoneTapped:(id)sender{
-    //NSString *phone = [[NSString alloc] initWithFormat:@"telprompt://%@",[self.obj objectForKey:@"phone"]];
-    NSString *phone = [[NSString alloc] initWithFormat:@"telprompt://%@",@"0938405460"];
+    NSString *phone = [[NSString alloc] initWithFormat:@"telprompt://%@",[self.obj objectForKey:@"phone"]];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phone]];
 }
 
 - (IBAction)websiteTapped:(id)sender{
-    
-    [self.delegate HideTabbar];
-    
-    PFWebViewController *webView = [[PFWebViewController alloc] init];
-    if(IS_WIDESCREEN) {
-        webView = [[PFWebViewController alloc] initWithNibName:@"PFWebViewController_Wide" bundle:nil];
-    } else {
-        webView = [[PFWebViewController alloc] initWithNibName:@"PFWebViewController" bundle:nil];
-    }
-    webView.delegate = self;
-    [self.navController pushViewController:webView animated:YES];
+    NSString *website = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"phone"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:website]];
 }
 
 - (IBAction)emailTapped:(id)sender{
@@ -119,8 +132,7 @@
         // Email Content
         NSString *messageBody = @"De Lanna Hotel!";
         // To address
-        //NSArray *toRecipents = [NSArray arrayWithObject:[self.obj objectForKey:@"email"]];
-        NSArray *toRecipents = [NSArray arrayWithObject:@""];
+        NSArray *toRecipents = [NSArray arrayWithObject:[self.obj objectForKey:@"email"]];
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
         
@@ -170,9 +182,18 @@
     [self.delegate ShowTabbar];
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField *)textField  {
-    [self.commentText resignFirstResponder];
-    return YES;
+- (IBAction)commentTapped:(id)sender{
+    
+    [self.delegate HideTabbar];
+    
+    PFCommentViewController *commentView = [[PFCommentViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        commentView = [[PFCommentViewController alloc] initWithNibName:@"PFCommentViewController_Wide" bundle:nil];
+    } else {
+        commentView = [[PFCommentViewController alloc] initWithNibName:@"PFCommentViewController" bundle:nil];
+    }
+    commentView.delegate = self;
+    [self.navController pushViewController:commentView animated:YES];
 }
 
 - (IBAction)reserveTapped:(id)sender{
@@ -198,6 +219,10 @@
 }
 
 - (void) PFWebViewControllerBack {
+    [self.delegate ShowTabbar];
+}
+
+- (void) PFCommentViewControllerBack {
     [self.delegate ShowTabbar];
 }
 

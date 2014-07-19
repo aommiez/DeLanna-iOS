@@ -15,7 +15,12 @@
 #import "PFServiceViewController.h"
 #import "PFContactViewController.h"
 
-@interface PFAppDelegate : UIResponder <UIApplicationDelegate>
+#import <MobileCoreServices/UTCoreTypes.h>
+#import "SDImageCache.h"
+#import "MWPhoto.h"
+#import "MWPhotoBrowser.h"
+
+@interface PFAppDelegate : UIResponder <UIApplicationDelegate,MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -25,6 +30,9 @@
 @property (strong, nonatomic) PFRoomTypeViewController *roomtype;
 @property (strong, nonatomic) PFServiceViewController *service;
 @property (strong, nonatomic) PFContactViewController *contact;
+
+@property (nonatomic, strong) NSMutableArray *photos;
+@property (nonatomic, strong) NSMutableArray *thumbs;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;

@@ -27,6 +27,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"Reserve";
+    
+    CALayer *popup = [self.popupwaitView layer];
+    [popup setMasksToBounds:YES];
+    [popup setCornerRadius:7.0f];
+    
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://m.delannahotel.com/reservation.php"]];
+    self.webView.delegate = self;
+    self.webView.scalesPageToFit = YES;
+    [self.webView loadRequest:req];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,6 +47,20 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [self.view addSubview:self.waitView];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self.waitView removeFromSuperview];
+    self.webView.scrollView.minimumZoomScale = 1.0;
+    self.webView.scrollView.maximumZoomScale = 1.0;
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitUserSelect='none';"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -10,6 +10,8 @@
 #import "PFMapView.h"
 #import "CMMapLauncher.h"
 
+#define METERS_PER_MILE 1609.344
+
 @protocol PFMapViewControllerDelegate <NSObject>
 
 - (void) PFMapViewControllerBack;
