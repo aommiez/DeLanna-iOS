@@ -108,6 +108,7 @@
 		5269813219777473001C2A97 /* PFDetailOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269813019777473001C2A97 /* PFDetailOverViewController.m */; };
 		5269813319777473001C2A97 /* PFDetailOverViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5269813119777473001C2A97 /* PFDetailOverViewController_Wide.xib */; };
 		5269813719777649001C2A97 /* UILabel+UILabelDynamicHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269813619777649001C2A97 /* UILabel+UILabelDynamicHeight.m */; };
+		527BB989197A623100E1F2E2 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BB987197A623100E1F2E2 /* arrest.png */; };
 		527BF3051974E41D0005BFF9 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2E81974E41D0005BFF9 /* default.jpg */; };
 		527BF3161974E41D0005BFF9 /* Notification_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2FB1974E41D0005BFF9 /* Notification_icon@2x.png */; };
 		527BF3171974E41D0005BFF9 /* Setting_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2FC1974E41D0005BFF9 /* Setting_icon@2x.png */; };
@@ -164,7 +165,6 @@
 		52BA07231977993B00677A5E /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52BA06FE1977993B00677A5E /* MWPhotoBrowser.bundle */; };
 		52BA072519779CEA00677A5E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072419779CEA00677A5E /* CoreImage.framework */; };
 		52BA072719779D6E00677A5E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072619779D6E00677A5E /* MobileCoreServices.framework */; };
-		52CDA506197A209F004F7331 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CDA505197A209F004F7331 /* arrest.png */; };
 		52F5825E19768231002EFF81 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F5825C19768231002EFF81 /* map.png */; };
 		52F5825F19768231002EFF81 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F5825D19768231002EFF81 /* map@2x.png */; };
 		52FC2C46197917D50016E93D /* PFDelannaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FC2C45197917D50016E93D /* PFDelannaApi.m */; };
@@ -323,6 +323,7 @@
 		5269813119777473001C2A97 /* PFDetailOverViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailOverViewController_Wide.xib; sourceTree = "<group>"; };
 		5269813519777649001C2A97 /* UILabel+UILabelDynamicHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+UILabelDynamicHeight.h"; sourceTree = "<group>"; };
 		5269813619777649001C2A97 /* UILabel+UILabelDynamicHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+UILabelDynamicHeight.m"; sourceTree = "<group>"; };
+		527BB987197A623100E1F2E2 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
 		527BF2E81974E41D0005BFF9 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		527BF2FB1974E41D0005BFF9 /* Notification_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_icon@2x.png"; sourceTree = "<group>"; };
 		527BF2FC1974E41D0005BFF9 /* Setting_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setting_icon@2x.png"; sourceTree = "<group>"; };
@@ -430,7 +431,6 @@
 		52BA072619779D6E00677A5E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		52BA07281977AD7800677A5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		52BA072A1977AD8000677A5E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		52CDA505197A209F004F7331 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
 		52F5825C19768231002EFF81 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		52F5825D19768231002EFF81 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		52FC2C44197917D50016E93D /* PFDelannaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFDelannaApi.h; sourceTree = "<group>"; };
@@ -640,7 +640,7 @@
 		520C244A197654A50078C547 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				52CDA505197A209F004F7331 /* arrest.png */,
+				527BB986197A623100E1F2E2 /* Images */,
 				520C244B197654A50078C547 /* PFMapViewController.h */,
 				520C244C197654A50078C547 /* PFMapViewController.m */,
 				520C244D197654A50078C547 /* PFMapViewController_Wide.xib */,
@@ -958,6 +958,14 @@
 				5269813619777649001C2A97 /* UILabel+UILabelDynamicHeight.m */,
 			);
 			path = "UILabel+UILabelDynamicHeight";
+			sourceTree = "<group>";
+		};
+		527BB986197A623100E1F2E2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				527BB987197A623100E1F2E2 /* arrest.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		527BF2CE1974DE230005BFF9 /* ViewController */ = {
@@ -1350,7 +1358,7 @@
 				527BF3051974E41D0005BFF9 /* default.jpg in Resources */,
 				527BF3171974E41D0005BFF9 /* Setting_icon@2x.png in Resources */,
 				52BA06A8197791BA00677A5E /* ic_location@2x.png in Resources */,
-				52CDA506197A209F004F7331 /* arrest.png in Resources */,
+				527BB989197A623100E1F2E2 /* arrest.png in Resources */,
 				52F5825E19768231002EFF81 /* map.png in Resources */,
 				520C24CE197655B00078C547 /* ic_roomtype_off.png in Resources */,
 				520C2492197654A60078C547 /* PFMapViewController_Wide.xib in Resources */,

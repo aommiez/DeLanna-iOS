@@ -24,6 +24,31 @@
     return self;
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)_mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    static NSString *AnnotationViewID = @"PFMapViewController";
+    
+    MKAnnotationView *annotationView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
+    
+    if (annotationView == nil)
+    {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
+    }
+    
+    annotationView.canShowCallout = YES;
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton addTarget:self action:@selector(getDistance) forControlEvents:UIControlEventTouchUpInside];
+    annotationView.rightCalloutAccessoryView = rightButton;
+    
+//    UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_lanna.png"]];
+//    annotationView.leftCalloutAccessoryView = myCustomImage;
+    
+    annotationView.image = [UIImage imageNamed:@"arrest.png"];//add any image which you want to show on map instead of red pins
+    annotationView.annotation = annotation;
+    
+    return annotationView;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,8 +69,6 @@
     point.title = @"De Lanna Hotel";
     
     [self.mapView addAnnotation:point];
-    [self.mapView selectAnnotation:point animated:NO];
-    
     [self.mapView setCenterCoordinate:location zoomLevel:13 animated:NO];
 
 }
