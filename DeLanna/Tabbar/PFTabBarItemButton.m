@@ -26,6 +26,7 @@
     [self setImage:self.stanbyImage forState:UIControlStateHighlighted];
     [self setImage:self.highlightedImage forState:UIControlStateDisabled];
 }
+
 - (void)presentHighlightedState{
     [self setImage:self.highlightedImage forState:UIControlStateNormal];
     [self setImage:self.highlightedImage forState:UIControlStateHighlighted];
@@ -42,7 +43,6 @@
                                   withBadgeFrameColor:[UIColor whiteColor]
                                             withScale:1.0
                                           withShining:YES];
-    
     [_customBadge setFrame:CGRectMake(self.frame.size.width - _customBadge.frame.size.width,
                                       0,
                                       _customBadge.frame.size.width,

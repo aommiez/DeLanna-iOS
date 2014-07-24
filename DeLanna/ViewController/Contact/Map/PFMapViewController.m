@@ -40,10 +40,12 @@
     [rightButton addTarget:self action:@selector(getDistance) forControlEvents:UIControlEventTouchUpInside];
     annotationView.rightCalloutAccessoryView = rightButton;
     
-//    UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_lanna.png"]];
-//    annotationView.leftCalloutAccessoryView = myCustomImage;
-    
-    annotationView.image = [UIImage imageNamed:@"arrest.png"];//add any image which you want to show on map instead of red pins
+    /*
+    UIImageView *myCustomImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_location.png"]];
+    annotationView.leftCalloutAccessoryView = myCustomImage;
+    */
+    annotationView.image = [UIImage imageNamed:@"arrest.png"];
+    //add any image which you want to show on map instead of red pins
     annotationView.annotation = annotation;
     
     return annotationView;
@@ -67,6 +69,7 @@
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = location;
     point.title = @"De Lanna Hotel";
+    //point.subtitle = @"De Lanna Hotel";
     
     [self.mapView addAnnotation:point];
     [self.mapView setCenterCoordinate:location zoomLevel:13 animated:NO];

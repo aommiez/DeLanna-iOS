@@ -6,10 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFDetailOverViewController">
             <connections>
+                <outlet property="detail" destination="brt-IL-9d4" id="aeV-TD-74J"/>
                 <outlet property="footerView" destination="oAw-4N-sbi" id="mC2-eL-o0R"/>
                 <outlet property="headerView" destination="rx3-Cn-XJY" id="YeE-Rh-PBG"/>
+                <outlet property="name" destination="FkL-nc-DkS" id="XLE-62-nrp"/>
                 <outlet property="reserveButton" destination="kda-8g-aNQ" id="j4f-L0-9oh"/>
                 <outlet property="tableView" destination="NaH-VW-Xh6" id="Mhv-9s-9mk"/>
+                <outlet property="thumbnails" destination="qTD-zW-aFW" id="0md-EU-gtJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,23 +58,39 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <view contentMode="scaleToFill" id="rx3-Cn-XJY">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="271"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjv-Qh-Ug5">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUd-bQ-W8v">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="fullimgalbumTapped:" destination="-1" eventType="touchUpInside" id="Wm0-gJ-YCc"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qTD-zW-aFW" customClass="AsyncImageView">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hot Deal 2014!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkL-nc-DkS">
-                    <rect key="frame" x="10" y="215" width="300" height="25"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkL-nc-DkS">
+                    <rect key="frame" x="10" y="225" width="300" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" red="0.96862745100000003" green="0.58039215690000001" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brt-IL-9d4">
-                    <rect key="frame" x="10" y="240" width="300" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brt-IL-9d4" customClass="UILabel_UILabelDynamicHeight">
+                    <rect key="frame" x="10" y="260" width="300" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.5450980392" green="0.36862745099999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>

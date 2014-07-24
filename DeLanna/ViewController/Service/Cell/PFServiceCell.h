@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsyncImageView.h"
 
 @protocol PFServiceCellDelegate <NSObject>
 
@@ -17,7 +18,9 @@
 @interface PFServiceCell : UITableViewCell
 
 @property (nonatomic, strong) id <PFServiceCellDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UILabel *Type;
-@property (weak, nonatomic) IBOutlet UIView *bgView;
+
+@property (strong, nonatomic) IBOutlet AsyncImageView *thumbnails;
+@property (strong, nonatomic) IBOutlet UILabel *Type;
+@property (strong, nonatomic) IBOutlet UIView *bgView;
 
 @end

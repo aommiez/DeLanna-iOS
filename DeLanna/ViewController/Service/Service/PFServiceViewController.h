@@ -8,17 +8,44 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PFDelannaApi.h"
+
 #import "CRGradientNavigationBar.h"
 
 #import "PFServiceCell.h"
+#import "PFDetailFoldertypeViewController.h"
+#import "PFServicefoodViewController.h"
+#import "PFServiceroomViewController.h"
+
+@protocol PFServiceViewControllerDelegate <NSObject>
+
+- (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current;
+- (void)HideTabbar;
+- (void)ShowTabbar;
+
+@end
 
 @interface PFServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFServiceCellDelegate>
 
 @property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
+@property (strong, nonatomic) NSMutableArray *arrObj;
+@property (strong, nonatomic) NSDictionary *obj;
+
+@property NSUserDefaults *serviceOffline;
+
+@property (strong, nonatomic) IBOutlet UIView *waitView;
+@property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *act;
+@property (strong, nonatomic) IBOutlet UILabel *loadLabel;
+
 @property (strong, nonatomic) IBOutlet UINavigationController *navController;
 @property (weak, nonatomic) IBOutlet CRGradientNavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSString *paging;
 
 @end

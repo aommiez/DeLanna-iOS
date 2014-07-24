@@ -8,15 +8,11 @@
 
 #import "PFTabBarViewController.h"
 #define kTabBarHeight 48
-
 int oldIndex;
-
 @interface PFTabBarViewController ()
-
 - (void)updateTabBarItem:(id)sender;
 - (CGFloat)horizontalLocationFor:(NSUInteger)tabIndex;
 - (void)showNotificationViewFor:(NSUInteger)tabIndex;
-
 @end
 @interface PFTabBarViewController ()
 
@@ -36,6 +32,7 @@ int oldIndex;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 - (void)viewDidUnload {
     [self setTabBarBackgroundImageView:nil];
@@ -56,7 +53,7 @@ int oldIndex;
 
 #pragma mark - IBAction
 - (IBAction)tabBarItemTapped:(id)sender {
-    self.tabBarView.alpha = 0.9;
+    //self.tabBarView.alpha = 0.9;
     [self updateTabBarItem:sender];
     if([self.delegate respondsToSelector:@selector(PFTabBarViewController:selectedIndex:)]){
         PFTabBarItemButton *barItemButton = (PFTabBarItemButton*)sender;
@@ -64,9 +61,10 @@ int oldIndex;
     }
 }
 
+
 #pragma mark - private
 - (void)updateTabBarItem:(id)sender{
-    self.tabBarView.alpha = 0.9;
+    //self.tabBarView.alpha = 0.9;
     int i = 0;
     UIButton *tabBarItemButton = (UIButton*)sender;
     for (UIButton *button in self.itemButtons) {
@@ -94,7 +92,7 @@ int oldIndex;
         }
         i++;
     }
-    self.tabBarView.alpha = 0.9;
+    //self.tabBarView.alpha = 0.9;
     
     [[self.viewControllers objectAtIndex:selectedIndex] setWantsFullScreenLayout:YES];
     [self.mainView addSubview:[[self.viewControllers objectAtIndex:selectedIndex] view]];
@@ -128,7 +126,7 @@ int oldIndex;
         }
         va_end(args);
         
-        self.tabBarView = [[AMBlurView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - kTabBarHeight+4, self.view.frame.size.width, kTabBarHeight-4)];
+        self.tabBarView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - kTabBarHeight+4, self.view.frame.size.width, kTabBarHeight-4)];
         
         self.tabBarBackgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.tabBarView.frame.size.width, kTabBarHeight-4)];
         
@@ -149,8 +147,8 @@ int oldIndex;
             [_itemButtons addObject:(PFTabBarItemButton*)button];
             i++;
         }
-        _mainView = [[AMBlurView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        
+        _mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        //[_mainView setBlurTintColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.8]];
         [self.view addSubview:self.mainView];
         [self.view addSubview:self.tabBarView];
         
@@ -237,5 +235,4 @@ int oldIndex;
     self.notificationView.alpha = 0.0;
     [UIView commitAnimations];
 }
-
 @end

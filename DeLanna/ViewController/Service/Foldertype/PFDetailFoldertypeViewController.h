@@ -8,6 +8,32 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PFDetailFoldertypeViewController : UIViewController
+#import "PFDelannaApi.h"
+
+#import "PFFoldertypeCell.h"
+#import "PFServicefoodViewController.h"
+#import "PFServiceroomViewController.h"
+
+@protocol PFDetailFoldertypeViewControllerDelegate <NSObject>
+
+- (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current;
+- (void)PFDetailFoldertypeViewControllerBack;
+
+@end
+
+@interface PFDetailFoldertypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFFoldertypeCellDelegate>
+
+@property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
+@property (strong, nonatomic) NSMutableArray *arrObj;
+@property (strong, nonatomic) NSDictionary *obj;
+
+@property (strong, nonatomic) IBOutlet UIView *waitView;
+@property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSString *titlename;
+@property (strong, nonatomic) NSString *folder_id;
 
 @end

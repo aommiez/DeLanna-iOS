@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AsyncImageView.h"
 
 @protocol PFRoomTypeCellDelegate <NSObject>
 
@@ -17,6 +18,11 @@
 @interface PFRoomTypeCell : UITableViewCell
 
 @property (nonatomic, strong) id <PFRoomTypeCellDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (strong, nonatomic) IBOutlet UIView *bgView;
+
+@property (strong, nonatomic) IBOutlet AsyncImageView *thumbnails;
+@property (strong, nonatomic) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *price;
+@property (strong, nonatomic) IBOutlet UILabel *baht;
 
 @end

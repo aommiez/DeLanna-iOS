@@ -28,15 +28,45 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.title = [self.obj objectForKey:@"name"];
+    
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] style:UIBarButtonItemStyleDone target:self action:@selector(share)];
     self.navigationItem.rightBarButtonItem = rightButton;
-    
-    self.tableView.tableHeaderView = self.headerView;
-    self.tableView.tableFooterView = self.footerView;
     
     CALayer *reserveButton = [self.reserveButton layer];
     [reserveButton setMasksToBounds:YES];
     [reserveButton setCornerRadius:7.0f];
+    
+    self.thumbnails.layer.masksToBounds = YES;
+    self.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
+    
+    NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
+    self.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
+    
+    self.name.text = [self.obj objectForKey:@"name"];
+    self.detail.text = [self.obj objectForKey:@"detail"];
+    
+    CGRect frame = self.detail.frame;
+    frame.size = [self.detail sizeOfMultiLineLabel];
+    [self.detail sizeOfMultiLineLabel];
+    
+    [self.detail setFrame:frame];
+    int lines = self.detail.frame.size.height/15;
+    self.detail.numberOfLines = lines;
+    
+    UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+    descText.textColor = RGB(139, 94, 60);
+    descText.text = self.detail.text;
+    //descText.textAlignment = NSTextAlignmentCenter;
+    descText.numberOfLines = lines;
+    [descText setFont:[UIFont systemFontOfSize:15]];
+    self.detail.alpha = 0;
+    [self.headerView addSubview:descText];
+    
+    self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height-10);
+    
+    self.tableView.tableHeaderView = self.headerView;
+    self.tableView.tableFooterView = self.footerView;
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,6 +84,10 @@
                                delegate:nil
                       cancelButtonTitle:@"OK"
                       otherButtonTitles:nil] show];
+}
+
+- (IBAction)fullimgalbumTapped:(id)sender {
+    [self.delegate PFImageViewController:self viewPicture:[[self.obj objectForKey:@"thumb"] objectForKey:@"url"]];
 }
 
 - (IBAction)reserveTapped:(id)sender{

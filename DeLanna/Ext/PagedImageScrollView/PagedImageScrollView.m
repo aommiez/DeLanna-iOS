@@ -53,7 +53,7 @@ NSString *removeBreckets;
 
 - (void)setDefaults
 {
-    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:229.0f/255.0f green:172.0f/255.0f blue:48.0f/255.0f alpha:1.0f];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
     self.pageControl.hidesForSinglePage = YES;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsVerticalScrollIndicator = NO;

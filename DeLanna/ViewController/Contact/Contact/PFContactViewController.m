@@ -14,12 +14,17 @@
 
 @implementation PFContactViewController
 
+BOOL loadContact;
+BOOL noDataContact;
+BOOL refreshDataContact;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        self.contactOffline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -27,6 +32,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.view addSubview:self.waitView];
+    
+    CALayer *popup = [self.popupwaitView layer];
+    [popup setMasksToBounds:YES];
+    [popup setCornerRadius:7.0f];
     
     // Navbar setup
     [[self.navController navigationBar] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
@@ -36,9 +47,6 @@
     
     [[self.navController navigationBar] setTranslucent:YES];
     [self.view addSubview:self.navController.view];
-    
-    self.tableView.tableHeaderView = self.headerView;
-    self.tableView.tableFooterView = self.footerView;
     
     CALayer *buttonView = [self.buttonView layer];
     [buttonView setMasksToBounds:YES];
@@ -51,6 +59,10 @@
     CALayer *reserveButton = [self.reserveButton layer];
     [reserveButton setMasksToBounds:YES];
     [reserveButton setCornerRadius:7.0f];
+    
+    loadContact = NO;
+    noDataContact = NO;
+    refreshDataContact = NO;
     
     self.DelannaApi = [[PFDelannaApi alloc] init];
     self.DelannaApi.delegate = self;
@@ -69,15 +81,35 @@
 
 - (void)PFDelannaApi:(id)sender getContactResponse:(NSDictionary *)response {
     self.obj = response;
-    NSLog(@"%@",response);
+    //NSLog(@"%@",response);
+    
+    [self.waitView removeFromSuperview];
+    
+    self.tableView.tableHeaderView = self.headerView;
+    self.tableView.tableFooterView = self.footerView;
+    
+    [self.contactOffline setObject:[response objectForKey:@"phone"] forKey:@"phone"];
+    [self.contactOffline setObject:[response objectForKey:@"website"] forKey:@"website"];
+    [self.contactOffline setObject:[response objectForKey:@"email"] forKey:@"email"];
     
     self.phoneTxt.text = [response objectForKey:@"phone"];
     self.websiteTxt.text = [response objectForKey:@"website"];
     self.emailTxt.text = [response objectForKey:@"email"];
+
 }
 
 - (void)PFDelannaApi:(id)sender getContactErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
+    
+    [self.waitView removeFromSuperview];
+    
+    self.tableView.tableHeaderView = self.headerView;
+    self.tableView.tableFooterView = self.footerView;
+    
+    self.phoneTxt.text = [self.contactOffline objectForKey:@"phone"];
+    self.websiteTxt.text = [self.contactOffline objectForKey:@"website"];
+    self.emailTxt.text = [self.contactOffline objectForKey:@"email"];
+    
 }
 
 - (IBAction)fullimageTapped:(id)sender{
@@ -100,12 +132,12 @@
 }
 
 - (IBAction)phoneTapped:(id)sender{
-    NSString *phone = [[NSString alloc] initWithFormat:@"telprompt://%@",[self.obj objectForKey:@"phone"]];
+    NSString *phone = [[NSString alloc] initWithFormat:@"telprompt://%@",self.phoneTxt.text];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phone]];
 }
 
 - (IBAction)websiteTapped:(id)sender{
-    NSString *website = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"phone"]];
+    NSString *website = [[NSString alloc] initWithFormat:@"%@",self.websiteTxt.text];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:website]];
 }
 
@@ -132,7 +164,7 @@
         // Email Content
         NSString *messageBody = @"De Lanna Hotel!";
         // To address
-        NSArray *toRecipents = [NSArray arrayWithObject:[self.obj objectForKey:@"email"]];
+        NSArray *toRecipents = [NSArray arrayWithObject:self.emailTxt.text];
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
         
@@ -212,6 +244,105 @@
 
 - (IBAction)powerbyTapped:(id)sender{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://pla2fusion.com/"]];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 0;
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	//NSLog(@"%f",scrollView.contentOffset.y);
+	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ( scrollView.contentOffset.y < 0.0f ) {
+        //NSLog(@"refreshData < 0.0f");
+        [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        self.loadLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
+        self.act.alpha =1;
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    //NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < -60.0f ) {
+        refreshDataContact = YES;
+        
+        self.DelannaApi = [[PFDelannaApi alloc] init];
+        self.DelannaApi.delegate = self;
+        
+        [self.DelannaApi getContact];
+        
+        if ([[self.obj objectForKey:@"total"] intValue] == 0) {
+            [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            self.loadLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
+            self.act.alpha =1;
+        }
+    } else {
+        self.loadLabel.text = @"";
+        self.act.alpha = 0;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    if ( scrollView.contentOffset.y < -100.0f ) {
+        [UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.2];
+        self.tableView.frame = CGRectMake(0, 70, 320, self.tableView.frame.size.height);
+		[UIView commitAnimations];
+        [self performSelector:@selector(resizeTable) withObject:nil afterDelay:2];
+        
+        if ([[self.obj objectForKey:@"total"] intValue] == 0) {
+            [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            self.loadLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
+            self.act.alpha =1;
+        }
+    } else {
+        self.loadLabel.text = @"";
+        self.act.alpha = 0;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    float offset = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height));
+    if (offset >= 0 && offset <= 5) {
+        if (!noDataContact) {
+            refreshDataContact = NO;
+            
+            self.DelannaApi = [[PFDelannaApi alloc] init];
+            self.DelannaApi.delegate = self;
+            
+            [self.DelannaApi getContact];
+        }
+    }
+}
+
+- (void)resizeTable {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);
+    [UIView commitAnimations];
 }
 
 - (void) PFMapViewControllerBack {

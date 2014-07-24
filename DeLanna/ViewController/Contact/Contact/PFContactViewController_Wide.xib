@@ -6,18 +6,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFContactViewController">
             <connections>
+                <outlet property="act" destination="PKd-V3-UTM" id="MWZ-eA-bv6"/>
                 <outlet property="buttonView" destination="oEz-zU-foT" id="IX7-0g-r9K"/>
                 <outlet property="commentView" destination="rat-iK-M7q" id="8yg-u4-yGO"/>
                 <outlet property="emailTxt" destination="0XO-kK-vbm" id="P56-W7-DGK"/>
                 <outlet property="footerView" destination="azn-dE-fII" id="wTP-47-bNJ"/>
                 <outlet property="headerView" destination="Ve2-Sz-UQm" id="QwB-Xj-D9o"/>
+                <outlet property="loadLabel" destination="1ar-Y1-Bfg" id="tnz-Zs-VqX"/>
                 <outlet property="navBar" destination="UsS-Xn-Lyi" id="VPI-92-b2o"/>
                 <outlet property="navController" destination="Xjb-5H-Eif" id="N2P-NW-sgi"/>
                 <outlet property="navItem" destination="H1l-yI-vpf" id="fDc-94-Dp5"/>
                 <outlet property="phoneTxt" destination="LXj-nq-1uk" id="JsN-W2-hgG"/>
+                <outlet property="popupwaitView" destination="wOI-OX-BpF" id="nnt-af-435"/>
                 <outlet property="reserveButton" destination="jLo-ZD-5FE" id="QP5-MD-8qz"/>
                 <outlet property="tableView" destination="78H-o6-pzE" id="dN4-ae-pdh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="waitView" destination="ogm-oN-tbQ" id="Ysz-Sg-8F5"/>
                 <outlet property="websiteTxt" destination="ny9-JH-K89" id="D5P-5w-81E"/>
             </connections>
         </placeholder>
@@ -51,6 +55,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1ar-Y1-Bfg">
+                    <rect key="frame" x="70" y="91" width="225" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" id="PKd-V3-UTM">
+                    <rect key="frame" x="45" y="92" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
+            </subviews>
             <color key="backgroundColor" red="0.53333333333333333" green="0.30980392156862746" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -74,6 +91,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-1" id="Rt0-4e-6n1"/>
+                                    <outlet property="delegate" destination="-1" id="YP5-JD-XQd"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -154,7 +175,7 @@ T.Sriphum Muang Chiangmai 50200</string>
                             <rect key="frame" x="10" y="10" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LXj-nq-1uk">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LXj-nq-1uk">
                             <rect key="frame" x="60" y="12" width="240" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -176,7 +197,7 @@ T.Sriphum Muang Chiangmai 50200</string>
                             <rect key="frame" x="10" y="56" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ny9-JH-K89">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ny9-JH-K89">
                             <rect key="frame" x="60" y="58" width="240" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -198,7 +219,7 @@ T.Sriphum Muang Chiangmai 50200</string>
                             <rect key="frame" x="10" y="102" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0XO-kK-vbm">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0XO-kK-vbm">
                             <rect key="frame" x="60" y="104" width="240" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>

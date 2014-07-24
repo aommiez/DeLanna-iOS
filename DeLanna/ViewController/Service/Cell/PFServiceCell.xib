@@ -27,10 +27,10 @@
                                     <action selector="selectTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lfh-80-7CX"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6E-Z5-s6p">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6E-Z5-s6p" customClass="AsyncImageView">
                                 <rect key="frame" x="10" y="10" width="280" height="150"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -55,6 +55,7 @@
             <connections>
                 <outlet property="Type" destination="B82-bR-8Jz" id="aZj-8P-WfR"/>
                 <outlet property="bgView" destination="92S-gi-9RB" id="N0X-vE-qLE"/>
+                <outlet property="thumbnails" destination="t6E-Z5-s6p" id="ZWL-oe-QMM"/>
             </connections>
         </tableViewCell>
     </objects>

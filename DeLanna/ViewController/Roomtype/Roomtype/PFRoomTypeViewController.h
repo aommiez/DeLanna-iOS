@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "CRGradientNavigationBar.h"
 
-#import "PFRoomTypeCell.h"
+#import "PFDelannaApi.h"
 
+#import "PFRoomTypeCell.h"
 #import "PFDetailRoomtypeViewController.h"
 
 @protocol PFRoomTypeViewControllerDelegate <NSObject>
 
+- (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current;
 - (void)HideTabbar;
 - (void)ShowTabbar;
 
@@ -24,10 +25,24 @@
 @interface PFRoomTypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFRoomTypeCellDelegate>
 
 @property (assign, nonatomic) id delegate;
-@property (strong, nonatomic) IBOutlet UINavigationController *navController;
-@property (weak, nonatomic) IBOutlet CRGradientNavigationBar *navBar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
+@property (strong, nonatomic) NSMutableArray *arrObj;
+@property (strong, nonatomic) NSDictionary *obj;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property NSUserDefaults *roomtypeOffline;
+
+@property (strong, nonatomic) IBOutlet UIView *waitView;
+@property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *act;
+@property (strong, nonatomic) IBOutlet UILabel *loadLabel;
+
+@property (strong, nonatomic) IBOutlet UINavigationController *navController;
+@property (strong, nonatomic) IBOutlet CRGradientNavigationBar *navBar;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navItem;
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSString *paging;
 
 @end

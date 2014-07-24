@@ -28,13 +28,13 @@
                                     <action selector="selectTapped:" destination="5Fl-Oj-39C" eventType="touchUpInside" id="Z9C-Gi-khW"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vx8-Ct-VKv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vx8-Ct-VKv" customClass="AsyncImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hot Deal 2014!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0y-1u-WES">
-                                <rect key="frame" x="10" y="210" width="300" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0y-1u-WES">
+                                <rect key="frame" x="20" y="210" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.96862745098039216" green="0.58039215686274503" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
@@ -45,7 +45,11 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.53333333329999999" green="0.30980392159999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="name" destination="a0y-1u-WES" id="MGC-KA-Xhf"/>
+                <outlet property="thumbnails" destination="vx8-Ct-VKv" id="5bB-Eh-Hu2"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
