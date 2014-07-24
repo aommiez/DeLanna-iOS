@@ -28,13 +28,20 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sent" style:UIBarButtonItemStyleDone target:self action:@selector(sentcomment)];
-    [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                         [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = rightButton;
-    
     self.DelannaApi = [[PFDelannaApi alloc] init];
     self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Sent" style:UIBarButtonItemStyleDone target:self action:@selector(sentcomment)];
+        [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = rightButton;
+    } else {
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"ส่ง" style:UIBarButtonItemStyleDone target:self action:@selector(sentcomment)];
+        [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = rightButton;
+    }
     
 //    NSDate *today = [NSDate date];
 //    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

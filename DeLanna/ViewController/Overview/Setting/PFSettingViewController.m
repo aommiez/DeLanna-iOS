@@ -28,7 +28,20 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Setting";
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navigationItem.title = @"Setting";
+        self.languagesetting.text = @"Language Settings";
+        self.applanguage.text = @"App Language";
+        self.contentlanguage.text = @"Content Language";
+    } else {
+        self.navigationItem.title = @"ตั้งค่า";
+        self.languagesetting.text = @"ตั้งค่าภาษา";
+        self.applanguage.text = @"ภาษาแอพพลิเคชั่น";
+        self.contentlanguage.text = @"ภาษาเนื้อหา";
+    }
     
     self.tableView.tableHeaderView = self.headerView;
 }
@@ -42,7 +55,7 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (IBAction)settingTapped:(id)sender{
+- (IBAction)appsettingTapped:(id)sender{
     
     PFLanguageViewController *languageView = [[PFLanguageViewController alloc] init];
     if(IS_WIDESCREEN) {
@@ -51,7 +64,25 @@
         languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController" bundle:nil];
     }
     languageView.delegate = self;
+    languageView.statusSetting = @"app";
     [self.navigationController pushViewController:languageView animated:YES];
+}
+
+- (IBAction)contentsettingTapped:(id)sender{
+    
+    PFLanguageViewController *languageView = [[PFLanguageViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController_Wide" bundle:nil];
+    } else {
+        languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController" bundle:nil];
+    }
+    languageView.delegate = self;
+    languageView.statusSetting = @"content";
+    [self.navigationController pushViewController:languageView animated:YES];
+}
+
+-(void)resetApp {
+    [self.delegate resetApp];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

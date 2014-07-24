@@ -30,6 +30,15 @@
     
     self.navigationItem.title = [self.obj objectForKey:@"name"];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.reserve.text = @"Reserve";
+    } else {
+        self.reserve.text = @"สำรองห้องพัก";
+    }
+    
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_share"] style:UIBarButtonItemStyleDone target:self action:@selector(share)];
     self.navigationItem.rightBarButtonItem = rightButton;
     
@@ -57,7 +66,6 @@
     UILabel *descText = [[UILabel alloc] initWithFrame:frame];
     descText.textColor = RGB(139, 94, 60);
     descText.text = self.detail.text;
-    //descText.textAlignment = NSTextAlignmentCenter;
     descText.numberOfLines = lines;
     [descText setFont:[UIFont systemFontOfSize:15]];
     self.detail.alpha = 0;
@@ -79,11 +87,12 @@
 }
 
 - (void)share {
-    [[[UIAlertView alloc] initWithTitle:@"De Lanna Hotel"
-                                message:@"Coming soon."
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
+    NSString *urlString = [[NSString alloc]init];
+    urlString = [[NSString alloc] initWithFormat:@"%@",[[self.obj objectForKey:@"node"] objectForKey:@"share"]];
+    
+    SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [controller addURL:[NSURL URLWithString:urlString]];
+    [self presentViewController:controller animated:YES completion:Nil];
 }
 
 - (IBAction)fullimgalbumTapped:(id)sender {

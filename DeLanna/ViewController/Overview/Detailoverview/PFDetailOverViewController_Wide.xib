@@ -10,6 +10,7 @@
                 <outlet property="footerView" destination="oAw-4N-sbi" id="mC2-eL-o0R"/>
                 <outlet property="headerView" destination="rx3-Cn-XJY" id="YeE-Rh-PBG"/>
                 <outlet property="name" destination="FkL-nc-DkS" id="XLE-62-nrp"/>
+                <outlet property="reserve" destination="UJb-ov-NES" id="6hb-xb-u0l"/>
                 <outlet property="reserveButton" destination="kda-8g-aNQ" id="j4f-L0-9oh"/>
                 <outlet property="tableView" destination="NaH-VW-Xh6" id="Mhv-9s-9mk"/>
                 <outlet property="thumbnails" destination="qTD-zW-aFW" id="0md-EU-gtJ"/>
@@ -83,14 +84,14 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkL-nc-DkS">
-                    <rect key="frame" x="10" y="225" width="300" height="25"/>
+                    <rect key="frame" x="20" y="225" width="280" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <color key="textColor" red="0.96862745100000003" green="0.58039215690000001" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brt-IL-9d4" customClass="UILabel_UILabelDynamicHeight">
-                    <rect key="frame" x="10" y="260" width="300" height="21"/>
+                    <rect key="frame" x="20" y="260" width="280" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.5450980392" green="0.36862745099999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -116,8 +117,8 @@
                         <action selector="reserveTapped:" destination="-1" eventType="touchUpInside" id="qOd-wl-lBJ"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reserve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJb-ov-NES">
-                    <rect key="frame" x="125" y="4" width="70" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJb-ov-NES">
+                    <rect key="frame" x="110" y="3" width="100" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>

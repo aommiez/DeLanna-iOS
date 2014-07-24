@@ -33,6 +33,15 @@ BOOL refreshDataRoomtype;
 {
     [super viewDidLoad];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Room Type";
+    } else {
+        self.navItem.title = @"ห้องพัก";
+    }
+    
     [self.view addSubview:self.waitView];
     
     CALayer *popup = [self.popupwaitView layer];
@@ -57,10 +66,11 @@ BOOL refreshDataRoomtype;
     
     self.arrObj = [[NSMutableArray alloc] init];
     
-    self.DelannaApi = [[PFDelannaApi alloc] init];
-    self.DelannaApi.delegate = self;
-    
-    [self.DelannaApi getRoomtype];
+    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+        [self.DelannaApi getRoomtype:@"en"];
+    } else {
+        [self.DelannaApi getRoomtype:@"th"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,9 +177,6 @@ BOOL refreshDataRoomtype;
    
     cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.price.text = [[NSString alloc] initWithFormat:@"%@",[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"price"]];
-    /*
-     check EN or TH
-     */
     cell.baht.text = @"Baht";
     
     return cell;
@@ -220,7 +227,11 @@ BOOL refreshDataRoomtype;
         self.DelannaApi = [[PFDelannaApi alloc] init];
         self.DelannaApi.delegate = self;
         
-        [self.DelannaApi getRoomtype];
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            [self.DelannaApi getRoomtype:@"en"];
+        } else {
+            [self.DelannaApi getRoomtype:@"th"];
+        }
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
@@ -269,7 +280,11 @@ BOOL refreshDataRoomtype;
             self.DelannaApi = [[PFDelannaApi alloc] init];
             self.DelannaApi.delegate = self;
             
-            [self.DelannaApi getRoomtype];
+            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                [self.DelannaApi getRoomtype:@"en"];
+            } else {
+                [self.DelannaApi getRoomtype:@"th"];
+            }
         }
     }
 }

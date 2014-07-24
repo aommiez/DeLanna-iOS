@@ -10,6 +10,8 @@
 #import "PFMapView.h"
 #import "CMMapLauncher.h"
 
+#import "PFDelannaApi.h"
+
 @protocol PFMapViewControllerDelegate <NSObject>
 
 - (void) PFMapViewControllerBack;
@@ -19,6 +21,7 @@
 @interface PFMapViewController : UIViewController <CLLocationManagerDelegate,MKMapViewDelegate>
 
 @property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
 
 @property (strong, nonatomic) IBOutlet PFMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;

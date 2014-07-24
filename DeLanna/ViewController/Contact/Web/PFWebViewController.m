@@ -28,7 +28,14 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Reserve";
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navigationItem.title = @"Reserve";
+    } else {
+        self.navigationItem.title = @"สำรองห้องพัก";
+    }
     
     CALayer *popup = [self.popupwaitView layer];
     [popup setMasksToBounds:YES];

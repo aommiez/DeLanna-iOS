@@ -51,9 +51,6 @@
     
     self.name.text = [self.obj objectForKey:@"name"];
     self.price.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
-    /*
-     check EN or TH
-     */
     self.baht.text = @"Baht";
     
     self.detail.text = [self.obj objectForKey:@"detail"];

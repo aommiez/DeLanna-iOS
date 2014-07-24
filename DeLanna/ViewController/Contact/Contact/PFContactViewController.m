@@ -33,6 +33,19 @@ BOOL refreshDataContact;
 {
     [super viewDidLoad];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Reservation";
+        self.ReservationTxt.text = @"Hotel Reservation";
+        self.commentTxt.text = @"Sent us review or comment.";
+    } else {
+        self.navItem.title = @"สำรองห้องพัก";
+        self.ReservationTxt.text = @"สำรองห้องพัก";
+        self.commentTxt.text = @"แสดงความคิดเห็น";
+    }
+    
     [self.view addSubview:self.waitView];
     
     CALayer *popup = [self.popupwaitView layer];
@@ -47,6 +60,12 @@ BOOL refreshDataContact;
     
     [[self.navController navigationBar] setTranslucent:YES];
     [self.view addSubview:self.navController.view];
+    
+    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+        self.address.text = @"44 Intawarorot Rd. T.Sriphum Muang Chiangmai 50200";
+    } else {
+        self.address.text = @"44 ถนนอินทวโรรส. ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200";
+    }
     
     CALayer *buttonView = [self.buttonView layer];
     [buttonView setMasksToBounds:YES];
@@ -63,9 +82,6 @@ BOOL refreshDataContact;
     loadContact = NO;
     noDataContact = NO;
     refreshDataContact = NO;
-    
-    self.DelannaApi = [[PFDelannaApi alloc] init];
-    self.DelannaApi.delegate = self;
     
     [self.DelannaApi getContact];
 }
@@ -286,6 +302,12 @@ BOOL refreshDataContact;
         
         [self.DelannaApi getContact];
         
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            self.address.text = @"44 Intawarorot Rd. T.Sriphum Muang Chiangmai 50200";
+        } else {
+            self.address.text = @"44 ถนนอินทวโรรส. ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200";
+        }
+        
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -334,6 +356,12 @@ BOOL refreshDataContact;
             self.DelannaApi.delegate = self;
             
             [self.DelannaApi getContact];
+            
+            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                self.address.text = @"44 Intawarorot Rd. T.Sriphum Muang Chiangmai 50200";
+            } else {
+                self.address.text = @"44 ถนนอินทวโรรส. ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200";
+            }
         }
     }
 }

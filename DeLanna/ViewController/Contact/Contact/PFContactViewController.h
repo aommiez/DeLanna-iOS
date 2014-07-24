@@ -47,6 +47,8 @@
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
+@property (strong, nonatomic) IBOutlet UILabel *address;
+
 @property (strong, nonatomic) IBOutlet UILabel *phoneTxt;
 @property (strong, nonatomic) IBOutlet UILabel *websiteTxt;
 @property (strong, nonatomic) IBOutlet UILabel *emailTxt;
@@ -54,6 +56,8 @@
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) IBOutlet UIView *commentView;
 
+@property (strong, nonatomic) IBOutlet UILabel *commentTxt;
+@property (strong, nonatomic) IBOutlet UILabel *ReservationTxt;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
 
 - (IBAction)fullimageTapped:(id)sender;

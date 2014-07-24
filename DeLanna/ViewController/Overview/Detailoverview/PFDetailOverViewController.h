@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "AsyncImageView.h"
 #import "UILabel+UILabelDynamicHeight.h"
+
+#import "PFDelannaApi.h"
 
 #import "PFWebViewController.h"
 
@@ -22,6 +25,7 @@
 @interface PFDetailOverViewController : UIViewController
 
 @property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
 @property (strong, nonatomic) NSDictionary *obj;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -33,6 +37,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *detail;
 
+@property (strong, nonatomic) IBOutlet UILabel *reserve;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
 
 - (IBAction)fullimgalbumTapped:(id)sender;

@@ -55,19 +55,28 @@
 #pragma mark - Property
 @property (assign, nonatomic) id delegate;
 @property AFHTTPRequestOperationManager *manager;
+@property NSUserDefaults *userDefaults;
+
+#pragma mark - App Language
+- (void)saveLanguage:(NSString *)language;
+- (NSString *)getLanguage;
+
+#pragma mark - Content Language
+- (void)saveContentLanguage:(NSString *)contentlanguage;
+- (NSString *)getContentLanguage;
 
 #pragma mark - Overview
-- (void)getFeed;
+- (void)getFeed:(NSString *)language;
+- (void)getFeedDetail:(NSString *)language;
 - (void)getFeedGallery;
-- (void)getFeedDetail;
 
 #pragma mark - Roomtype
-- (void)getRoomtype;
+- (void)getRoomtype:(NSString *)language;
 - (void)getRoomtypeByID:(NSString *)roomtype_id;
 
 #pragma mark - Service
-- (void)getService;
-- (void)getServiceFoldertype:(NSString *)servicefoldertype_id;
+- (void)getService:(NSString *)language;
+- (void)getServiceFoldertype:(NSString *)servicefoldertype_id language:(NSString *)language;
 - (void)getServiceFood:(NSString *)servicefood_id;
 - (void)getServiceRoom:(NSString *)serviceroom_id;
 

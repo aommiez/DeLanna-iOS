@@ -55,12 +55,24 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Map";
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Direction" style:UIBarButtonItemStyleDone target:self action:@selector(getDistance)];
-    [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                           [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
-    self.navigationItem.rightBarButtonItem = rightButton;
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navigationItem.title = @"Map";
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Direction" style:UIBarButtonItemStyleDone target:self action:@selector(getDistance)];
+        [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = rightButton;
+    } else {
+        self.navigationItem.title = @"แผนที่";
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"นำทาง" style:UIBarButtonItemStyleDone target:self action:@selector(getDistance)];
+        [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = rightButton;
+    }
 
     CLLocationCoordinate2D location;
     location.latitude = 18.789622;

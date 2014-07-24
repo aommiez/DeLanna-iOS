@@ -15,6 +15,8 @@
 #import "PFServiceViewController.h"
 #import "PFContactViewController.h"
 
+#import "PFDelannaApi.h"
+
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "SDImageCache.h"
 #import "MWPhoto.h"
@@ -23,6 +25,7 @@
 @interface PFAppDelegate : UIResponder <UIApplicationDelegate,MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
 
 @property (strong, nonatomic) PFTabBarViewController *tabBarViewController;
 

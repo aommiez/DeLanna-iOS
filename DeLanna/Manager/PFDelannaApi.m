@@ -15,17 +15,45 @@
     if (self = [super init])
     {
         self.manager = [AFHTTPRequestOperationManager manager];
+        self.userDefaults = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
 
+#pragma mark - Language
+- (void)saveLanguage:(NSString *)language {
+    [self.userDefaults setObject:language forKey:@"language"];
+}
+
+- (NSString *)getLanguage {
+    return [self.userDefaults objectForKey:@"language"];
+}
+
+#pragma mark - Language
+- (void)saveContentLanguage:(NSString *)contentlanguage {
+    [self.userDefaults setObject:contentlanguage forKey:@"contentlanguage"];
+}
+
+- (NSString *)getContentLanguage {
+    return [self.userDefaults objectForKey:@"contentlanguage"];
+}
+
 #pragma mark - Overview
-- (void)getFeed {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@feed",API_URL];
+- (void)getFeed:(NSString *)language {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@feed?lang=%@",API_URL,language];
     [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getFeedResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getFeedErrorResponse:[error localizedDescription]];
+    }];
+}
+
+- (void)getFeedDetail:(NSString *)language {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@feed/detail?lang=%@",API_URL,language];
+    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self getFeedDetailResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self getFeedDetailErrorResponse:[error localizedDescription]];
     }];
 }
 
@@ -38,18 +66,9 @@
     }];
 }
 
-- (void)getFeedDetail {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@feed/detail",API_URL];
-    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.delegate PFDelannaApi:self getFeedDetailResponse:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate PFDelannaApi:self getFeedDetailErrorResponse:[error localizedDescription]];
-    }];
-}
-
 #pragma mark - Roomtype
-- (void)getRoomtype {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@roomtype",API_URL];
+- (void)getRoomtype:(NSString *)language {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@roomtype?lang=%@",API_URL,language];
     [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getRoomtypeResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -67,8 +86,8 @@
 }
 
 #pragma mark - Service
-- (void)getService {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@node",API_URL];
+- (void)getService:(NSString *)language {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@node?lang=%@",API_URL,language];
     [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getServiceResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -76,8 +95,8 @@
     }];
 }
 
-- (void)getServiceFoldertype:(NSString *)servicefoldertype_id {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@node/%@/children",API_URL,servicefoldertype_id];
+- (void)getServiceFoldertype:(NSString *)servicefoldertype_id language:(NSString *)language {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@node/%@/children?lang=%@",API_URL,servicefoldertype_id,language];
     [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getServiceFoldertypeResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

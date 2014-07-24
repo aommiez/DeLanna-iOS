@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "ScrollView.h"
 #import "AsyncImageView.h"
 #import "UILabel+UILabelDynamicHeight.h"
@@ -54,6 +55,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titlefeature;
 @property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *feature;
 
+@property (strong, nonatomic) IBOutlet UILabel *reserve;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
 
 -(void)ShowDetailView:(UIImageView *)imgView;

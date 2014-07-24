@@ -8,10 +8,31 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PFDelannaApi.h"
+
+@protocol PFLanguageViewControllerDelegate <NSObject>
+
+- (void)resetApp;
+
+@end
+
 @interface PFLanguageViewController : UIViewController
 
 @property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
 
+@property (strong, nonatomic) IBOutlet UILabel *thai;
+@property (strong, nonatomic) IBOutlet UILabel *english;
+@property (strong, nonatomic) IBOutlet UIImageView *checkTH;
+@property (strong, nonatomic) IBOutlet UIImageView *checkEN;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
+@property (strong, nonatomic) IBOutlet UILabel *save;
+
+@property (strong, nonatomic) NSString *statusSetting;
+@property (strong, nonatomic) NSString *statusLanguage;
+
+- (IBAction)ThaiTapped:(id)sender;
+- (IBAction)EnglishTapped:(id)sender;
+- (IBAction)saveTapped:(id)sender;
 
 @end

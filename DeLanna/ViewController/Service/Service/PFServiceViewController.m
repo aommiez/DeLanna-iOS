@@ -33,6 +33,15 @@ BOOL refreshDataService;
 {
     [super viewDidLoad];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Service";
+    } else {
+        self.navItem.title = @"บริการ";
+    }
+    
     [self.view addSubview:self.waitView];
     
     CALayer *popup = [self.popupwaitView layer];
@@ -57,10 +66,11 @@ BOOL refreshDataService;
     
     self.arrObj = [[NSMutableArray alloc] init];
     
-    self.DelannaApi = [[PFDelannaApi alloc] init];
-    self.DelannaApi.delegate = self;
-    
-    [self.DelannaApi getService];
+    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+        [self.DelannaApi getService:@"en"];
+    } else {
+        [self.DelannaApi getService:@"th"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -247,7 +257,11 @@ BOOL refreshDataService;
         self.DelannaApi = [[PFDelannaApi alloc] init];
         self.DelannaApi.delegate = self;
         
-        [self.DelannaApi getService];
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            [self.DelannaApi getService:@"en"];
+        } else {
+            [self.DelannaApi getService:@"th"];
+        }
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
@@ -296,7 +310,11 @@ BOOL refreshDataService;
             self.DelannaApi = [[PFDelannaApi alloc] init];
             self.DelannaApi.delegate = self;
             
-            [self.DelannaApi getService];
+            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                [self.DelannaApi getService:@"en"];
+            } else {
+                [self.DelannaApi getService:@"th"];
+            }
         }
     }
 }

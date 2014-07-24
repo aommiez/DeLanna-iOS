@@ -59,8 +59,6 @@
 
 @property (strong, nonatomic) NSString *paging;
 
-@property (strong, nonatomic) IBOutlet UIButton *moreButton;
 @property (strong, nonatomic) NSString *more;
-- (IBAction)detailTapped:(id)sender;
 
 @end

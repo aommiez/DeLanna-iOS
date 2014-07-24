@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PFDelannaApi.h"
+
 @protocol PFWebViewControllerDelegate <NSObject>
 
 - (void) PFWebViewControllerBack;
@@ -17,6 +19,8 @@
 @interface PFWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (assign, nonatomic) id delegate;
+@property (strong, nonatomic) PFDelannaApi *DelannaApi;
+
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
 

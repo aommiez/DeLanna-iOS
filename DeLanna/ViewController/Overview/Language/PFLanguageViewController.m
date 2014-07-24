@@ -28,6 +28,62 @@
 {
     [super viewDidLoad];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if ([self.statusSetting isEqualToString:@"app"]) {
+        
+        if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+            
+            self.navigationItem.title = @"App Language";
+            
+            self.checkTH.hidden = YES;
+            self.thai.textColor = RGB(170, 170, 170);
+            self.thai.text = @"Thai";
+            self.english.textColor = RGB(0, 0, 0);
+            self.english.text = @"English";
+            self.statusLanguage = @"EN";
+            self.save.text = @"save";
+        } else {
+            
+            self.navigationItem.title = @"ภาษาแอพพลิเคชั่น";
+            
+            self.checkEN.hidden = YES;
+            self.thai.textColor = RGB(0, 0, 0);
+            self.thai.text = @"ภาษาไทย";
+            self.english.textColor = RGB(170, 170, 170);
+            self.english.text = @"ภาษาอังกฤษ";
+            self.statusLanguage = @"TH";
+            self.save.text = @"บันทึก";
+        }
+    } else {
+        if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+            self.navigationItem.title = @"Content Language";
+            self.thai.text = @"Thai";
+            self.english.text = @"English";
+            self.save.text = @"save";
+        } else {
+            self.navigationItem.title = @"ภาษาเนื้อหา";
+            self.thai.text = @"ภาษาไทย";
+            self.english.text = @"ภาษาอังกฤษ";
+            self.save.text = @"บันทึก";
+        }
+        
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            
+            self.checkTH.hidden = YES;
+            self.statusLanguage = @"EN";
+            self.thai.textColor = RGB(170, 170, 170);
+            self.english.textColor = RGB(0, 0, 0);
+        } else {
+            
+            self.checkEN.hidden = YES;
+            self.statusLanguage = @"TH";
+            self.thai.textColor = RGB(0, 0, 0);
+            self.english.textColor = RGB(170, 170, 170);
+        }
+    }
+    
     CALayer *saveButton = [self.saveButton layer];
     [saveButton setMasksToBounds:YES];
     [saveButton setCornerRadius:7.0f];
@@ -40,6 +96,33 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (IBAction)ThaiTapped:(id)sender{
+    self.checkEN.hidden = YES;
+    self.checkTH.hidden = NO;
+    self.thai.textColor = RGB(0, 0, 0);
+    self.english.textColor = RGB(170, 170, 170);
+    self.statusLanguage = @"TH";
+}
+
+- (IBAction)EnglishTapped:(id)sender{
+    self.checkTH.hidden = YES;
+    self.checkEN.hidden = NO;
+    self.thai.textColor = RGB(170, 170, 170);
+    self.english.textColor = RGB(0, 0, 0);
+    self.statusLanguage = @"EN";
+}
+
+- (IBAction)saveTapped:(id)sender{
+    if ([self.statusSetting isEqualToString:@"app"]) {
+        [self.DelannaApi saveLanguage:self.statusLanguage];
+        [self.delegate resetApp];
+    } else {
+        [self.DelannaApi saveContentLanguage:self.statusLanguage];
+        [self.delegate resetApp];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

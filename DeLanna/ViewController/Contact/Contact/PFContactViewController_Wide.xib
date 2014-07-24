@@ -6,8 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFContactViewController">
             <connections>
+                <outlet property="ReservationTxt" destination="4ew-Ge-XkV" id="Yi0-8O-Okr"/>
                 <outlet property="act" destination="PKd-V3-UTM" id="MWZ-eA-bv6"/>
+                <outlet property="address" destination="iOd-kK-4AE" id="LeV-tm-D0d"/>
                 <outlet property="buttonView" destination="oEz-zU-foT" id="IX7-0g-r9K"/>
+                <outlet property="commentTxt" destination="9QD-lI-i4E" id="aqb-z3-wbD"/>
                 <outlet property="commentView" destination="rat-iK-M7q" id="8yg-u4-yGO"/>
                 <outlet property="emailTxt" destination="0XO-kK-vbm" id="P56-W7-DGK"/>
                 <outlet property="footerView" destination="azn-dE-fII" id="wTP-47-bNJ"/>
@@ -99,7 +102,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Contact" id="H1l-yI-vpf"/>
+                    <navigationItem key="navigationItem" id="H1l-yI-vpf"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -140,11 +143,9 @@
                                 <action selector="mapTapped:" destination="-1" eventType="touchUpInside" id="mZd-ng-msa"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iOd-kK-4AE">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iOd-kK-4AE">
                             <rect key="frame" x="10" y="188" width="250" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <string key="text">44 Intawarorot Rd. 
-T.Sriphum Muang Chiangmai 50200</string>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.5450980392" green="0.36862745099999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -264,8 +265,8 @@ T.Sriphum Muang Chiangmai 50200</string>
                         <action selector="reserveTapped:" destination="-1" eventType="touchUpInside" id="LVn-QA-mQl"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel Reservation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ew-Ge-XkV">
-                    <rect key="frame" x="40" y="479" width="240" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ew-Ge-XkV">
+                    <rect key="frame" x="40" y="477" width="240" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

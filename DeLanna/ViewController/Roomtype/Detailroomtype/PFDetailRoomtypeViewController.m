@@ -30,6 +30,15 @@
     
     self.navigationItem.title = [self.obj objectForKey:@"name"];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.reserve.text = @"Reserve";
+    } else {
+        self.reserve.text = @"สำรองห้องพัก";
+    }
+    
     [self.view addSubview:self.waitView];
     
     CALayer *popup = [self.popupwaitView layer];
@@ -44,9 +53,6 @@
     [reserveButton setCornerRadius:7.0f];
     
     self.arrObj = [[NSMutableArray alloc] init];
-
-    self.DelannaApi = [[PFDelannaApi alloc] init];
-    self.DelannaApi.delegate = self;
     
     images = [[NSMutableArray alloc]init];
     
@@ -55,13 +61,9 @@
     
     NSString *id = [NSString stringWithFormat:@"%@",[self.obj objectForKey:@"id"]];
     [self.DelannaApi getRoomtypeByID:id];
-    
-    //NSLog(@"%@",self.obj);
+
     self.name.text = [self.obj objectForKey:@"name"];
     self.price.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
-    /*
-     check EN or TH
-     */
     self.baht.text = @"Baht";
     
     self.detail.text = [self.obj objectForKey:@"detail"];
@@ -119,11 +121,12 @@
 }
 
 - (void)share {
-    [[[UIAlertView alloc] initWithTitle:@"De Lanna Hotel"
-                                message:@"Coming soon."
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
+    NSString *urlString = [[NSString alloc]init];
+    urlString = [[NSString alloc] initWithFormat:@"%@",[[self.obj objectForKey:@"node"] objectForKey:@"share"]];
+    
+    SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [controller addURL:[NSURL URLWithString:urlString]];
+    [self presentViewController:controller animated:YES completion:Nil];
 }
 
 - (void)singleTapGestureCaptured:(UITapGestureRecognizer *)gesture

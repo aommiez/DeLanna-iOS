@@ -35,6 +35,15 @@ BOOL refreshDataFeed;
 {
     [super viewDidLoad];
     
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Overview";
+    } else {
+        self.navItem.title = @"ภาพรวม";
+    }
+    
     [self.view addSubview:self.waitView];
     
     CALayer *popup = [self.popupwaitView layer];
@@ -59,18 +68,24 @@ BOOL refreshDataFeed;
     
     self.arrObj = [[NSMutableArray alloc] init];
     
-    self.DelannaApi = [[PFDelannaApi alloc] init];
-    self.DelannaApi.delegate = self;
-    
-    [self.DelannaApi getFeedGallery];
-    [self.DelannaApi getFeedDetail];
-    [self.DelannaApi getFeed];
+    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+        [self.DelannaApi getFeedGallery];
+        [self.DelannaApi getFeedDetail:@"en"];
+        [self.DelannaApi getFeed:@"en"];
+    } else {
+        [self.DelannaApi getFeedGallery];
+        [self.DelannaApi getFeedDetail:@"th"];
+        [self.DelannaApi getFeed:@"th"];
+    }
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
     [self.imgscrollview addGestureRecognizer:singleTap];
     
     self.current = @"0";
     self.more = @"0";
+    
+    UITapGestureRecognizer *moredetailTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(moredetailTap:)];
+    [self.headerView addGestureRecognizer:moredetailTap];
     
 }
 
@@ -84,7 +99,7 @@ BOOL refreshDataFeed;
 }
 
 - (void)setting {
-    
+
     [self.delegate HideTabbar];
     
     PFSettingViewController *settingView = [[PFSettingViewController alloc] init];
@@ -95,6 +110,7 @@ BOOL refreshDataFeed;
     }
     settingView.delegate = self;
     [self.navController pushViewController:settingView animated:YES];
+
 }
 
 - (void)PagedImageScrollView:(id)sender current:(NSString *)current{
@@ -240,8 +256,8 @@ BOOL refreshDataFeed;
     }
 }
 
-- (IBAction)detailTapped:(id)sender {
-
+- (void)moredetailTap:(UITapGestureRecognizer *)gesture
+{
     if ([self.more isEqualToString:@"0"]) {
         self.more = @"1";
         
@@ -265,8 +281,7 @@ BOOL refreshDataFeed;
             self.detail.alpha = 0;
             [self.headerView addSubview:self.descText];
             
-            self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height-40);
-            self.moreButton.frame = CGRectMake(self.moreButton.frame.origin.x, self.moreButton.frame.origin.y, self.moreButton.frame.size.width, self.moreButton.frame.size.height+self.detail.frame.size.height-40);
+            self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.descText.frame.size.height-40);
             
             self.tableView.tableHeaderView = self.headerView;
             UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
@@ -276,9 +291,12 @@ BOOL refreshDataFeed;
         }
     } else {
         self.more = @"0";
+        //หด
         
+        self.detail.alpha = 1;
+        self.descText.alpha = 0;
+
         self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, 262);
-        self.moreButton.frame = CGRectMake(self.moreButton.frame.origin.x, self.moreButton.frame.origin.y, self.moreButton.frame.size.width, 42);
         
         self.tableView.tableHeaderView = self.headerView;
         UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
@@ -286,7 +304,7 @@ BOOL refreshDataFeed;
         
         [self reloadData:YES];
     }
-
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -367,8 +385,13 @@ BOOL refreshDataFeed;
         self.DelannaApi = [[PFDelannaApi alloc] init];
         self.DelannaApi.delegate = self;
         
-        [self.DelannaApi getFeedDetail];
-        [self.DelannaApi getFeed];
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            [self.DelannaApi getFeedDetail:@"en"];
+            [self.DelannaApi getFeed:@"en"];
+        } else {
+            [self.DelannaApi getFeedDetail:@"th"];
+            [self.DelannaApi getFeed:@"th"];
+        }
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
@@ -417,8 +440,13 @@ BOOL refreshDataFeed;
             self.DelannaApi = [[PFDelannaApi alloc] init];
             self.DelannaApi.delegate = self;
             
-            [self.DelannaApi getFeedDetail];
-            [self.DelannaApi getFeed];
+            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                [self.DelannaApi getFeedDetail:@"en"];
+                [self.DelannaApi getFeed:@"en"];
+            } else {
+                [self.DelannaApi getFeedDetail:@"th"];
+                [self.DelannaApi getFeed:@"th"];
+            }
         }
     }
 }
@@ -440,6 +468,10 @@ BOOL refreshDataFeed;
 
 - (void) PFDetailOverViewControllerBack {
     [self.delegate ShowTabbar];
+}
+
+-(void)resetApp {
+    [self.delegate resetApp];
 }
 
 @end
