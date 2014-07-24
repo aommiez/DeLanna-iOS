@@ -22,6 +22,14 @@
 		36131652196BA14B00DB175C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36131636196BA14A00DB175C /* CoreData.framework */; };
 		3613165A196BA14B00DB175C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36131658196BA14B00DB175C /* InfoPlist.strings */; };
 		3613165C196BA14B00DB175C /* DeLannaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3613165B196BA14B00DB175C /* DeLannaTests.m */; };
+		3644814C198113E200824315 /* UILabel+UILabelDynamicHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644814B198113E200824315 /* UILabel+UILabelDynamicHeight.m */; };
+		3644814F198113E800824315 /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644814E198113E800824315 /* ScrollView.m */; };
+		36448152198113F000824315 /* PagedImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36448151198113F000824315 /* PagedImageScrollView.m */; };
+		36448155198113F800824315 /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 36448154198113F800824315 /* CRGradientNavigationBar.m */; };
+		3644815C198113FF00824315 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36448157198113FF00824315 /* AMBlurView.m */; };
+		3644815D198113FF00824315 /* UIERealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36448159198113FF00824315 /* UIERealTimeBlurView.m */; };
+		3644815E198113FF00824315 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 3644815B198113FF00824315 /* UIImage+BoxBlur.m */; };
+		364481611981140600824315 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 364481601981140600824315 /* AsyncImageView.m */; };
 		36940842197641410071EFA6 /* UtilitySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36940841197641410071EFA6 /* UtilitySDK.framework */; };
 		52041CAD197FA278005118C8 /* en_overview_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 52041C89197FA278005118C8 /* en_overview_off.png */; };
 		52041CAE197FA278005118C8 /* en_overview_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 52041C8A197FA278005118C8 /* en_overview_on.png */; };
@@ -227,6 +235,22 @@
 		36131657196BA14B00DB175C /* DeLannaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DeLannaTests-Info.plist"; sourceTree = "<group>"; };
 		36131659196BA14B00DB175C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3613165B196BA14B00DB175C /* DeLannaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeLannaTests.m; sourceTree = "<group>"; };
+		3644814A198113E200824315 /* UILabel+UILabelDynamicHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+UILabelDynamicHeight.h"; path = "../../TestFM/UILabel+UILabelDynamicHeight/UILabel+UILabelDynamicHeight.h"; sourceTree = "<group>"; };
+		3644814B198113E200824315 /* UILabel+UILabelDynamicHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+UILabelDynamicHeight.m"; path = "../../TestFM/UILabel+UILabelDynamicHeight/UILabel+UILabelDynamicHeight.m"; sourceTree = "<group>"; };
+		3644814D198113E800824315 /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollView.h; path = ../../TestFM/ScrollView/ScrollView.h; sourceTree = "<group>"; };
+		3644814E198113E800824315 /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollView.m; path = ../../TestFM/ScrollView/ScrollView.m; sourceTree = "<group>"; };
+		36448150198113F000824315 /* PagedImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PagedImageScrollView.h; path = ../../TestFM/PagedImageScrollView/PagedImageScrollView.h; sourceTree = "<group>"; };
+		36448151198113F000824315 /* PagedImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PagedImageScrollView.m; path = ../../TestFM/PagedImageScrollView/PagedImageScrollView.m; sourceTree = "<group>"; };
+		36448153198113F800824315 /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CRGradientNavigationBar.h; path = ../../TestFM/CRGradientNavigationBar/CRGradientNavigationBar.h; sourceTree = "<group>"; };
+		36448154198113F800824315 /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRGradientNavigationBar.m; path = ../../TestFM/CRGradientNavigationBar/CRGradientNavigationBar.m; sourceTree = "<group>"; };
+		36448156198113FF00824315 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMBlurView.h; path = ../../TestFM/Blur/AMBlurView.h; sourceTree = "<group>"; };
+		36448157198113FF00824315 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMBlurView.m; path = ../../TestFM/Blur/AMBlurView.m; sourceTree = "<group>"; };
+		36448158198113FF00824315 /* UIERealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIERealTimeBlurView.h; path = ../../TestFM/Blur/UIERealTimeBlurView.h; sourceTree = "<group>"; };
+		36448159198113FF00824315 /* UIERealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIERealTimeBlurView.m; path = ../../TestFM/Blur/UIERealTimeBlurView.m; sourceTree = "<group>"; };
+		3644815A198113FF00824315 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+BoxBlur.h"; path = "../../TestFM/Blur/UIImage+BoxBlur.h"; sourceTree = "<group>"; };
+		3644815B198113FF00824315 /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+BoxBlur.m"; path = "../../TestFM/Blur/UIImage+BoxBlur.m"; sourceTree = "<group>"; };
+		3644815F1981140600824315 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageView.h; path = ../../TestFM/AsyncImageView/AsyncImageView.h; sourceTree = "<group>"; };
+		364481601981140600824315 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = ../../TestFM/AsyncImageView/AsyncImageView.m; sourceTree = "<group>"; };
 		36940841197641410071EFA6 /* UtilitySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UtilitySDK.framework; path = ../Frameworks/UtilitySDK.framework; sourceTree = "<group>"; };
 		52041C89197FA278005118C8 /* en_overview_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = en_overview_off.png; sourceTree = "<group>"; };
 		52041C8A197FA278005118C8 /* en_overview_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = en_overview_on.png; sourceTree = "<group>"; };
@@ -599,6 +623,29 @@
 				36131658196BA14B00DB175C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		36448149198113D800824315 /* testFM */ = {
+			isa = PBXGroup;
+			children = (
+				3644815F1981140600824315 /* AsyncImageView.h */,
+				364481601981140600824315 /* AsyncImageView.m */,
+				36448156198113FF00824315 /* AMBlurView.h */,
+				36448157198113FF00824315 /* AMBlurView.m */,
+				36448158198113FF00824315 /* UIERealTimeBlurView.h */,
+				36448159198113FF00824315 /* UIERealTimeBlurView.m */,
+				3644815A198113FF00824315 /* UIImage+BoxBlur.h */,
+				3644815B198113FF00824315 /* UIImage+BoxBlur.m */,
+				36448153198113F800824315 /* CRGradientNavigationBar.h */,
+				36448154198113F800824315 /* CRGradientNavigationBar.m */,
+				36448150198113F000824315 /* PagedImageScrollView.h */,
+				36448151198113F000824315 /* PagedImageScrollView.m */,
+				3644814D198113E800824315 /* ScrollView.h */,
+				3644814E198113E800824315 /* ScrollView.m */,
+				3644814A198113E200824315 /* UILabel+UILabelDynamicHeight.h */,
+				3644814B198113E200824315 /* UILabel+UILabelDynamicHeight.m */,
+			);
+			name = testFM;
 			sourceTree = "<group>";
 		};
 		52041C87197FA278005118C8 /* en */ = {
@@ -1031,6 +1078,7 @@
 		527BF31C1974E6130005BFF9 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				36448149198113D800824315 /* testFM */,
 				52FC2C47197917FF0016E93D /* AFNetworking */,
 				52BA06A91977993B00677A5E /* MWPhotoBrowser */,
 				520C24AA197654DD0078C547 /* Other */,
@@ -1461,10 +1509,13 @@
 				52BA070E1977993B00677A5E /* PSTCollectionViewFlowLayout.m in Sources */,
 				52BA071B1977993B00677A5E /* SDWebImageDownloaderOperation.m in Sources */,
 				527BF31A1974E41D0005BFF9 /* PFTabBarItemButton.m in Sources */,
+				36448155198113F800824315 /* CRGradientNavigationBar.m in Sources */,
+				3644815E198113FF00824315 /* UIImage+BoxBlur.m in Sources */,
 				52BA071D1977993B00677A5E /* SDWebImagePrefetcher.m in Sources */,
 				520C24A6197654A60078C547 /* PFDetailFoldertypeViewController.m in Sources */,
 				52FC2C75197917FF0016E93D /* UIAlertView+AFNetworking.m in Sources */,
 				520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */,
+				36448152198113F000824315 /* PagedImageScrollView.m in Sources */,
 				520C24B6197654DD0078C547 /* PFMapView.m in Sources */,
 				528C8BF5197E71D5007DE577 /* PFServicefoodViewController.m in Sources */,
 				52BA071E1977993B00677A5E /* UIButton+WebCache.m in Sources */,
@@ -1477,6 +1528,7 @@
 				520C249C197654A60078C547 /* PFDetailRoomtypeViewController.m in Sources */,
 				52BA07071977993B00677A5E /* DACircularProgressView.m in Sources */,
 				520C24DE19765BA30078C547 /* PFLanguageViewController.m in Sources */,
+				3644814C198113E200824315 /* UILabel+UILabelDynamicHeight.m in Sources */,
 				52BA07061977993B00677A5E /* MWZoomingScrollView.m in Sources */,
 				52FC2C6C197917FF0016E93D /* AFHTTPSessionManager.m in Sources */,
 				52BA07181977993B00677A5E /* SDWebImageCompat.m in Sources */,
@@ -1500,12 +1552,15 @@
 				52BA07101977993B00677A5E /* PSTCollectionViewLayout.m in Sources */,
 				52BA070F1977993B00677A5E /* PSTCollectionViewItemKey.m in Sources */,
 				52BA07081977993B00677A5E /* MBProgressHUD.m in Sources */,
+				3644815D198113FF00824315 /* UIERealTimeBlurView.m in Sources */,
 				52BA07021977993B00677A5E /* MWPhoto.m in Sources */,
 				520C24F51976706E0078C547 /* PFOverViewCell.m in Sources */,
+				3644815C198113FF00824315 /* AMBlurView.m in Sources */,
 				52FC2C78197917FF0016E93D /* UIProgressView+AFNetworking.m in Sources */,
 				52BA07131977993B00677A5E /* PSTGridLayoutItem.m in Sources */,
 				520C24A4197654A60078C547 /* PFFoldertypeCell.m in Sources */,
 				520C2493197654A60078C547 /* PFWebViewController.m in Sources */,
+				364481611981140600824315 /* AsyncImageView.m in Sources */,
 				5269813219777473001C2A97 /* PFDetailOverViewController.m in Sources */,
 				52FC2C6E197917FF0016E93D /* AFNetworkReachabilityManager.m in Sources */,
 				52FC2C71197917FF0016E93D /* AFURLRequestSerialization.m in Sources */,
@@ -1521,6 +1576,7 @@
 				52FC2C79197917FF0016E93D /* UIWebView+AFNetworking.m in Sources */,
 				52BA07031977993B00677A5E /* MWPhotoBrowser.m in Sources */,
 				52FC2C6D197917FF0016E93D /* AFNetworkActivityIndicatorManager.m in Sources */,
+				3644814F198113E800824315 /* ScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
