@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
-#import "ScrollView.h"
-#import "AsyncImageView.h"
-#import "UILabel+UILabelDynamicHeight.h"
 
 #import "PFDelannaApi.h"
 

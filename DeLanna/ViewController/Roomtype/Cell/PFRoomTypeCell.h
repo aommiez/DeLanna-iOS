@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AsyncImageView.h"
 
 @protocol PFRoomTypeCellDelegate <NSObject>
 

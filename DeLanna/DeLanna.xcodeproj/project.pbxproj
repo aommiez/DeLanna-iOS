@@ -98,7 +98,6 @@
 		520C24B4197654DD0078C547 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AC197654DD0078C547 /* BBBadgeBarButtonItem.m */; };
 		520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AE197654DD0078C547 /* CMMapLauncher.m */; };
 		520C24B6197654DD0078C547 /* PFMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24B0197654DD0078C547 /* PFMapView.m */; };
-		520C24B7197654DD0078C547 /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24B3197654DD0078C547 /* ScrollView.m */; };
 		520C24DE19765BA30078C547 /* PFLanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24DC19765BA30078C547 /* PFLanguageViewController.m */; };
 		520C24DF19765BA30078C547 /* PFLanguageViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 520C24DD19765BA30078C547 /* PFLanguageViewController_Wide.xib */; };
 		520C24E119765C6C0078C547 /* ic_corect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 520C24E019765C6C0078C547 /* ic_corect@2x.png */; };
@@ -116,11 +115,8 @@
 		524D321C1978D2E90026C3B4 /* chapter_box03.png in Resources */ = {isa = PBXBuildFile; fileRef = 524D321B1978D2E90026C3B4 /* chapter_box03.png */; };
 		525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072A1977AD8000677A5E /* CFNetwork.framework */; };
 		525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA07281977AD7800677A5E /* SystemConfiguration.framework */; };
-		526981261977728B001C2A97 /* PagedImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 526981221977728B001C2A97 /* PagedImageScrollView.m */; };
-		5269812D197773A4001C2A97 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269812C197773A4001C2A97 /* AsyncImageView.m */; };
 		5269813219777473001C2A97 /* PFDetailOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269813019777473001C2A97 /* PFDetailOverViewController.m */; };
 		5269813319777473001C2A97 /* PFDetailOverViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5269813119777473001C2A97 /* PFDetailOverViewController_Wide.xib */; };
-		5269813719777649001C2A97 /* UILabel+UILabelDynamicHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269813619777649001C2A97 /* UILabel+UILabelDynamicHeight.m */; };
 		527BF3051974E41D0005BFF9 /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2E81974E41D0005BFF9 /* default.jpg */; };
 		527BF3161974E41D0005BFF9 /* Notification_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2FB1974E41D0005BFF9 /* Notification_icon@2x.png */; };
 		527BF3171974E41D0005BFF9 /* Setting_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527BF2FC1974E41D0005BFF9 /* Setting_icon@2x.png */; };
@@ -128,10 +124,6 @@
 		527BF3191974E41D0005BFF9 /* PFCustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3001974E41D0005BFF9 /* PFCustomBadge.m */; };
 		527BF31A1974E41D0005BFF9 /* PFTabBarItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3021974E41D0005BFF9 /* PFTabBarItemButton.m */; };
 		527BF31B1974E41D0005BFF9 /* PFTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3041974E41D0005BFF9 /* PFTabBarViewController.m */; };
-		527BF3241974E6130005BFF9 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF31F1974E6130005BFF9 /* AMBlurView.m */; };
-		527BF3251974E6130005BFF9 /* UIERealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3211974E6130005BFF9 /* UIERealTimeBlurView.m */; };
-		527BF3261974E6130005BFF9 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3231974E6130005BFF9 /* UIImage+BoxBlur.m */; };
-		527BF3371974FD7A0005BFF9 /* CRGradientNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3361974FD7A0005BFF9 /* CRGradientNavigationBar.m */; };
 		528C8BF0197E6B4B007DE577 /* PFServiceroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C8BEE197E6B4B007DE577 /* PFServiceroomViewController.m */; };
 		528C8BF1197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528C8BEF197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib */; };
 		528C8BF5197E71D5007DE577 /* PFServicefoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C8BF3197E71D5007DE577 /* PFServicefoodViewController.m */; };
@@ -326,8 +318,6 @@
 		520C24AE197654DD0078C547 /* CMMapLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMMapLauncher.m; sourceTree = "<group>"; };
 		520C24AF197654DD0078C547 /* PFMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMapView.h; sourceTree = "<group>"; };
 		520C24B0197654DD0078C547 /* PFMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMapView.m; sourceTree = "<group>"; };
-		520C24B2197654DD0078C547 /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
-		520C24B3197654DD0078C547 /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
 		520C24DB19765BA30078C547 /* PFLanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFLanguageViewController.h; sourceTree = "<group>"; };
 		520C24DC19765BA30078C547 /* PFLanguageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFLanguageViewController.m; sourceTree = "<group>"; };
 		520C24DD19765BA30078C547 /* PFLanguageViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFLanguageViewController_Wide.xib; sourceTree = "<group>"; };
@@ -346,15 +336,9 @@
 		524D32151978D2D90026C3B4 /* chapter_box01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box01.png; sourceTree = "<group>"; };
 		524D32181978D2E10026C3B4 /* chapter_box02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box02.png; sourceTree = "<group>"; };
 		524D321B1978D2E90026C3B4 /* chapter_box03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box03.png; sourceTree = "<group>"; };
-		526981211977728B001C2A97 /* PagedImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagedImageScrollView.h; sourceTree = "<group>"; };
-		526981221977728B001C2A97 /* PagedImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagedImageScrollView.m; sourceTree = "<group>"; };
-		5269812B197773A4001C2A97 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
-		5269812C197773A4001C2A97 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		5269812F19777473001C2A97 /* PFDetailOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFDetailOverViewController.h; sourceTree = "<group>"; };
 		5269813019777473001C2A97 /* PFDetailOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFDetailOverViewController.m; sourceTree = "<group>"; };
 		5269813119777473001C2A97 /* PFDetailOverViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailOverViewController_Wide.xib; sourceTree = "<group>"; };
-		5269813519777649001C2A97 /* UILabel+UILabelDynamicHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+UILabelDynamicHeight.h"; sourceTree = "<group>"; };
-		5269813619777649001C2A97 /* UILabel+UILabelDynamicHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+UILabelDynamicHeight.m"; sourceTree = "<group>"; };
 		527BF2E81974E41D0005BFF9 /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		527BF2FB1974E41D0005BFF9 /* Notification_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Notification_icon@2x.png"; sourceTree = "<group>"; };
 		527BF2FC1974E41D0005BFF9 /* Setting_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Setting_icon@2x.png"; sourceTree = "<group>"; };
@@ -365,14 +349,6 @@
 		527BF3021974E41D0005BFF9 /* PFTabBarItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTabBarItemButton.m; sourceTree = "<group>"; };
 		527BF3031974E41D0005BFF9 /* PFTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTabBarViewController.h; sourceTree = "<group>"; };
 		527BF3041974E41D0005BFF9 /* PFTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTabBarViewController.m; sourceTree = "<group>"; };
-		527BF31E1974E6130005BFF9 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
-		527BF31F1974E6130005BFF9 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
-		527BF3201974E6130005BFF9 /* UIERealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIERealTimeBlurView.h; sourceTree = "<group>"; };
-		527BF3211974E6130005BFF9 /* UIERealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIERealTimeBlurView.m; sourceTree = "<group>"; };
-		527BF3221974E6130005BFF9 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
-		527BF3231974E6130005BFF9 /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
-		527BF3351974FD7A0005BFF9 /* CRGradientNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRGradientNavigationBar.h; sourceTree = "<group>"; };
-		527BF3361974FD7A0005BFF9 /* CRGradientNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRGradientNavigationBar.m; sourceTree = "<group>"; };
 		528C8BED197E6B4B007DE577 /* PFServiceroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFServiceroomViewController.h; sourceTree = "<group>"; };
 		528C8BEE197E6B4B007DE577 /* PFServiceroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFServiceroomViewController.m; sourceTree = "<group>"; };
 		528C8BEF197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServiceroomViewController_Wide.xib; sourceTree = "<group>"; };
@@ -931,15 +907,6 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		520C24B1197654DD0078C547 /* ScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				520C24B2197654DD0078C547 /* ScrollView.h */,
-				520C24B3197654DD0078C547 /* ScrollView.m */,
-			);
-			path = ScrollView;
-			sourceTree = "<group>";
-		};
 		520C24DA19765B8C0078C547 /* Language */ = {
 			isa = PBXGroup;
 			children = (
@@ -1004,24 +971,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		526981201977728B001C2A97 /* PagedImageScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				526981211977728B001C2A97 /* PagedImageScrollView.h */,
-				526981221977728B001C2A97 /* PagedImageScrollView.m */,
-			);
-			path = PagedImageScrollView;
-			sourceTree = "<group>";
-		};
-		5269812A197773A4001C2A97 /* AsyncImageView */ = {
-			isa = PBXGroup;
-			children = (
-				5269812B197773A4001C2A97 /* AsyncImageView.h */,
-				5269812C197773A4001C2A97 /* AsyncImageView.m */,
-			);
-			path = AsyncImageView;
-			sourceTree = "<group>";
-		};
 		5269812E19777438001C2A97 /* Detailoverview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,15 +979,6 @@
 				5269813119777473001C2A97 /* PFDetailOverViewController_Wide.xib */,
 			);
 			path = Detailoverview;
-			sourceTree = "<group>";
-		};
-		5269813419777649001C2A97 /* UILabel+UILabelDynamicHeight */ = {
-			isa = PBXGroup;
-			children = (
-				5269813519777649001C2A97 /* UILabel+UILabelDynamicHeight.h */,
-				5269813619777649001C2A97 /* UILabel+UILabelDynamicHeight.m */,
-			);
-			path = "UILabel+UILabelDynamicHeight";
 			sourceTree = "<group>";
 		};
 		527BB986197A623100E1F2E2 /* Images */ = {
@@ -1092,39 +1032,11 @@
 			isa = PBXGroup;
 			children = (
 				52FC2C47197917FF0016E93D /* AFNetworking */,
-				5269812A197773A4001C2A97 /* AsyncImageView */,
-				527BF31D1974E6130005BFF9 /* Blur */,
-				527BF3341974FD7A0005BFF9 /* CRGradientNavigationBar */,
 				52BA06A91977993B00677A5E /* MWPhotoBrowser */,
 				520C24AA197654DD0078C547 /* Other */,
-				526981201977728B001C2A97 /* PagedImageScrollView */,
-				520C24B1197654DD0078C547 /* ScrollView */,
-				5269813419777649001C2A97 /* UILabel+UILabelDynamicHeight */,
 			);
 			path = Ext;
 			sourceTree = SOURCE_ROOT;
-		};
-		527BF31D1974E6130005BFF9 /* Blur */ = {
-			isa = PBXGroup;
-			children = (
-				527BF31E1974E6130005BFF9 /* AMBlurView.h */,
-				527BF31F1974E6130005BFF9 /* AMBlurView.m */,
-				527BF3201974E6130005BFF9 /* UIERealTimeBlurView.h */,
-				527BF3211974E6130005BFF9 /* UIERealTimeBlurView.m */,
-				527BF3221974E6130005BFF9 /* UIImage+BoxBlur.h */,
-				527BF3231974E6130005BFF9 /* UIImage+BoxBlur.m */,
-			);
-			path = Blur;
-			sourceTree = "<group>";
-		};
-		527BF3341974FD7A0005BFF9 /* CRGradientNavigationBar */ = {
-			isa = PBXGroup;
-			children = (
-				527BF3351974FD7A0005BFF9 /* CRGradientNavigationBar.h */,
-				527BF3361974FD7A0005BFF9 /* CRGradientNavigationBar.m */,
-			);
-			path = CRGradientNavigationBar;
-			sourceTree = "<group>";
 		};
 		528C8BEB197E6A06007DE577 /* Servicefood */ = {
 			isa = PBXGroup;
@@ -1541,19 +1453,15 @@
 				52BA06FF1977993B00677A5E /* MWCaptionView.m in Sources */,
 				528C8BF0197E6B4B007DE577 /* PFServiceroomViewController.m in Sources */,
 				520C2498197654A60078C547 /* PFSettingViewController.m in Sources */,
-				520C24B7197654DD0078C547 /* ScrollView.m in Sources */,
 				520C2495197654A60078C547 /* PFOverViewController.m in Sources */,
 				52BA07161977993B00677A5E /* NSData+GIF.m in Sources */,
 				527BF31B1974E41D0005BFF9 /* PFTabBarViewController.m in Sources */,
 				520C24A0197654A60078C547 /* PFServiceCell.m in Sources */,
 				52FC2C72197917FF0016E93D /* AFURLResponseSerialization.m in Sources */,
-				5269813719777649001C2A97 /* UILabel+UILabelDynamicHeight.m in Sources */,
 				52BA070E1977993B00677A5E /* PSTCollectionViewFlowLayout.m in Sources */,
 				52BA071B1977993B00677A5E /* SDWebImageDownloaderOperation.m in Sources */,
 				527BF31A1974E41D0005BFF9 /* PFTabBarItemButton.m in Sources */,
-				5269812D197773A4001C2A97 /* AsyncImageView.m in Sources */,
 				52BA071D1977993B00677A5E /* SDWebImagePrefetcher.m in Sources */,
-				527BF3251974E6130005BFF9 /* UIERealTimeBlurView.m in Sources */,
 				520C24A6197654A60078C547 /* PFDetailFoldertypeViewController.m in Sources */,
 				52FC2C75197917FF0016E93D /* UIAlertView+AFNetworking.m in Sources */,
 				520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */,
@@ -1581,7 +1489,6 @@
 				52FC2C6F197917FF0016E93D /* AFSecurityPolicy.m in Sources */,
 				52BA07121977993B00677A5E /* PSTGridLayoutInfo.m in Sources */,
 				52FC2C73197917FF0016E93D /* AFURLSessionManager.m in Sources */,
-				526981261977728B001C2A97 /* PagedImageScrollView.m in Sources */,
 				36131646196BA14B00DB175C /* DeLanna.xcdatamodeld in Sources */,
 				52BA07011977993B00677A5E /* MWGridViewController.m in Sources */,
 				36131643196BA14A00DB175C /* PFAppDelegate.m in Sources */,
@@ -1590,12 +1497,10 @@
 				52BA07221977993B00677A5E /* UIImageView+WebCache.m in Sources */,
 				52BA07051977993B00677A5E /* MWTapDetectingView.m in Sources */,
 				52FC2C70197917FF0016E93D /* AFURLConnectionOperation.m in Sources */,
-				527BF3371974FD7A0005BFF9 /* CRGradientNavigationBar.m in Sources */,
 				52BA07101977993B00677A5E /* PSTCollectionViewLayout.m in Sources */,
 				52BA070F1977993B00677A5E /* PSTCollectionViewItemKey.m in Sources */,
 				52BA07081977993B00677A5E /* MBProgressHUD.m in Sources */,
 				52BA07021977993B00677A5E /* MWPhoto.m in Sources */,
-				527BF3241974E6130005BFF9 /* AMBlurView.m in Sources */,
 				520C24F51976706E0078C547 /* PFOverViewCell.m in Sources */,
 				52FC2C78197917FF0016E93D /* UIProgressView+AFNetworking.m in Sources */,
 				52BA07131977993B00677A5E /* PSTGridLayoutItem.m in Sources */,
@@ -1605,7 +1510,6 @@
 				52FC2C6E197917FF0016E93D /* AFNetworkReachabilityManager.m in Sources */,
 				52FC2C71197917FF0016E93D /* AFURLRequestSerialization.m in Sources */,
 				52BA07091977993B00677A5E /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
-				527BF3261974E6130005BFF9 /* UIImage+BoxBlur.m in Sources */,
 				52BA07191977993B00677A5E /* SDWebImageDecoder.m in Sources */,
 				52BA07211977993B00677A5E /* UIImage+WebP.m in Sources */,
 				527BF3191974E41D0005BFF9 /* PFCustomBadge.m in Sources */,

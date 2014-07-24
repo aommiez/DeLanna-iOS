@@ -11,8 +11,6 @@
 
 #import "PFDelannaApi.h"
 
-#import "CRGradientNavigationBar.h"
-
 #import "PFMapViewController.h"
 #import "PFWebViewController.h"
 #import "PFCommentViewController.h"

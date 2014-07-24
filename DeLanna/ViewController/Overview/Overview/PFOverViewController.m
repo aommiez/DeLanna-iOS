@@ -7,7 +7,6 @@
 //
 
 #import "PFOverViewController.h"
-#import "PagedImageScrollView.h"
 
 @interface PFOverViewController ()
 

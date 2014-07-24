@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CRGradientNavigationBar.h"
 
 #import "PFDelannaApi.h"
 
