@@ -33,6 +33,8 @@
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
 
+@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
+
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *act;
 @property (strong, nonatomic) IBOutlet UILabel *loadLabel;
 

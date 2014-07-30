@@ -36,11 +36,19 @@
         self.languagesetting.text = @"Language Settings";
         self.applanguage.text = @"App Language";
         self.contentlanguage.text = @"Content Language";
+        self.applanguagestatus.text = @"EN";
     } else {
         self.navigationItem.title = @"ตั้งค่า";
         self.languagesetting.text = @"ตั้งค่าภาษา";
         self.applanguage.text = @"ภาษาแอพพลิเคชั่น";
         self.contentlanguage.text = @"ภาษาเนื้อหา";
+        self.applanguagestatus.text = @"TH";
+    }
+    
+    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+        self.contentlanguagestatus.text = @"EN";
+    } else {
+        self.contentlanguagestatus.text = @"TH";
     }
     
     self.tableView.tableHeaderView = self.headerView;
@@ -81,8 +89,8 @@
     [self.navigationController pushViewController:languageView animated:YES];
 }
 
--(void)resetApp {
-    [self.delegate resetApp];
+- (void)BackSetting {
+    [self viewDidLoad];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

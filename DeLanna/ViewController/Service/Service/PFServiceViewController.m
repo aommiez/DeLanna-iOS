@@ -17,6 +17,7 @@
 BOOL loadService;
 BOOL noDataService;
 BOOL refreshDataService;
+#define ASYNC_IMAGE_TAG 9999
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -87,6 +88,7 @@ BOOL refreshDataService;
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
     
     if (!refreshDataService) {
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
@@ -115,6 +117,9 @@ BOOL refreshDataService;
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
+    
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
     
     if (!refreshDataService) {
         for (int i=0; i<[[[self.serviceOffline objectForKey:@"serviceArray"] objectForKey:@"data"] count]; ++i) {
@@ -173,6 +178,7 @@ BOOL refreshDataService;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
+    cell.thumbnails.tag = ASYNC_IMAGE_TAG;
     cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
     
     cell.Type.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];

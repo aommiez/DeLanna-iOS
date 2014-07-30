@@ -100,6 +100,7 @@ BOOL refreshDataContact;
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
     
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
@@ -119,6 +120,9 @@ BOOL refreshDataContact;
     
     [self.waitView removeFromSuperview];
     
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
+    
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
     
@@ -129,8 +133,7 @@ BOOL refreshDataContact;
 }
 
 - (IBAction)fullimageTapped:(id)sender{
-    [self.delegate PFImageViewController:self viewPicture:@"http://www.delannahotel.com/images/map.jpg"];
-    
+    [self.delegate PFImageMapViewController:self];
 }
 
 - (IBAction)mapTapped:(id)sender{

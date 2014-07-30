@@ -15,7 +15,6 @@
 @protocol PFSettingViewControllerDelegate <NSObject>
 
 - (void)PFSettingViewControllerBack;
-- (void)resetApp;
 
 @end
 
@@ -31,6 +30,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *languagesetting;
 @property (strong, nonatomic) IBOutlet UILabel *applanguage;
 @property (strong, nonatomic) IBOutlet UILabel *contentlanguage;
+
+@property (strong, nonatomic) IBOutlet UILabel *applanguagestatus;
+@property (strong, nonatomic) IBOutlet UILabel *contentlanguagestatus;
 
 - (IBAction)appsettingTapped:(id)sender;
 - (IBAction)contentsettingTapped:(id)sender;

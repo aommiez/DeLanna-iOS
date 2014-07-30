@@ -12,7 +12,7 @@
 
 @protocol PFLanguageViewControllerDelegate <NSObject>
 
-- (void)resetApp;
+- (void)BackSetting;
 
 @end
 

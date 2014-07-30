@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
+
 #import "PFDelannaApi.h"
 
 #import "PFWebViewController.h"
@@ -15,7 +16,8 @@
 @protocol PFDetailOverViewControllerDelegate <NSObject>
 
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link;
-- (void) PFDetailOverViewControllerBack;
+- (void)PFDetailOverViewControllerBack;
+- (void)HideTabbar;
 
 @end
 
@@ -24,6 +26,10 @@
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
 @property (strong, nonatomic) NSDictionary *obj;
+@property (strong, nonatomic) NSMutableDictionary *staticImageDictionary;
+
+@property NSUserDefaults *imageOffline;
+@property (strong, nonatomic) NSMutableDictionary *imagesCache;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

@@ -17,6 +17,7 @@
 BOOL loadFeed;
 BOOL noDataFeed;
 BOOL refreshDataFeed;
+#define ASYNC_IMAGE_TAG 9999
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,15 +67,17 @@ BOOL refreshDataFeed;
     refreshDataFeed = NO;
     
     self.arrObj = [[NSMutableArray alloc] init];
+    self.arrcontactimg = [[NSMutableArray alloc] init];
+    self.ArrImgs = [[NSMutableArray alloc] init];
     
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
         [self.DelannaApi getFeedGallery];
         [self.DelannaApi getFeedDetail:@"en"];
-        [self.DelannaApi getFeed:@"en"];
+        [self.DelannaApi getFeed:@"en" limit:@"0"];
     } else {
         [self.DelannaApi getFeedGallery];
         [self.DelannaApi getFeedDetail:@"th"];
-        [self.DelannaApi getFeed:@"th"];
+        [self.DelannaApi getFeed:@"th" limit:@"0"];
     }
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
@@ -126,7 +129,6 @@ BOOL refreshDataFeed;
 }
 
 - (NSArray *)imageToArray:(NSDictionary *)images {
-    NSMutableArray *ArrImgs = [[NSMutableArray alloc] init];
     int countPicture = [[images objectForKey:@"data"] count];
     for (int i = 0; i < countPicture; i++) {
         
@@ -135,26 +137,26 @@ BOOL refreshDataFeed;
         
         NSData *data = [NSData dataWithContentsOfURL : url];
         UIImage *image = [UIImage imageWithData: data];
-        [ArrImgs addObject:image];
+        [self.ArrImgs addObject:image];
     }
-    return ArrImgs;
+    return self.ArrImgs;
 }
 
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
+        [self.NoInternetView removeFromSuperview];
     
-    self.arrcontactimg = [[NSMutableArray alloc] init];
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrcontactimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
     }
     
-    PagedImageScrollView *pageScrollView = [[PagedImageScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
-    pageScrollView.delegate = self;
-    [pageScrollView setScrollViewContents:[self imageToArray:response]];
-    pageScrollView.pageControlPos = PageControlPositionCenterBottom;
-    [self.imgscrollview addSubview:pageScrollView];
+    self.pageScrollView = [[PagedImageScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+    self.pageScrollView.delegate = self;
+    [self.pageScrollView setScrollViewContents:[self imageToArray:response]];
+    self.pageScrollView.pageControlPos = PageControlPositionCenterBottom;
+    [self.imgscrollview addSubview:self.pageScrollView];
     
     self.tableView.tableHeaderView = self.headerView;
     UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
@@ -167,6 +169,9 @@ BOOL refreshDataFeed;
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
+    
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
     
     self.tableView.tableHeaderView = self.headerView;
     UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
@@ -195,6 +200,7 @@ BOOL refreshDataFeed;
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
     
     if (!refreshDataFeed) {
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
@@ -223,6 +229,9 @@ BOOL refreshDataFeed;
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
+    
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
     
     if (!refreshDataFeed) {
         for (int i=0; i<[[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"data"] count]; ++i) {
@@ -332,8 +341,9 @@ BOOL refreshDataFeed;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
+    cell.thumbnails.tag = ASYNC_IMAGE_TAG;
     cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
-    
+
     cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
 
     return cell;
@@ -342,6 +352,7 @@ BOOL refreshDataFeed;
 - (void)ButtonTappedOnCell:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
+    //[self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
     PFDetailOverViewController *detailoverView = [[PFDetailOverViewController alloc] init];
@@ -367,6 +378,7 @@ BOOL refreshDataFeed;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if ( scrollView.contentOffset.y < 0.0f ) {
         //NSLog(@"refreshData < 0.0f");
+        
         [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterShortStyle];
@@ -381,16 +393,16 @@ BOOL refreshDataFeed;
     if (scrollView.contentOffset.y < -60.0f ) {
         refreshDataFeed = YES;
         
-        self.DelannaApi = [[PFDelannaApi alloc] init];
-        self.DelannaApi.delegate = self;
-        
-        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-            [self.DelannaApi getFeedDetail:@"en"];
-            [self.DelannaApi getFeed:@"en"];
-        } else {
-            [self.DelannaApi getFeedDetail:@"th"];
-            [self.DelannaApi getFeed:@"th"];
-        }
+//        self.DelannaApi = [[PFDelannaApi alloc] init];
+//        self.DelannaApi.delegate = self;
+//        
+//        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+//            [self.DelannaApi getFeedDetail:@"en"];
+//            [self.DelannaApi getFeed:@"en" limit:@"2"];
+//        } else {
+//            [self.DelannaApi getFeedDetail:@"th"];
+//            [self.DelannaApi getFeed:@"th" limit:@"2"];
+//        }
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
@@ -436,36 +448,44 @@ BOOL refreshDataFeed;
         if (!noDataFeed) {
             refreshDataFeed = NO;
             
-            self.DelannaApi = [[PFDelannaApi alloc] init];
-            self.DelannaApi.delegate = self;
-            
-            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-                [self.DelannaApi getFeedDetail:@"en"];
-                [self.DelannaApi getFeed:@"en"];
-            } else {
-                [self.DelannaApi getFeedDetail:@"th"];
-                [self.DelannaApi getFeed:@"th"];
-            }
+//            self.DelannaApi = [[PFDelannaApi alloc] init];
+//            self.DelannaApi.delegate = self;
+//            
+//            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+//                [self.DelannaApi getFeedDetail:@"en"];
+//                [self.DelannaApi getFeed:@"en" limit:@""];
+//            } else {
+//                [self.DelannaApi getFeedDetail:@"th"];
+//                [self.DelannaApi getFeed:@"th" limit:@""];
+//            }
         }
     }
 }
 
 - (void)resizeTable {
+    [self.pageScrollView removeFromSuperview];
+    [self viewDidLoad];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.2];
     self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);
     [UIView commitAnimations];
+    [self.pageScrollView removeFromSuperview];
+    //[self viewDidLoad];
 }
 
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link {
     [self.delegate PFImageViewController:self viewPicture:link];
 }
 
-- (void) PFSettingViewControllerBack {
+- (void)PFSettingViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([[self.DelannaApi getReset] isEqualToString:@"YES"]) {
+        [self.delegate resetApp];
+    }
 }
 
-- (void) PFDetailOverViewControllerBack {
+- (void)PFDetailOverViewControllerBack {
     [self.delegate ShowTabbar];
 }
 

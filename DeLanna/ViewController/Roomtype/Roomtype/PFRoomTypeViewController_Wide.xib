@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFRoomTypeViewController">
             <connections>
+                <outlet property="NoInternetView" destination="4Md-l6-d3x" id="Guh-O1-cd3"/>
                 <outlet property="act" destination="pHu-Hd-8qz" id="h7b-8s-XLV"/>
                 <outlet property="loadLabel" destination="aLl-bb-3wl" id="2KK-bn-G3Y"/>
                 <outlet property="navBar" destination="EYK-PI-crz" id="hza-er-Zfh"/>
@@ -104,5 +105,20 @@
                 </viewController>
             </viewControllers>
         </navigationController>
+        <view alpha="0.75" contentMode="scaleToFill" id="4Md-l6-d3x">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBw-UO-bus">
+                    <rect key="frame" x="10" y="-1" width="300" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
 </document>

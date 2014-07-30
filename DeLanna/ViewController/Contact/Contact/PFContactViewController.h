@@ -17,6 +17,7 @@
 
 @protocol PFContactViewControllerDelegate <NSObject>
 
+- (void)PFImageMapViewController:(id)sender;
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link;
 - (void)HideTabbar;
 - (void)ShowTabbar;
@@ -33,6 +34,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+
+@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *act;
 @property (strong, nonatomic) IBOutlet UILabel *loadLabel;

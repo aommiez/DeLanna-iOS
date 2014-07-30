@@ -29,6 +29,7 @@
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
 @property (strong, nonatomic) NSMutableArray *arrObj;
+@property (strong, nonatomic) NSMutableArray *ArrImgs;
 @property (strong, nonatomic) NSDictionary *obj;
 
 @property NSUserDefaults *feedOffline;
@@ -36,6 +37,8 @@
 
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+
+@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *act;
 @property (strong, nonatomic) IBOutlet UILabel *loadLabel;
@@ -49,6 +52,8 @@
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *imgscrollview;
 
+@property (strong, nonatomic) IBOutlet PagedImageScrollView *pageScrollView;
+
 @property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *detail;
 @property (strong, nonatomic) IBOutlet UILabel *descText;
 
@@ -56,7 +61,6 @@
 @property (strong, nonatomic) NSString *current;
 
 @property (strong, nonatomic) NSString *paging;
-
 @property (strong, nonatomic) NSString *more;
 
 @end

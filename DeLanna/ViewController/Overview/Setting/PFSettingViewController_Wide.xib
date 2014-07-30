@@ -7,7 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFSettingViewController">
             <connections>
                 <outlet property="applanguage" destination="Iq4-W1-rCL" id="iQa-Fq-MaA"/>
+                <outlet property="applanguagestatus" destination="SAm-Cb-dDa" id="prn-8H-ak4"/>
                 <outlet property="contentlanguage" destination="Eiq-OD-cXF" id="bOA-u7-Jxt"/>
+                <outlet property="contentlanguagestatus" destination="p4N-tW-4sF" id="Y9Q-0E-cBB"/>
                 <outlet property="headerView" destination="oXZ-Xv-bcd" id="dHk-fW-O6G"/>
                 <outlet property="languagesetting" destination="mI0-0H-Ku9" id="zeC-XJ-WEA"/>
                 <outlet property="tableView" destination="ntT-bY-kGL" id="rUZ-YC-1rc"/>
@@ -92,6 +94,13 @@
                             <rect key="frame" x="300" y="17" width="7" height="12"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAm-Cb-dDa">
+                            <rect key="frame" x="260" y="12" width="30" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -121,6 +130,13 @@
                             <rect key="frame" x="300" y="17" width="7" height="12"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4N-tW-4sF">
+                            <rect key="frame" x="260" y="12" width="30" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

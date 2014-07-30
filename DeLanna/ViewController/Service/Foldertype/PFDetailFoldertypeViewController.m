@@ -14,12 +14,15 @@
 
 @implementation PFDetailFoldertypeViewController
 
+#define ASYNC_IMAGE_TAG 9999
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        self.foldertypeOffline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -66,12 +69,22 @@
         [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
     }
     
+    [self.foldertypeOffline setObject:response forKey:@"foldertypeArray"];
+    
     [self.tableView reloadData];
     
 }
 
 - (void)PFDelannaApi:(id)sender getServiceFoldertypeErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
+    
+    [self.waitView removeFromSuperview];
+    
+    for (int i=0; i<[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] count]; ++i) {
+        [self.arrObj addObject:[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] objectAtIndex:i]];
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -100,6 +113,7 @@
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
+    cell.thumbnails.tag = ASYNC_IMAGE_TAG;
     cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
     
     cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];

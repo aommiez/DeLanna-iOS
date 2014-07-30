@@ -14,12 +14,15 @@
 
 @implementation PFDetailOverViewController
 
+#define ASYNC_IMAGE_TAG 9999
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        self.imageOffline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -50,8 +53,9 @@
     self.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
+    self.thumbnails.tag = ASYNC_IMAGE_TAG;
     self.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
-    
+
     self.name.text = [self.obj objectForKey:@"name"];
     self.detail.text = [self.obj objectForKey:@"detail"];
     
@@ -84,6 +88,23 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIImage*)imageNamed:(NSString*)imageNamed cache:(BOOL)cache
+{
+    UIImage* retImage = [self.staticImageDictionary objectForKey:imageNamed];
+    if (retImage == nil)
+        {
+            retImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageNamed]]];
+            if (cache)
+                {
+                    if (self.staticImageDictionary == nil)
+                        self.staticImageDictionary = [NSMutableDictionary new];
+                    
+                    [self.staticImageDictionary setObject:retImage forKey:imageNamed];
+                    }
+            }
+    return retImage;
 }
 
 - (void)share {

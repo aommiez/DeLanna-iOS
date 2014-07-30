@@ -39,9 +39,9 @@
             
             self.checkTH.hidden = YES;
             self.thai.textColor = RGB(170, 170, 170);
-            self.thai.text = @"Thai";
+            self.thai.text = @"Thai (TH)";
             self.english.textColor = RGB(0, 0, 0);
-            self.english.text = @"English";
+            self.english.text = @"English (EN)";
             self.statusLanguage = @"EN";
             self.save.text = @"save";
         } else {
@@ -50,22 +50,22 @@
             
             self.checkEN.hidden = YES;
             self.thai.textColor = RGB(0, 0, 0);
-            self.thai.text = @"ภาษาไทย";
+            self.thai.text = @"ภาษาไทย (TH)";
             self.english.textColor = RGB(170, 170, 170);
-            self.english.text = @"ภาษาอังกฤษ";
+            self.english.text = @"ภาษาอังกฤษ (EN)";
             self.statusLanguage = @"TH";
             self.save.text = @"บันทึก";
         }
     } else {
         if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
             self.navigationItem.title = @"Content Language";
-            self.thai.text = @"Thai";
-            self.english.text = @"English";
+            self.thai.text = @"Thai (TH)";
+            self.english.text = @"English (EN)";
             self.save.text = @"save";
         } else {
             self.navigationItem.title = @"ภาษาเนื้อหา";
-            self.thai.text = @"ภาษาไทย";
-            self.english.text = @"ภาษาอังกฤษ";
+            self.thai.text = @"ภาษาไทย (TH)";
+            self.english.text = @"ภาษาอังกฤษ (EN)";
             self.save.text = @"บันทึก";
         }
         
@@ -117,10 +117,12 @@
 - (IBAction)saveTapped:(id)sender{
     if ([self.statusSetting isEqualToString:@"app"]) {
         [self.DelannaApi saveLanguage:self.statusLanguage];
-        [self.delegate resetApp];
+        [self.delegate BackSetting];
+        [self.DelannaApi saveReset:@"YES"];
     } else {
         [self.DelannaApi saveContentLanguage:self.statusLanguage];
-        [self.delegate resetApp];
+        [self.delegate BackSetting];
+        [self.DelannaApi saveReset:@"YES"];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
