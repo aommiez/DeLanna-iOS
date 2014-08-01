@@ -21,6 +21,10 @@
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+
 @property (strong, nonatomic) IBOutlet UILabel *thai;
 @property (strong, nonatomic) IBOutlet UILabel *english;
 @property (strong, nonatomic) IBOutlet UIImageView *checkTH;

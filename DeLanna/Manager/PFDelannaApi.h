@@ -57,6 +57,10 @@
 @property AFHTTPRequestOperationManager *manager;
 @property NSUserDefaults *userDefaults;
 
+#pragma mark - Reset App
+- (void)saveReset:(NSString *)reset;
+- (NSString *)getReset;
+
 #pragma mark - App Language
 - (void)saveLanguage:(NSString *)language;
 - (NSString *)getLanguage;
@@ -66,7 +70,8 @@
 - (NSString *)getContentLanguage;
 
 #pragma mark - Overview
-- (void)getFeed:(NSString *)language;
+//- (void)getFeed:(NSString *)language;
+- (void)getFeed:(NSString *)language limit:(NSString *)limit;
 - (void)getFeedDetail:(NSString *)language;
 - (void)getFeedGallery;
 

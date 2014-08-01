@@ -79,6 +79,13 @@
     
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -122,6 +129,8 @@
 
 - (IBAction)reserveTapped:(id)sender{
     
+    [self.NoInternetView removeFromSuperview];
+    
     PFWebViewController *webView = [[PFWebViewController alloc] init];
     if(IS_WIDESCREEN) {
         webView = [[PFWebViewController alloc] initWithNibName:@"PFWebViewController_Wide" bundle:nil];
@@ -130,6 +139,16 @@
     }
     webView.delegate = self;
     [self.navigationController pushViewController:webView animated:YES];
+}
+
+- (void)PFWebViewControllerBack {
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

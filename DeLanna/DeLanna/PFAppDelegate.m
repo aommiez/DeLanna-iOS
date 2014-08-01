@@ -127,9 +127,9 @@ BOOL newMedia;
         }
     }
 
-    //[self.tabBarViewController setSelectedIndex:3];
-    //[self.tabBarViewController setSelectedIndex:2];
-    //[self.tabBarViewController setSelectedIndex:1];
+    [self.tabBarViewController setSelectedIndex:3];
+    [self.tabBarViewController setSelectedIndex:2];
+    [self.tabBarViewController setSelectedIndex:1];
     [self.tabBarViewController setSelectedIndex:0];
     
     [self.window setRootViewController:self.tabBarViewController];
@@ -274,6 +274,8 @@ BOOL newMedia;
 }
 
 - (void)resetApp {
+    [self.DelannaApi saveReset:@"NO"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.overview = [[PFOverViewController alloc] init];
@@ -383,14 +385,50 @@ BOOL newMedia;
         }
     }
     
-    //[self.tabBarViewController setSelectedIndex:3];
-    //[self.tabBarViewController setSelectedIndex:2];
-    //[self.tabBarViewController setSelectedIndex:1];
+    [self.tabBarViewController setSelectedIndex:3];
+    [self.tabBarViewController setSelectedIndex:2];
+    [self.tabBarViewController setSelectedIndex:1];
     [self.tabBarViewController setSelectedIndex:0];
     
     [self.window setRootViewController:self.tabBarViewController];
     [self.window makeKeyAndVisible];
 
+}
+
+- (void)PFImageMapViewController:(id)sender {
+    
+    SDImageCache *imageCache = [SDImageCache sharedImageCache];
+    [imageCache clearMemory];
+    [imageCache clearDisk];
+    [imageCache cleanDisk];
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+	NSMutableArray *thumbs = [[NSMutableArray alloc] init];
+    MWPhoto *photo;
+    BOOL displayActionButton = YES;
+    BOOL displaySelectionButtons = NO;
+    BOOL displayNavArrows = NO;
+    BOOL enableGrid = YES;
+    BOOL startOnGrid = NO;
+    BOOL uploadp = NO;
+    photo = [MWPhoto photoWithImage:[UIImage imageNamed:@"map.png"]];
+    [photos addObject:photo];
+    enableGrid = NO;
+    self.photos = photos;
+    self.thumbs = thumbs;
+    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+    browser.displayActionButton = displayActionButton;
+    browser.displayNavArrows = displayNavArrows;
+    browser.displaySelectionButtons = displaySelectionButtons;
+    browser.alwaysShowControls = displaySelectionButtons;
+    browser.zoomPhotosToFill = NO;
+    browser.enableGrid = enableGrid;
+    browser.startOnGrid = startOnGrid;
+    browser.uploadButton = uploadp;
+    [browser setCurrentPhotoIndex:0];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.window.rootViewController presentViewController:nc animated:YES completion:nil];
+             
 }
 
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{
@@ -418,7 +456,7 @@ BOOL newMedia;
     browser.displayNavArrows = displayNavArrows;
     browser.displaySelectionButtons = displaySelectionButtons;
     browser.alwaysShowControls = displaySelectionButtons;
-    browser.zoomPhotosToFill = YES;
+    browser.zoomPhotosToFill = NO;
     browser.enableGrid = enableGrid;
     browser.startOnGrid = startOnGrid;
     browser.uploadButton = uploadp;
@@ -459,7 +497,7 @@ BOOL newMedia;
     browser.displayNavArrows = displayNavArrows;
     browser.displaySelectionButtons = displaySelectionButtons;
     browser.alwaysShowControls = displaySelectionButtons;
-    browser.zoomPhotosToFill = YES;
+    browser.zoomPhotosToFill = NO;
     browser.enableGrid = enableGrid;
     browser.startOnGrid = startOnGrid;
     browser.uploadButton = uploadp;

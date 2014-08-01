@@ -126,6 +126,8 @@
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
+    self.checkinternet = @"connect";
     
     scrollView.delegate = self;
 	scrollView.scrollEnabled = YES;
@@ -168,6 +170,10 @@
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
+    
+    self.checkinternet = @"error";
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
 }
 
 - (IBAction)fullimgalbumTapped:(id)sender {

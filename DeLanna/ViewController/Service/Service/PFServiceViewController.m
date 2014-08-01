@@ -89,6 +89,7 @@ BOOL refreshDataService;
     
     [self.waitView removeFromSuperview];
     [self.NoInternetView removeFromSuperview];
+    self.checkinternet = @"connect";
     
     if (!refreshDataService) {
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
@@ -118,6 +119,7 @@ BOOL refreshDataService;
     
     [self.waitView removeFromSuperview];
     
+    self.checkinternet = @"error";
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
@@ -188,6 +190,8 @@ BOOL refreshDataService;
 
 - (void)ButtonTappedOnCell:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    
+    [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
     if ([[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"type"] isEqualToString:@"folder"]) {
@@ -334,14 +338,35 @@ BOOL refreshDataService;
 
 - (void) PFDetailFoldertypeViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void) PFServicefoodViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void) PFServiceroomViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current{

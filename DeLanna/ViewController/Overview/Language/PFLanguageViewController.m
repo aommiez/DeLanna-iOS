@@ -87,6 +87,8 @@
     CALayer *saveButton = [self.saveButton layer];
     [saveButton setMasksToBounds:YES];
     [saveButton setCornerRadius:7.0f];
+    
+    self.tableView.tableHeaderView = self.headerView;
 }
 
 - (void)didReceiveMemoryWarning

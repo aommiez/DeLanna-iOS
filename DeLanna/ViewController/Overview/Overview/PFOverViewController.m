@@ -146,7 +146,7 @@ BOOL refreshDataFeed;
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
-        [self.NoInternetView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrcontactimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
@@ -201,6 +201,7 @@ BOOL refreshDataFeed;
     
     [self.waitView removeFromSuperview];
     [self.NoInternetView removeFromSuperview];
+    self.checkinternet = @"connect";
     
     if (!refreshDataFeed) {
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
@@ -230,6 +231,7 @@ BOOL refreshDataFeed;
     
     [self.waitView removeFromSuperview];
     
+    self.checkinternet = @"error";
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
@@ -352,7 +354,7 @@ BOOL refreshDataFeed;
 - (void)ButtonTappedOnCell:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
-    //[self.NoInternetView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
     PFDetailOverViewController *detailoverView = [[PFDetailOverViewController alloc] init];
@@ -362,6 +364,7 @@ BOOL refreshDataFeed;
         detailoverView = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController" bundle:nil];
     }
     detailoverView.obj = [self.arrObj objectAtIndex:indexPath.row];
+    detailoverView.checkinternet = self.checkinternet;
     detailoverView.delegate = self;
     [self.navController pushViewController:detailoverView animated:YES];
 }
@@ -487,6 +490,13 @@ BOOL refreshDataFeed;
 
 - (void)PFDetailOverViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 -(void)resetApp {

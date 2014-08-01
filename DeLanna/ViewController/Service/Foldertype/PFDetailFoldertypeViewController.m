@@ -64,6 +64,8 @@
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
+    [self.NoInternetView removeFromSuperview];
+    self.checkinternet = @"connect";
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
@@ -79,6 +81,10 @@
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
+    
+    self.checkinternet = @"error";
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
     
     for (int i=0; i<[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] objectAtIndex:i]];
@@ -126,6 +132,8 @@
 - (void)ButtonTappedOnCell:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
+    [self.NoInternetView removeFromSuperview];
+    
     if ([[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"type"] isEqualToString:@"service_food"]) {
        
         PFServicefoodViewController *servicefoodView = [[PFServicefoodViewController alloc] init];
@@ -157,6 +165,24 @@
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current{
     [self.delegate PFGalleryViewController:self sum:sum current:current];
+}
+
+- (void)PFServicefoodViewControllerBack {
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
+}
+
+- (void)PFServiceroomViewControllerBack {
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

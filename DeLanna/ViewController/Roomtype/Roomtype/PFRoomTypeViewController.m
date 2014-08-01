@@ -89,6 +89,7 @@ BOOL refreshDataRoomtype;
     
     [self.waitView removeFromSuperview];
     [self.NoInternetView removeFromSuperview];
+    self.checkinternet = @"connect";
     
     if (!refreshDataRoomtype) {
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
@@ -118,6 +119,7 @@ BOOL refreshDataRoomtype;
     
     [self.waitView removeFromSuperview];
     
+    self.checkinternet = @"error";
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
@@ -191,6 +193,7 @@ BOOL refreshDataRoomtype;
 - (void)ButtonTappedOnCell:(id)sender {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     
+    [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
     PFDetailRoomtypeViewController *detailroomtypeView = [[PFDetailRoomtypeViewController alloc] init];
@@ -200,6 +203,7 @@ BOOL refreshDataRoomtype;
         detailroomtypeView = [[PFDetailRoomtypeViewController alloc] initWithNibName:@"PFDetailRoomtypeViewController" bundle:nil];
     }
     detailroomtypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
+    detailroomtypeView.checkinternet = self.checkinternet;
     detailroomtypeView.delegate = self;
     [self.navController pushViewController:detailroomtypeView animated:YES];
 }
@@ -304,6 +308,13 @@ BOOL refreshDataRoomtype;
 
 - (void) PFDetailRoomtypeViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current{

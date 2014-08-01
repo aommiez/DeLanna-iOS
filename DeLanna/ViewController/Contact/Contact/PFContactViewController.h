@@ -61,6 +61,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *ReservationTxt;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
 
+@property (strong, nonatomic) NSString *checkinternet;
+
 - (IBAction)fullimageTapped:(id)sender;
 - (IBAction)mapTapped:(id)sender;
 - (IBAction)phoneTapped:(id)sender;

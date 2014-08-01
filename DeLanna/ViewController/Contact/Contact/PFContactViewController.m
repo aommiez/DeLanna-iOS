@@ -101,6 +101,7 @@ BOOL refreshDataContact;
     
     [self.waitView removeFromSuperview];
     [self.NoInternetView removeFromSuperview];
+    self.checkinternet = @"connect";
     
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
@@ -120,6 +121,7 @@ BOOL refreshDataContact;
     
     [self.waitView removeFromSuperview];
     
+    self.checkinternet = @"error";
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
@@ -139,6 +141,7 @@ BOOL refreshDataContact;
 - (IBAction)mapTapped:(id)sender{
     
     [self.delegate HideTabbar];
+    [self.NoInternetView removeFromSuperview];
     
     PFMapViewController *mapView = [[PFMapViewController alloc] init];
     if(IS_WIDESCREEN) {
@@ -250,6 +253,7 @@ BOOL refreshDataContact;
 - (IBAction)reserveTapped:(id)sender{
     
     [self.delegate HideTabbar];
+    [self.NoInternetView removeFromSuperview];
     
     PFWebViewController *webView = [[PFWebViewController alloc] init];
     if(IS_WIDESCREEN) {
@@ -378,10 +382,24 @@ BOOL refreshDataContact;
 
 - (void) PFMapViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void) PFWebViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void) PFCommentViewControllerBack {

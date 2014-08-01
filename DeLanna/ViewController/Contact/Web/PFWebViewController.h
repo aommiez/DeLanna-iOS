@@ -21,6 +21,8 @@
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
 
+@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
+
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
 

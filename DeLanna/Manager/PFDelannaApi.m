@@ -20,7 +20,16 @@
     return self;
 }
 
-#pragma mark - Language
+#pragma mark - Reset
+- (void)saveReset:(NSString *)reset {
+    [self.userDefaults setObject:reset forKey:@"reset"];
+}
+
+- (NSString *)getReset {
+    return [self.userDefaults objectForKey:@"reset"];
+}
+
+#pragma mark - App Language
 - (void)saveLanguage:(NSString *)language {
     [self.userDefaults setObject:language forKey:@"language"];
 }
@@ -29,7 +38,7 @@
     return [self.userDefaults objectForKey:@"language"];
 }
 
-#pragma mark - Language
+#pragma mark - Content Language
 - (void)saveContentLanguage:(NSString *)contentlanguage {
     [self.userDefaults setObject:contentlanguage forKey:@"contentlanguage"];
 }
@@ -39,8 +48,15 @@
 }
 
 #pragma mark - Overview
-- (void)getFeed:(NSString *)language {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@feed?lang=%@",API_URL,language];
+- (void)getFeed:(NSString *)language limit:(NSString *)limit{
+    NSString *urlStr = [[NSString alloc] init];
+    
+    if ([limit isEqualToString:@""]) {
+        urlStr = [[NSString alloc] initWithFormat:@"%@feed?lang=%@",API_URL,language];
+    } else {
+        urlStr = [[NSString alloc] initWithFormat:@"%@feed?limit=%@&lang=%@",API_URL,limit,language];
+    }
+    
     [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getFeedResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

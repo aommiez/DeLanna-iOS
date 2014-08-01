@@ -45,5 +45,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSString *paging;
+@property (strong, nonatomic) NSString *checkinternet;
 
 @end

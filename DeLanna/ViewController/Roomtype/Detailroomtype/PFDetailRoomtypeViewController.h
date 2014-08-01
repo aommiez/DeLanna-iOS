@@ -34,6 +34,8 @@
 @property (strong, nonatomic) NSMutableArray *arrObj;
 @property (strong, nonatomic) NSDictionary *obj;
 
+@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
+
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
 
@@ -54,6 +56,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *reserve;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
+
+@property (strong, nonatomic) NSString *checkinternet;
 
 -(void)ShowDetailView:(UIImageView *)imgView;
 

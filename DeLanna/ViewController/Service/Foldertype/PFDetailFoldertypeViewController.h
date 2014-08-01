@@ -33,9 +33,13 @@
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
 
+@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSString *titlename;
 @property (strong, nonatomic) NSString *folder_id;
+
+@property (strong, nonatomic) NSString *checkinternet;
 
 @end

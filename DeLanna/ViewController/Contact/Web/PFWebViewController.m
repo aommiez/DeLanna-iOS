@@ -37,6 +37,11 @@
         self.navigationItem.title = @"สำรองห้องพัก";
     }
     
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_reload"] style:UIBarButtonItemStyleDone target:self action:@selector(reload)];
+    [rightButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                         [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightButton;
+    
     CALayer *popup = [self.popupwaitView layer];
     [popup setMasksToBounds:YES];
     [popup setCornerRadius:7.0f];
@@ -45,6 +50,14 @@
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
     [self.webView loadRequest:req];
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://m.delannahotel.com/reservation.php"]];
+    if (data) {
+        [self.NoInternetView removeFromSuperview];
+    } else {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,6 +67,11 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void)reload
+{
+    [self.webView reload];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
