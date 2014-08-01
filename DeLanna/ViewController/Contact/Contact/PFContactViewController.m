@@ -334,7 +334,7 @@ BOOL refreshDataContact;
     if ( scrollView.contentOffset.y < -100.0f ) {
         [UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.2];
-        self.tableView.frame = CGRectMake(0, 70, 320, self.tableView.frame.size.height);
+        self.tableView.frame = CGRectMake(0, 60, 320, self.tableView.frame.size.height);
 		[UIView commitAnimations];
         [self performSelector:@selector(resizeTable) withObject:nil afterDelay:2];
         
