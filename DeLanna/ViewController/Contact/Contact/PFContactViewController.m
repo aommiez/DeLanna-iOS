@@ -165,11 +165,11 @@ BOOL refreshDataContact;
 
 - (IBAction)emailTapped:(id)sender{
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                  initWithTitle:@"Select Menu"
-                                  delegate:self
-                                  cancelButtonTitle:@"cancel"
-                                  destructiveButtonTitle:nil
-                                  otherButtonTitles:@"Send Email", nil];
+                                    initWithTitle:@"Select Menu"
+                                    delegate:self
+                                    cancelButtonTitle:@"cancel"
+                                    destructiveButtonTitle:nil
+                                    otherButtonTitles:@"Send Email", nil];
     [actionSheet showInView:[[[[UIApplication sharedApplication] keyWindow] subviews] lastObject]];
 }
 

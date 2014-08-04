@@ -44,12 +44,6 @@ BOOL refreshDataFeed;
         self.navItem.title = @"ภาพรวม";
     }
     
-    [self.view addSubview:self.waitView];
-    
-    CALayer *popup = [self.popupwaitView layer];
-    [popup setMasksToBounds:YES];
-    [popup setCornerRadius:7.0f];
-    
     // Navbar setup
     [[self.navController navigationBar] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
     
@@ -58,6 +52,12 @@ BOOL refreshDataFeed;
     
     [[self.navController navigationBar] setTranslucent:YES];
     [self.view addSubview:self.navController.view];
+    
+    [self.view addSubview:self.waitView];
+    
+    CALayer *popup = [self.popupwaitView layer];
+    [popup setMasksToBounds:YES];
+    [popup setCornerRadius:7.0f];
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Setting_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
     self.navItem.leftBarButtonItem = leftButton;
@@ -102,6 +102,7 @@ BOOL refreshDataFeed;
 
 - (void)setting {
 
+    [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
     PFSettingViewController *settingView = [[PFSettingViewController alloc] init];
@@ -472,8 +473,6 @@ BOOL refreshDataFeed;
     [UIView setAnimationDuration:0.2];
     self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);
     [UIView commitAnimations];
-    [self.pageScrollView removeFromSuperview];
-    //[self viewDidLoad];
 }
 
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link {
@@ -482,6 +481,13 @@ BOOL refreshDataFeed;
 
 - (void)PFSettingViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
     
     if ([[self.DelannaApi getReset] isEqualToString:@"YES"]) {
         [self.delegate resetApp];
