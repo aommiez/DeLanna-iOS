@@ -146,10 +146,12 @@ BOOL refreshDataFeed;
 - (void)PFDelannaApi:(id)sender getTimeUpdateResponse:(NSDictionary *)response {
     NSLog(@"%@",response);
     
+    [self.NoInternetView removeFromSuperview];
+    
     NSString *timeupdate = [[NSString alloc] initWithFormat:@"%@",[response objectForKey:@"feed_gallery"]];
     
-    if (![self.checkTimeUpdate isEqualToString:timeupdate]) {
-        self.checkTimeUpdate = timeupdate;
+    if (![[self.feedOffline objectForKey:@"checkTimeUpdate"] isEqualToString:timeupdate]) {
+        [self.feedOffline setObject:timeupdate forKey:@"checkTimeUpdate"];
         [self.pageScrollView removeFromSuperview];
         [self.view addSubview:self.waitView];
         
@@ -171,6 +173,10 @@ BOOL refreshDataFeed;
 
 - (void)PFDelannaApi:(id)sender getTimeUpdateErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
+    
+    self.checkinternet = @"error";
+    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    [self.view addSubview:self.NoInternetView];
 }
 
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response {
@@ -201,6 +207,7 @@ BOOL refreshDataFeed;
     
     [self.waitView removeFromSuperview];
     
+    self.checkinternet = @"error";
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
