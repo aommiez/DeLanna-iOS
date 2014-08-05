@@ -63,5 +63,6 @@
 @property (strong, nonatomic) NSString *paging;
 @property (strong, nonatomic) NSString *more;
 @property (strong, nonatomic) NSString *checkinternet;
+@property (strong, nonatomic) NSString *checkTimeUpdate;
 
 @end

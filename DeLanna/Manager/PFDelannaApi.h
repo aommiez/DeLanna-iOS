@@ -18,6 +18,9 @@
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response;
 - (void)PFDelannaApi:(id)sender getFeedGalleryErrorResponse:(NSString *)errorResponse;
 
+- (void)PFDelannaApi:(id)sender getTimeUpdateResponse:(NSDictionary *)response;
+- (void)PFDelannaApi:(id)sender getTimeUpdateErrorResponse:(NSString *)errorResponse;
+
 - (void)PFDelannaApi:(id)sender getFeedDetailResponse:(NSDictionary *)response;
 - (void)PFDelannaApi:(id)sender getFeedDetailErrorResponse:(NSString *)errorResponse;
 
@@ -74,6 +77,7 @@
 - (void)getFeed:(NSString *)language limit:(NSString *)limit;
 - (void)getFeedDetail:(NSString *)language;
 - (void)getFeedGallery;
+- (void)getTimeUpdate;
 
 #pragma mark - Roomtype
 - (void)getRoomtype:(NSString *)language;

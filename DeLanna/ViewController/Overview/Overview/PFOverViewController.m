@@ -143,6 +143,36 @@ BOOL refreshDataFeed;
     return self.ArrImgs;
 }
 
+- (void)PFDelannaApi:(id)sender getTimeUpdateResponse:(NSDictionary *)response {
+    NSLog(@"%@",response);
+    
+    NSString *timeupdate = [[NSString alloc] initWithFormat:@"%@",[response objectForKey:@"feed_gallery"]];
+    
+    if (![self.checkTimeUpdate isEqualToString:timeupdate]) {
+        self.checkTimeUpdate = timeupdate;
+        [self.pageScrollView removeFromSuperview];
+        [self.view addSubview:self.waitView];
+        
+        CALayer *popup = [self.popupwaitView layer];
+        [popup setMasksToBounds:YES];
+        [popup setCornerRadius:7.0f];
+        
+        [self viewDidLoad];
+    }
+    
+    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+        [self.DelannaApi getFeedDetail:@"en"];
+        [self.DelannaApi getFeed:@"en" limit:@"0"];
+    } else {
+        [self.DelannaApi getFeedDetail:@"th"];
+        [self.DelannaApi getFeed:@"th" limit:@"0"];
+    }
+}
+
+- (void)PFDelannaApi:(id)sender getTimeUpdateErrorResponse:(NSString *)errorResponse {
+    NSLog(@"%@",errorResponse);
+}
+
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
     
@@ -397,16 +427,10 @@ BOOL refreshDataFeed;
     if (scrollView.contentOffset.y < -60.0f ) {
         refreshDataFeed = YES;
         
-//        self.DelannaApi = [[PFDelannaApi alloc] init];
-//        self.DelannaApi.delegate = self;
-//        
-//        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-//            [self.DelannaApi getFeedDetail:@"en"];
-//            [self.DelannaApi getFeed:@"en" limit:@"2"];
-//        } else {
-//            [self.DelannaApi getFeedDetail:@"th"];
-//            [self.DelannaApi getFeed:@"th" limit:@"2"];
-//        }
+        self.DelannaApi = [[PFDelannaApi alloc] init];
+        self.DelannaApi.delegate = self;
+        
+        [self.DelannaApi getTimeUpdate];
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
@@ -452,23 +476,16 @@ BOOL refreshDataFeed;
         if (!noDataFeed) {
             refreshDataFeed = NO;
             
-//            self.DelannaApi = [[PFDelannaApi alloc] init];
-//            self.DelannaApi.delegate = self;
-//            
-//            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-//                [self.DelannaApi getFeedDetail:@"en"];
-//                [self.DelannaApi getFeed:@"en" limit:@""];
-//            } else {
-//                [self.DelannaApi getFeedDetail:@"th"];
-//                [self.DelannaApi getFeed:@"th" limit:@""];
-//            }
+            self.DelannaApi = [[PFDelannaApi alloc] init];
+            self.DelannaApi.delegate = self;
+            
+            [self.DelannaApi getTimeUpdate];
+
         }
     }
 }
 
 - (void)resizeTable {
-    [self.pageScrollView removeFromSuperview];
-    [self viewDidLoad];
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.2];
     self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);

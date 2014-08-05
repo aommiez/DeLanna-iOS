@@ -82,6 +82,15 @@
     }];
 }
 
+- (void)getTimeUpdate {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@timeupdate",API_URL];
+    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self getTimeUpdateResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self getTimeUpdateErrorResponse:[error localizedDescription]];
+    }];
+}
+
 #pragma mark - Roomtype
 - (void)getRoomtype:(NSString *)language {
     NSString *urlStr = [[NSString alloc] initWithFormat:@"%@roomtype?lang=%@",API_URL,language];
