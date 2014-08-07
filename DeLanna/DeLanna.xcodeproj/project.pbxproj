@@ -153,6 +153,7 @@
 		52988D4F19937B8000329B69 /* DLILCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4819937B8000329B69 /* DLILCacheManager.m */; };
 		52988D5019937B8000329B69 /* DLILOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4B19937B8000329B69 /* DLILOperation.m */; };
 		52988D5119937B8000329B69 /* DLImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4D19937B8000329B69 /* DLImageLoader.m */; };
+		52988D53199382A500329B69 /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52988D52199382A500329B69 /* PFContactViewController.xib */; };
 		529A2001197F6D32005CE1CC /* chapter_box04.png in Resources */ = {isa = PBXBuildFile; fileRef = 529A2000197F6D32005CE1CC /* chapter_box04.png */; };
 		52A84E3D197FACE9008C7A16 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A84E3B197FACE9008C7A16 /* arrest.png */; };
 		52A84E3E197FACE9008C7A16 /* arrest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A84E3C197FACE9008C7A16 /* arrest@2x.png */; };
@@ -413,6 +414,7 @@
 		52988D4B19937B8000329B69 /* DLILOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLILOperation.m; sourceTree = "<group>"; };
 		52988D4C19937B8000329B69 /* DLImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLImageLoader.h; sourceTree = "<group>"; };
 		52988D4D19937B8000329B69 /* DLImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLImageLoader.m; sourceTree = "<group>"; };
+		52988D52199382A500329B69 /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
 		529A2000197F6D32005CE1CC /* chapter_box04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box04.png; sourceTree = "<group>"; };
 		52A84E3B197FACE9008C7A16 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
 		52A84E3C197FACE9008C7A16 /* arrest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrest@2x.png"; sourceTree = "<group>"; };
@@ -778,6 +780,7 @@
 				520C2436197654A50078C547 /* PFContactViewController.h */,
 				520C2437197654A50078C547 /* PFContactViewController.m */,
 				520C2438197654A50078C547 /* PFContactViewController_Wide.xib */,
+				52988D52199382A500329B69 /* PFContactViewController.xib */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -1433,6 +1436,7 @@
 				520C2487197654A60078C547 /* chapter03.png in Resources */,
 				528C31AA19922E20008670CD /* PFDetailRoomtypeViewController.xib in Resources */,
 				52273CE71988AEB50023F87A /* PFDetailFoldertypeViewController.xib in Resources */,
+				52988D53199382A500329B69 /* PFContactViewController.xib in Resources */,
 				52273CD61988A9820023F87A /* en_roomtype_off.png in Resources */,
 				52273CDF1988AE8C0023F87A /* PFMapViewController.xib in Resources */,
 				520C2488197654A60078C547 /* chapter03@2x.png in Resources */,

@@ -55,7 +55,14 @@
     
     //
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
-    self.imageView1.imageURL = [NSURL URLWithString:urlimg];
+    //self.imageView1.imageURL = [NSURL URLWithString:urlimg];
+    
+    //
+    [DLImageLoader loadImageFromURL:urlimg
+                          completed:^(NSError *error, NSData *imgData) {
+                              self.imageView1.image = [UIImage imageWithData:imgData];
+                          }];
+    //
     
     self.imageView1.layer.masksToBounds = YES;
     self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
@@ -186,7 +193,14 @@
         int xOffset = 0;
         
         NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
-        imageView.imageURL = [NSURL URLWithString:urlimg];
+        //imageView.imageURL = [NSURL URLWithString:urlimg];
+        
+        //
+        [DLImageLoader loadImageFromURL:urlimg
+                              completed:^(NSError *error, NSData *imgData) {
+                                  imageView.image = [UIImage imageWithData:imgData];
+                              }];
+        //
         
         imageView.layer.masksToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -203,7 +217,14 @@
             img.frame = CGRectMake(xOffset, 0, 70, 70);
             
             NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
-            img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            //img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            
+            //
+            [DLImageLoader loadImageFromURL:urlimg
+                                  completed:^(NSError *error, NSData *imgData) {
+                                      img.image = [UIImage imageWithData:imgData];
+                                  }];
+            //
             
             [images insertObject:img atIndex:i];
             
@@ -284,7 +305,14 @@
         int xOffset = 0;
         
         NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.serviceroomOffline objectForKey:@"serviceroomArray"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
-        imageView.imageURL = [NSURL URLWithString:urlimg];
+        //imageView.imageURL = [NSURL URLWithString:urlimg];
+        
+        //
+        [DLImageLoader loadImageFromURL:urlimg
+                              completed:^(NSError *error, NSData *imgData) {
+                                  imageView.image = [UIImage imageWithData:imgData];
+                              }];
+        //
         
         imageView.layer.masksToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -301,7 +329,14 @@
             img.frame = CGRectMake(xOffset, 0, 70, 70);
             
             NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.serviceroomOffline objectForKey:@"serviceroomArray"] objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
-            img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            //img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            
+            //
+            [DLImageLoader loadImageFromURL:urlimg
+                                  completed:^(NSError *error, NSData *imgData) {
+                                      img.image = [UIImage imageWithData:imgData];
+                                  }];
+            //
             
             [images insertObject:img atIndex:i];
             

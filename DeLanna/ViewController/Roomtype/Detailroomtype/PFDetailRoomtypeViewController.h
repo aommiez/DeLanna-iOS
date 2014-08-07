@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Social/Social.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "DLImageLoader.h"
 
 #import "PFDelannaApi.h"
 

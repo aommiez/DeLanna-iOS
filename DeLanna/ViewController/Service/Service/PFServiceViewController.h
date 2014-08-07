@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DLImageLoader.h"
 
 #import "PFDelannaApi.h"
-
-
 
 #import "PFServiceCell.h"
 #import "PFDetailFoldertypeViewController.h"

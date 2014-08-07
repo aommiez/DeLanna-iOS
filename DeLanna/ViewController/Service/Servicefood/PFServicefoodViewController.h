@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DLImageLoader.h"
 
 #import "PFDelannaApi.h"
 

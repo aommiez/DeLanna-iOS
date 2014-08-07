@@ -389,8 +389,15 @@ BOOL refreshDataFeed;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
-    cell.thumbnails.tag = ASYNC_IMAGE_TAG;
-    cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
+    //cell.thumbnails.tag = ASYNC_IMAGE_TAG;
+    //cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
+    
+    //
+    [DLImageLoader loadImageFromURL:urlimg
+                          completed:^(NSError *error, NSData *imgData) {
+                              cell.thumbnails.image = [UIImage imageWithData:imgData];
+                          }];
+    //
 
     cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
 

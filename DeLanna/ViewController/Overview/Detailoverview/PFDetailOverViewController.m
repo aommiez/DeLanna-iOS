@@ -53,8 +53,15 @@
     self.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
-    self.thumbnails.tag = ASYNC_IMAGE_TAG;
-    self.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
+    //self.thumbnails.tag = ASYNC_IMAGE_TAG;
+    //self.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
+    
+    //
+    [DLImageLoader loadImageFromURL:urlimg
+                          completed:^(NSError *error, NSData *imgData) {
+                              self.thumbnails.image = [UIImage imageWithData:imgData];
+                          }];
+    //
 
     self.name.text = [self.obj objectForKey:@"name"];
     self.detail.text = [self.obj objectForKey:@"detail"];
