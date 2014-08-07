@@ -382,8 +382,6 @@ BOOL refreshDataFeed;
         cell = [nib objectAtIndex:0];
     }
     
-    cell.delegate = self;
-    
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -399,9 +397,7 @@ BOOL refreshDataFeed;
     return cell;
 }
 
-- (void)ButtonTappedOnCell:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     

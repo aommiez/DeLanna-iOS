@@ -22,8 +22,4 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)selectTapped:(id)sender {
-    [self.delegate ButtonTappedOnCell:self];
-}
-
 @end

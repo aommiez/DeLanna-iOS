@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DLImageLoader.h"
 #import <MessageUI/MessageUI.h>
 
 #import "PFDelannaApi.h"
@@ -48,7 +49,7 @@
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
-@property (strong, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UIImageView *mapImage;
 
 @property (strong, nonatomic) IBOutlet UILabel *phoneTxt;
 @property (strong, nonatomic) IBOutlet UILabel *websiteTxt;

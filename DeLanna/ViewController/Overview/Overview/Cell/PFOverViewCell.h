@@ -9,15 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol PFOverViewCellDelegate <NSObject>
-
-- (void)ButtonTappedOnCell:(id)sender;
-
-@end
-
 @interface PFOverViewCell : UITableViewCell
-
-@property (nonatomic, strong) id <PFOverViewCellDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet AsyncImageView *thumbnails;
 @property (strong, nonatomic) IBOutlet UILabel *name;

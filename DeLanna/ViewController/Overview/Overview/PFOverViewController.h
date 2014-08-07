@@ -24,7 +24,7 @@
 
 @end
 
-@interface PFOverViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFOverViewCellDelegate>
+@interface PFOverViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;

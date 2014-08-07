@@ -61,11 +61,12 @@ BOOL refreshDataContact;
     [[self.navController navigationBar] setTranslucent:YES];
     [self.view addSubview:self.navController.view];
     
-    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-        self.address.text = @"44 Intawarorot Rd. T.Sriphum Muang Chiangmai 50200";
-    } else {
-        self.address.text = @"44 ถนนอินทวโรรส. ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200";
-    }
+    NSString *urlmap = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@",@"http://maps.googleapis.com/maps/api/staticmap?center=",@"18.789622",@",",@"98.982788",@"&zoom=16&size=640x360&sensor=false&markers=color:red%7Clabel:Satit%7C",@"18.789622",@",",@"98.982788"];
+    
+    [DLImageLoader loadImageFromURL:urlmap
+                          completed:^(NSError *error, NSData *imgData) {
+                              self.mapImage.image = [UIImage imageWithData:imgData];
+                          }];
     
     CALayer *buttonView = [self.buttonView layer];
     [buttonView setMasksToBounds:YES];
@@ -309,12 +310,6 @@ BOOL refreshDataContact;
         
         [self.DelannaApi getContact];
         
-        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-            self.address.text = @"44 Intawarorot Rd. T.Sriphum Muang Chiangmai 50200";
-        } else {
-            self.address.text = @"44 ถนนอินทวโรรส. ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200";
-        }
-        
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -364,11 +359,6 @@ BOOL refreshDataContact;
             
             [self.DelannaApi getContact];
             
-            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-                self.address.text = @"44 Intawarorot Rd. T.Sriphum Muang Chiangmai 50200";
-            } else {
-                self.address.text = @"44 ถนนอินทวโรรส. ตำบลสุเทพ อำเภอเมือง จังหวัดเชียงใหม่ 50200";
-            }
         }
     }
 }
