@@ -132,6 +132,7 @@
 		524D32161978D2D90026C3B4 /* chapter_box01.png in Resources */ = {isa = PBXBuildFile; fileRef = 524D32151978D2D90026C3B4 /* chapter_box01.png */; };
 		524D32191978D2E10026C3B4 /* chapter_box02.png in Resources */ = {isa = PBXBuildFile; fileRef = 524D32181978D2E10026C3B4 /* chapter_box02.png */; };
 		524D321C1978D2E90026C3B4 /* chapter_box03.png in Resources */ = {isa = PBXBuildFile; fileRef = 524D321B1978D2E90026C3B4 /* chapter_box03.png */; };
+		525CC08819933442000C3EF1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525CC08719933442000C3EF1 /* FacebookSDK.framework */; };
 		525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072A1977AD8000677A5E /* CFNetwork.framework */; };
 		525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA07281977AD7800677A5E /* SystemConfiguration.framework */; };
 		5269813219777473001C2A97 /* PFDetailOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5269813019777473001C2A97 /* PFDetailOverViewController.m */; };
@@ -201,7 +202,6 @@
 		52BA072519779CEA00677A5E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072419779CEA00677A5E /* CoreImage.framework */; };
 		52BA072719779D6E00677A5E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072619779D6E00677A5E /* MobileCoreServices.framework */; };
 		52D09D55197D16FE003C47B8 /* PFDetailRoomtypeViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D09D54197D16FE003C47B8 /* PFDetailRoomtypeViewController_Wide.xib */; };
-		52D5549F1993161A00C53D06 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5549E1993161A00C53D06 /* Social.framework */; };
 		52F5825E19768231002EFF81 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F5825C19768231002EFF81 /* map.png */; };
 		52F5825F19768231002EFF81 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F5825D19768231002EFF81 /* map@2x.png */; };
 		52FC2C46197917D50016E93D /* PFDelannaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FC2C45197917D50016E93D /* PFDelannaApi.m */; };
@@ -388,6 +388,7 @@
 		524D32151978D2D90026C3B4 /* chapter_box01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box01.png; sourceTree = "<group>"; };
 		524D32181978D2E10026C3B4 /* chapter_box02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box02.png; sourceTree = "<group>"; };
 		524D321B1978D2E90026C3B4 /* chapter_box03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chapter_box03.png; sourceTree = "<group>"; };
+		525CC08719933442000C3EF1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../Frameworks/FacebookSDK.framework; sourceTree = "<group>"; };
 		5269812F19777473001C2A97 /* PFDetailOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFDetailOverViewController.h; sourceTree = "<group>"; };
 		5269813019777473001C2A97 /* PFDetailOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFDetailOverViewController.m; sourceTree = "<group>"; };
 		5269813119777473001C2A97 /* PFDetailOverViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailOverViewController_Wide.xib; sourceTree = "<group>"; };
@@ -551,7 +552,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D5549F1993161A00C53D06 /* Social.framework in Frameworks */,
 				525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */,
 				525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */,
 				52BA072719779D6E00677A5E /* MobileCoreServices.framework in Frameworks */,
@@ -559,6 +559,7 @@
 				36940842197641410071EFA6 /* UtilitySDK.framework in Frameworks */,
 				36131633196BA14A00DB175C /* CoreGraphics.framework in Frameworks */,
 				36131637196BA14A00DB175C /* CoreData.framework in Frameworks */,
+				525CC08819933442000C3EF1 /* FacebookSDK.framework in Frameworks */,
 				36131635196BA14A00DB175C /* UIKit.framework in Frameworks */,
 				36131631196BA14A00DB175C /* Foundation.framework in Frameworks */,
 			);
@@ -604,6 +605,7 @@
 				36131636196BA14A00DB175C /* CoreData.framework */,
 				36131632196BA14A00DB175C /* CoreGraphics.framework */,
 				52BA072419779CEA00677A5E /* CoreImage.framework */,
+				525CC08719933442000C3EF1 /* FacebookSDK.framework */,
 				36131630196BA14A00DB175C /* Foundation.framework */,
 				52BA072619779D6E00677A5E /* MobileCoreServices.framework */,
 				52D5549E1993161A00C53D06 /* Social.framework */,
