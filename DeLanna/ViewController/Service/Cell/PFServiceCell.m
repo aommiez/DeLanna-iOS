@@ -24,14 +24,10 @@
     [bgView setMasksToBounds:YES];
     [bgView setCornerRadius:7.0f];
     
-    [self.bgView.layer setCornerRadius:5.0f];
-    self.bgView.layer.shadowOffset = CGSizeMake(0.5, -0.5);
-    self.bgView.layer.shadowRadius = 2;
-    self.bgView.layer.shadowOpacity = 0.1;
-}
-
-- (IBAction)selectTapped:(id)sender {
-    [self.delegate ButtonTappedOnCell:self];
+//    [self.bgView.layer setCornerRadius:5.0f];
+//    self.bgView.layer.shadowOffset = CGSizeMake(0.5, -0.5);
+//    self.bgView.layer.shadowRadius = 2;
+//    self.bgView.layer.shadowOpacity = 0.1;
 }
 
 @end

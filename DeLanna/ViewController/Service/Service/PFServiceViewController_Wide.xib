@@ -13,7 +13,7 @@
                 <outlet property="navController" destination="gBA-O0-6UR" id="1RD-Jo-em2"/>
                 <outlet property="navItem" destination="36K-W7-NPV" id="kfL-gr-5Lw"/>
                 <outlet property="popupwaitView" destination="PvL-RU-n5a" id="as8-1h-d60"/>
-                <outlet property="tableView" destination="djM-yw-XUS" id="a3c-cG-eDV"/>
+                <outlet property="tableView" destination="n12-qY-Ico" id="3k3-TE-PJC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="waitView" destination="Gbs-Ul-bD2" id="5GO-94-mpf"/>
             </connections>
@@ -84,13 +84,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="djM-yw-XUS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="n12-qY-Ico">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="-1" id="AyI-k4-UXp"/>
-                                    <outlet property="delegate" destination="-1" id="j5q-5M-PJS"/>
+                                    <outlet property="dataSource" destination="-1" id="cxb-rs-yoC"/>
+                                    <outlet property="delegate" destination="-1" id="2Y3-tQ-Zd4"/>
                                 </connections>
                             </tableView>
                         </subviews>

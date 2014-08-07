@@ -12,7 +12,6 @@
                 <outlet property="navBar" destination="EYK-PI-crz" id="hza-er-Zfh"/>
                 <outlet property="navController" destination="pfk-Pj-Gf0" id="w6L-3I-2aW"/>
                 <outlet property="navItem" destination="eiU-Bc-bJe" id="s9Q-aM-wvm"/>
-                <outlet property="popupwaitView" destination="T3E-r6-VyD" id="I5C-Xt-07q"/>
                 <outlet property="tableView" destination="7hK-cl-f0u" id="bz4-B8-Pl9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="waitView" destination="9cY-4o-jQ2" id="0E6-td-I3C"/>

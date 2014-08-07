@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        self.DetailroomtypeOffline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -65,49 +66,19 @@
     self.name.text = [self.obj objectForKey:@"name"];
     self.price.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
     self.baht.text = @"Baht";
-    
     self.detail.text = [self.obj objectForKey:@"detail"];
-    CGRect frame = self.detail.frame;
-    frame.size = [self.detail sizeOfMultiLineLabel];
-    [self.detail sizeOfMultiLineLabel];
     
-    [self.detail setFrame:frame];
-    int lines = self.detail.frame.size.height/15;
-    self.detail.numberOfLines = lines;
+    //1
+    NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
+    self.imageView1.imageURL = [NSURL URLWithString:urlimg];
     
-    UILabel *descText = [[UILabel alloc] initWithFrame:frame];
-    descText.textColor = RGB(139, 94, 60);
-    descText.text = self.detail.text;
-    descText.numberOfLines = lines;
-    [descText setFont:[UIFont systemFontOfSize:15]];
-    self.detail.alpha = 0;
-    [self.headerView addSubview:descText];
+    self.imageView1.layer.masksToBounds = YES;
+    self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
     
-    self.feature.frame = CGRectMake(self.feature.frame.origin.x, self.feature.frame.origin.y+self.detail.frame.size.height-10, self.feature.frame.size.width, self.feature.frame.size.height);
-    
-    self.feature.text = [self.obj objectForKey:@"feature"];
-    CGRect frame1 = self.feature.frame;
-    frame1.size = [self.feature sizeOfMultiLineLabel];
-    [self.feature sizeOfMultiLineLabel];
-    
-    [self.feature setFrame:frame1];
-    int lines1 = self.feature.frame.size.height/15;
-    self.feature.numberOfLines = lines1;
-    
-    UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
-    descText1.textColor = RGB(245, 211, 40);
-    descText1.text = self.feature.text;
-    descText1.numberOfLines = lines1;
-    [descText1 setFont:[UIFont systemFontOfSize:15]];
-    self.feature.alpha = 0;
-    [self.headerView addSubview:descText1];
-
-    self.titlefeature.frame = CGRectMake(self.titlefeature.frame.origin.x, self.titlefeature.frame.origin.y+self.detail.frame.size.height-10, self.titlefeature.frame.size.width, self.titlefeature.frame.size.height);
-    
-    self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height+self.feature.frame.size.height-20);
-    
-    self.tableView.tableHeaderView = self.headerView;
-    self.tableView.tableFooterView = self.footerView;
+    self.name1.text = [self.obj objectForKey:@"name"];
+    self.price1.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
+    self.baht1.text = @"Baht";
+    self.detail1.text = [self.obj objectForKey:@"detail"];
     
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
@@ -177,51 +148,271 @@
 
 - (void)PFDelannaApi:(id)sender getRoomtypeByIDResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
+    [self.DetailroomtypeOffline setObject:response forKey:@"DetailroomtypeArray"];
     
     [self.waitView removeFromSuperview];
     
-    scrollView.delegate = self;
-	scrollView.scrollEnabled = YES;
-	int scrollWidth = 70;
-	scrollView.contentSize = CGSizeMake(scrollWidth,70);
+    NSString *length = [NSString stringWithFormat:@"%@",[response objectForKey:@"length"]];
+    int num = length.intValue;
     
-    int xOffset = 0;
+    if (num <= 1) {
+        
+        CGRect frame = self.detail1.frame;
+        frame.size = [self.detail1 sizeOfMultiLineLabel];
+        [self.detail1 sizeOfMultiLineLabel];
+        
+        [self.detail1 setFrame:frame];
+        int lines = self.detail1.frame.size.height/15;
+        self.detail1.numberOfLines = lines;
+        
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail1.text;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail1.alpha = 0;
+        [self.headerImgView addSubview:descText];
+        
+        self.feature1.frame = CGRectMake(self.feature1.frame.origin.x, self.feature1.frame.origin.y+self.detail1.frame.size.height-10, self.feature1.frame.size.width, self.feature1.frame.size.height);
+        
+        self.feature1.text = [self.obj objectForKey:@"feature"];
+        CGRect frame1 = self.feature1.frame;
+        frame1.size = [self.feature1 sizeOfMultiLineLabel];
+        [self.feature1 sizeOfMultiLineLabel];
+        
+        [self.feature1 setFrame:frame1];
+        int lines1 = self.feature1.frame.size.height/15;
+        self.feature1.numberOfLines = lines1;
+        
+        UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
+        descText1.textColor = RGB(245, 211, 40);
+        descText1.text = self.feature1.text;
+        descText1.numberOfLines = lines1;
+        [descText1 setFont:[UIFont systemFontOfSize:15]];
+        self.feature1.alpha = 0;
+        [self.headerImgView addSubview:descText1];
+        
+        self.headerImgView.frame = CGRectMake(self.headerImgView.frame.origin.x, self.headerImgView.frame.origin.y, self.headerImgView.frame.size.width, self.headerImgView.frame.size.height+self.detail1.frame.size.height+self.feature1.frame.size.height-20);
+        
+        self.tableView.tableHeaderView = self.headerImgView;
+        self.tableView.tableFooterView = self.footerView;
     
-    NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
-    imageView.imageURL = [NSURL URLWithString:urlimg];
-    
-    imageView.layer.masksToBounds = YES;
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-    self.arrgalleryimg = [[NSMutableArray alloc] init];
-    
-    for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
-        //
-		AsyncImageView *img = [[AsyncImageView alloc] init];
+    } else {
         
-        img.layer.masksToBounds = YES;
-        img.contentMode = UIViewContentModeScaleAspectFill;
+        CGRect frame = self.detail.frame;
+        frame.size = [self.detail sizeOfMultiLineLabel];
+        [self.detail sizeOfMultiLineLabel];
         
-		img.frame = CGRectMake(xOffset, 0, 70, 70);
+        [self.detail setFrame:frame];
+        int lines = self.detail.frame.size.height/15;
+        self.detail.numberOfLines = lines;
         
-        NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
-        img.imageURL = [[NSURL alloc] initWithString:urlimg];
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail.text;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail.alpha = 0;
+        [self.headerView addSubview:descText];
         
-		[images insertObject:img atIndex:i];
+        self.feature.frame = CGRectMake(self.feature.frame.origin.x, self.feature.frame.origin.y+self.detail.frame.size.height-10, self.feature.frame.size.width, self.feature.frame.size.height);
         
-        [self.arrgalleryimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
+        self.feature.text = [self.obj objectForKey:@"feature"];
+        CGRect frame1 = self.feature.frame;
+        frame1.size = [self.feature sizeOfMultiLineLabel];
+        [self.feature sizeOfMultiLineLabel];
         
-		scrollView.contentSize = CGSizeMake(scrollWidth+xOffset,70);
-		[scrollView addSubview:[images objectAtIndex:i]];
-		
-		xOffset += 70;
+        [self.feature setFrame:frame1];
+        int lines1 = self.feature.frame.size.height/15;
+        self.feature.numberOfLines = lines1;
+        
+        UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
+        descText1.textColor = RGB(245, 211, 40);
+        descText1.text = self.feature.text;
+        descText1.numberOfLines = lines1;
+        [descText1 setFont:[UIFont systemFontOfSize:15]];
+        self.feature.alpha = 0;
+        [self.headerView addSubview:descText1];
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height+self.feature.frame.size.height-20);
+        
+        self.tableView.tableHeaderView = self.headerView;
+        self.tableView.tableFooterView = self.footerView;
+        
+        scrollView.delegate = self;
+        scrollView.scrollEnabled = YES;
+        int scrollWidth = 70;
+        scrollView.contentSize = CGSizeMake(scrollWidth,70);
+        
+        int xOffset = 0;
+        
+        NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
+        imageView.imageURL = [NSURL URLWithString:urlimg];
+        
+        imageView.layer.masksToBounds = YES;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        self.arrgalleryimg = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
+            //
+            AsyncImageView *img = [[AsyncImageView alloc] init];
+            
+            img.layer.masksToBounds = YES;
+            img.contentMode = UIViewContentModeScaleAspectFill;
+            
+            img.frame = CGRectMake(xOffset, 0, 70, 70);
+            
+            NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
+            img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            
+            [images insertObject:img atIndex:i];
+            
+            [self.arrgalleryimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
+            
+            scrollView.contentSize = CGSizeMake(scrollWidth+xOffset,70);
+            [scrollView addSubview:[images objectAtIndex:i]];
+            
+            xOffset += 70;
+        }
     }
+    
 }
 
 - (void)PFDelannaApi:(id)sender getRoomtypeByIDErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
+    
+    NSString *length = [NSString stringWithFormat:@"%@",[[self.DetailroomtypeOffline objectForKey:@"DetailroomtypeArray"] objectForKey:@"length"]];
+    int num = length.intValue;
+    
+    if (num <= 1) {
+        
+        CGRect frame = self.detail1.frame;
+        frame.size = [self.detail1 sizeOfMultiLineLabel];
+        [self.detail1 sizeOfMultiLineLabel];
+        
+        [self.detail1 setFrame:frame];
+        int lines = self.detail1.frame.size.height/15;
+        self.detail1.numberOfLines = lines;
+        
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail1.text;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail1.alpha = 0;
+        [self.headerImgView addSubview:descText];
+        
+        self.feature1.frame = CGRectMake(self.feature1.frame.origin.x, self.feature1.frame.origin.y+self.detail1.frame.size.height-10, self.feature1.frame.size.width, self.feature1.frame.size.height);
+        
+        self.feature1.text = [self.obj objectForKey:@"feature"];
+        CGRect frame1 = self.feature1.frame;
+        frame1.size = [self.feature1 sizeOfMultiLineLabel];
+        [self.feature1 sizeOfMultiLineLabel];
+        
+        [self.feature1 setFrame:frame1];
+        int lines1 = self.feature1.frame.size.height/15;
+        self.feature1.numberOfLines = lines1;
+        
+        UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
+        descText1.textColor = RGB(245, 211, 40);
+        descText1.text = self.feature1.text;
+        descText1.numberOfLines = lines1;
+        [descText1 setFont:[UIFont systemFontOfSize:15]];
+        self.feature1.alpha = 0;
+        [self.headerImgView addSubview:descText1];
+        
+        self.headerImgView.frame = CGRectMake(self.headerImgView.frame.origin.x, self.headerImgView.frame.origin.y, self.headerImgView.frame.size.width, self.headerImgView.frame.size.height+self.detail1.frame.size.height+self.feature1.frame.size.height-20);
+        
+        self.tableView.tableHeaderView = self.headerImgView;
+        self.tableView.tableFooterView = self.footerView;
+        
+    } else {
+        
+        CGRect frame = self.detail.frame;
+        frame.size = [self.detail sizeOfMultiLineLabel];
+        [self.detail sizeOfMultiLineLabel];
+        
+        [self.detail setFrame:frame];
+        int lines = self.detail.frame.size.height/15;
+        self.detail.numberOfLines = lines;
+        
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail.text;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail.alpha = 0;
+        [self.headerView addSubview:descText];
+        
+        self.feature.frame = CGRectMake(self.feature.frame.origin.x, self.feature.frame.origin.y+self.detail.frame.size.height-10, self.feature.frame.size.width, self.feature.frame.size.height);
+        
+        self.feature.text = [self.obj objectForKey:@"feature"];
+        CGRect frame1 = self.feature.frame;
+        frame1.size = [self.feature sizeOfMultiLineLabel];
+        [self.feature sizeOfMultiLineLabel];
+        
+        [self.feature setFrame:frame1];
+        int lines1 = self.feature.frame.size.height/15;
+        self.feature.numberOfLines = lines1;
+        
+        UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
+        descText1.textColor = RGB(245, 211, 40);
+        descText1.text = self.feature.text;
+        descText1.numberOfLines = lines1;
+        [descText1 setFont:[UIFont systemFontOfSize:15]];
+        self.feature.alpha = 0;
+        [self.headerView addSubview:descText1];
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height+self.feature.frame.size.height-20);
+        
+        self.tableView.tableHeaderView = self.headerView;
+        self.tableView.tableFooterView = self.footerView;
+        
+        scrollView.delegate = self;
+        scrollView.scrollEnabled = YES;
+        int scrollWidth = 70;
+        scrollView.contentSize = CGSizeMake(scrollWidth,70);
+        
+        int xOffset = 0;
+        
+        NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.DetailroomtypeOffline objectForKey:@"DetailroomtypeArray"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
+        imageView.imageURL = [NSURL URLWithString:urlimg];
+        
+        imageView.layer.masksToBounds = YES;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        self.arrgalleryimg = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<[[[self.DetailroomtypeOffline objectForKey:@"DetailroomtypeArray"] objectForKey:@"data"] count]; ++i) {
+            //
+            AsyncImageView *img = [[AsyncImageView alloc] init];
+            
+            img.layer.masksToBounds = YES;
+            img.contentMode = UIViewContentModeScaleAspectFill;
+            
+            img.frame = CGRectMake(xOffset, 0, 70, 70);
+            
+            NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.DetailroomtypeOffline objectForKey:@"DetailroomtypeArray"] objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
+            img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            
+            [images insertObject:img atIndex:i];
+            
+            [self.arrgalleryimg addObject:[[[[self.DetailroomtypeOffline objectForKey:@"DetailroomtypeArray"] objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
+            
+            scrollView.contentSize = CGSizeMake(scrollWidth+xOffset,70);
+            [scrollView addSubview:[images objectAtIndex:i]];
+            
+            xOffset += 70;
+        }
+    }
+
+}
+
+- (IBAction)fullimgTapped:(id)sender {
+    [self.delegate PFImageViewController:self viewPicture:[[self.obj objectForKey:@"thumb"] objectForKey:@"url"]];
 }
 
 - (IBAction)fullimgalbumTapped:(id)sender {

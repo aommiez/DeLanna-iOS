@@ -164,14 +164,12 @@ BOOL refreshDataRoomtype;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     PFRoomTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFRoomTypeCell"];
     if(cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"PFRoomTypeCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
-    cell.delegate = self;
     
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -190,9 +188,7 @@ BOOL refreshDataRoomtype;
     return cell;
 }
 
-- (void)ButtonTappedOnCell:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
@@ -315,6 +311,10 @@ BOOL refreshDataRoomtype;
     } else {
         [self.NoInternetView removeFromSuperview];
     }
+}
+
+- (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{
+    [self.delegate PFImageViewController:self viewPicture:link];
 }
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current{

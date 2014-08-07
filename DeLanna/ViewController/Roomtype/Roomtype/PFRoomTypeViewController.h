@@ -16,12 +16,13 @@
 @protocol PFRoomTypeViewControllerDelegate <NSObject>
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current;
+- (void)PFImageViewController:(id)sender viewPicture:(NSString *)link;
 - (void)HideTabbar;
 - (void)ShowTabbar;
 
 @end
 
-@interface PFRoomTypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,PFRoomTypeCellDelegate>
+@interface PFRoomTypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;

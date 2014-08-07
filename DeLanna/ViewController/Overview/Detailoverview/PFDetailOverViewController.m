@@ -7,6 +7,7 @@
 //
 
 #import "PFDetailOverViewController.h"
+#import <Social/Social.h>
 
 @interface PFDetailOverViewController ()
 
@@ -117,7 +118,6 @@
 - (void)share {
     NSString *urlString = [[NSString alloc]init];
     urlString = [[NSString alloc] initWithFormat:@"%@",[[self.obj objectForKey:@"node"] objectForKey:@"share"]];
-    
     SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     [controller addURL:[NSURL URLWithString:urlString]];
     [self presentViewController:controller animated:YES completion:Nil];

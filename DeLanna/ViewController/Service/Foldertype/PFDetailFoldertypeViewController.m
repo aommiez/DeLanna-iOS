@@ -49,6 +49,13 @@
     } else {
         [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"th"];
     }
+    
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,8 +71,8 @@
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
-    [self.NoInternetView removeFromSuperview];
-    self.checkinternet = @"connect";
+//    [self.NoInternetView removeFromSuperview];
+//    self.checkinternet = @"connect";
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
@@ -82,9 +89,9 @@
     
     [self.waitView removeFromSuperview];
     
-    self.checkinternet = @"error";
-    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-    [self.view addSubview:self.NoInternetView];
+//    self.checkinternet = @"error";
+//    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+//    [self.view addSubview:self.NoInternetView];
     
     for (int i=0; i<[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] objectAtIndex:i]];
@@ -161,6 +168,10 @@
         [self.navigationController pushViewController:serviceroomView animated:YES];
         
     }
+}
+
+- (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{
+    [self.delegate PFImageViewController:self viewPicture:link];
 }
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current{

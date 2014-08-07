@@ -20,6 +20,7 @@
     if (self) {
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        self.servicefoodOffline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -52,29 +53,27 @@
     self.name.text = [self.obj objectForKey:@"name"];
     self.price.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
     self.baht.text = @"Baht";
-    
     self.detail.text = [self.obj objectForKey:@"detail"];
     
-    CGRect frame = self.detail.frame;
-    frame.size = [self.detail sizeOfMultiLineLabel];
-    [self.detail sizeOfMultiLineLabel];
+    //1
+    NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
+    self.imageView1.imageURL = [NSURL URLWithString:urlimg];
     
-    [self.detail setFrame:frame];
-    int lines = self.detail.frame.size.height/15;
-    self.detail.numberOfLines = lines;
+    self.imageView1.layer.masksToBounds = YES;
+    self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
     
-    UILabel *descText = [[UILabel alloc] initWithFrame:frame];
-    descText.textColor = RGB(139, 94, 60);
-    descText.text = self.detail.text;
-    descText.textAlignment = NSTextAlignmentCenter;
-    descText.numberOfLines = lines;
-    [descText setFont:[UIFont systemFontOfSize:15]];
-    self.detail.alpha = 0;
-    [self.headerView addSubview:descText];
+    self.name1.text = [self.obj objectForKey:@"name"];
+    self.price1.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
+    self.baht1.text = @"Baht";
+    self.detail1.text = [self.obj objectForKey:@"detail"];
     
-    self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height-20);
-    
-    self.tableView.tableHeaderView = self.headerView;
+    if ([self.checkinternet isEqualToString:@"error"]) {
+        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+        [self.view addSubview:self.NoInternetView];
+    } else {
+        [self.NoInternetView removeFromSuperview];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,46 +126,100 @@
 
 - (void)PFDelannaApi:(id)sender getServiceFoodResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
+    [self.servicefoodOffline setObject:response forKey:@"servicefoodArray"];
     
     [self.waitView removeFromSuperview];
-    [self.NoInternetView removeFromSuperview];
-    self.checkinternet = @"connect";
+//    [self.NoInternetView removeFromSuperview];
+//    self.checkinternet = @"connect";
     
-    scrollView.delegate = self;
-	scrollView.scrollEnabled = YES;
-	int scrollWidth = 70;
-	scrollView.contentSize = CGSizeMake(scrollWidth,70);
+    NSString *length = [NSString stringWithFormat:@"%@",[response objectForKey:@"length"]];
+    int num = length.intValue;
     
-    int xOffset = 0;
-    
-    NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
-    imageView.imageURL = [NSURL URLWithString:urlimg];
-    
-    imageView.layer.masksToBounds = YES;
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    
-    self.arrgalleryimg = [[NSMutableArray alloc] init];
-    
-    for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
-        //
-		AsyncImageView *img = [[AsyncImageView alloc] init];
+    if (num <= 1) {
         
-        img.layer.masksToBounds = YES;
-        img.contentMode = UIViewContentModeScaleAspectFill;
+        CGRect frame = self.detail1.frame;
+        frame.size = [self.detail1 sizeOfMultiLineLabel];
+        [self.detail1 sizeOfMultiLineLabel];
         
-		img.frame = CGRectMake(xOffset, 0, 70, 70);
+        [self.detail1 setFrame:frame];
+        int lines = self.detail1.frame.size.height/15;
+        self.detail1.numberOfLines = lines;
         
-        NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
-        img.imageURL = [[NSURL alloc] initWithString:urlimg];
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail1.text;
+        descText.textAlignment = NSTextAlignmentCenter;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail1.alpha = 0;
+        [self.headerImgView addSubview:descText];
         
-		[images insertObject:img atIndex:i];
+        self.headerImgView.frame = CGRectMake(self.headerImgView.frame.origin.x, self.headerImgView.frame.origin.y, self.headerImgView.frame.size.width, self.headerImgView.frame.size.height+self.detail1.frame.size.height-20);
+
         
-        [self.arrgalleryimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
+        self.tableView.tableHeaderView = self.headerImgView;
         
-		scrollView.contentSize = CGSizeMake(scrollWidth+xOffset,70);
-		[scrollView addSubview:[images objectAtIndex:i]];
-		
-		xOffset += 70;
+        
+    } else {
+        
+        CGRect frame = self.detail.frame;
+        frame.size = [self.detail sizeOfMultiLineLabel];
+        [self.detail sizeOfMultiLineLabel];
+        
+        [self.detail setFrame:frame];
+        int lines = self.detail.frame.size.height/15;
+        self.detail.numberOfLines = lines;
+        
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail.text;
+        descText.textAlignment = NSTextAlignmentCenter;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail.alpha = 0;
+        [self.headerView addSubview:descText];
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height-20);
+
+        
+        self.tableView.tableHeaderView = self.headerView;
+        
+        scrollView.delegate = self;
+        scrollView.scrollEnabled = YES;
+        int scrollWidth = 70;
+        scrollView.contentSize = CGSizeMake(scrollWidth,70);
+        
+        int xOffset = 0;
+        
+        NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
+        imageView.imageURL = [NSURL URLWithString:urlimg];
+        
+        imageView.layer.masksToBounds = YES;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        self.arrgalleryimg = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
+            //
+            AsyncImageView *img = [[AsyncImageView alloc] init];
+            
+            img.layer.masksToBounds = YES;
+            img.contentMode = UIViewContentModeScaleAspectFill;
+            
+            img.frame = CGRectMake(xOffset, 0, 70, 70);
+            
+            NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
+            img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            
+            [images insertObject:img atIndex:i];
+            
+            [self.arrgalleryimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
+            
+            scrollView.contentSize = CGSizeMake(scrollWidth+xOffset,70);
+            [scrollView addSubview:[images objectAtIndex:i]];
+            
+            xOffset += 70;
+        }
     }
 }
 
@@ -175,13 +228,107 @@
     
     [self.waitView removeFromSuperview];
     
-    self.checkinternet = @"error";
-    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-    [self.view addSubview:self.NoInternetView];
+//    self.checkinternet = @"error";
+//    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+//    [self.view addSubview:self.NoInternetView];
+    
+    NSString *length = [NSString stringWithFormat:@"%@",[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"length"]];
+    int num = length.intValue;
+    
+    if (num <= 1) {
+        
+        CGRect frame = self.detail1.frame;
+        frame.size = [self.detail1 sizeOfMultiLineLabel];
+        [self.detail1 sizeOfMultiLineLabel];
+        
+        [self.detail1 setFrame:frame];
+        int lines = self.detail1.frame.size.height/15;
+        self.detail1.numberOfLines = lines;
+        
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail1.text;
+        descText.textAlignment = NSTextAlignmentCenter;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail1.alpha = 0;
+        [self.headerImgView addSubview:descText];
+        
+        self.headerImgView.frame = CGRectMake(self.headerImgView.frame.origin.x, self.headerImgView.frame.origin.y, self.headerImgView.frame.size.width, self.headerImgView.frame.size.height+self.detail1.frame.size.height-20);
+        
+        
+        self.tableView.tableHeaderView = self.headerImgView;
+        
+        
+    } else {
+        
+        CGRect frame = self.detail.frame;
+        frame.size = [self.detail sizeOfMultiLineLabel];
+        [self.detail sizeOfMultiLineLabel];
+        
+        [self.detail setFrame:frame];
+        int lines = self.detail.frame.size.height/15;
+        self.detail.numberOfLines = lines;
+        
+        UILabel *descText = [[UILabel alloc] initWithFrame:frame];
+        descText.textColor = RGB(139, 94, 60);
+        descText.text = self.detail.text;
+        descText.textAlignment = NSTextAlignmentCenter;
+        descText.numberOfLines = lines;
+        [descText setFont:[UIFont systemFontOfSize:15]];
+        self.detail.alpha = 0;
+        [self.headerView addSubview:descText];
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+self.detail.frame.size.height-20);
+        
+        
+        self.tableView.tableHeaderView = self.headerView;
+        
+        scrollView.delegate = self;
+        scrollView.scrollEnabled = YES;
+        int scrollWidth = 70;
+        scrollView.contentSize = CGSizeMake(scrollWidth,70);
+        
+        int xOffset = 0;
+        
+        NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
+        imageView.imageURL = [NSURL URLWithString:urlimg];
+        
+        imageView.layer.masksToBounds = YES;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        self.arrgalleryimg = [[NSMutableArray alloc] init];
+        
+        for (int i=0; i<[[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"data"] count]; ++i) {
+            //
+            AsyncImageView *img = [[AsyncImageView alloc] init];
+            
+            img.layer.masksToBounds = YES;
+            img.contentMode = UIViewContentModeScaleAspectFill;
+            
+            img.frame = CGRectMake(xOffset, 0, 70, 70);
+            
+            NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
+            img.imageURL = [[NSURL alloc] initWithString:urlimg];
+            
+            [images insertObject:img atIndex:i];
+            
+            [self.arrgalleryimg addObject:[[[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
+            
+            scrollView.contentSize = CGSizeMake(scrollWidth+xOffset,70);
+            [scrollView addSubview:[images objectAtIndex:i]];
+            
+            xOffset += 70;
+        }
+    }
+
+}
+
+- (IBAction)fullimgTapped:(id)sender {
+    [self.delegate PFImageViewController:self viewPicture:[[self.obj objectForKey:@"thumb"] objectForKey:@"url"]];
 }
 
 - (IBAction)fullimgalbumTapped:(id)sender {
-    
     [self.delegate PFGalleryViewController:self sum:self.arrgalleryimg current:self.current];
 }
 

@@ -120,11 +120,8 @@
 		52273CDD1988AE800023F87A /* PFWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CDC1988AE800023F87A /* PFWebViewController.xib */; };
 		52273CDF1988AE8C0023F87A /* PFMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CDE1988AE8C0023F87A /* PFMapViewController.xib */; };
 		52273CE11988AE950023F87A /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CE01988AE950023F87A /* PFContactViewController.xib */; };
-		52273CE31988AEA20023F87A /* PFServiceroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CE21988AEA20023F87A /* PFServiceroomViewController.xib */; };
-		52273CE51988AEAB0023F87A /* PFServicefoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CE41988AEAB0023F87A /* PFServicefoodViewController.xib */; };
 		52273CE71988AEB50023F87A /* PFDetailFoldertypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CE61988AEB50023F87A /* PFDetailFoldertypeViewController.xib */; };
 		52273CE91988AEBF0023F87A /* PFServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CE81988AEBF0023F87A /* PFServiceViewController.xib */; };
-		52273CEB1988AECB0023F87A /* PFDetailRoomtypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CEA1988AECB0023F87A /* PFDetailRoomtypeViewController.xib */; };
 		52273CED1988AED30023F87A /* PFRoomTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CEC1988AED30023F87A /* PFRoomTypeViewController.xib */; };
 		52273CF11988AEEB0023F87A /* PFSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CF01988AEEB0023F87A /* PFSettingViewController.xib */; };
 		52273CF31988AEF30023F87A /* PFDetailOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52273CF21988AEF30023F87A /* PFDetailOverViewController.xib */; };
@@ -148,6 +145,9 @@
 		527BF31B1974E41D0005BFF9 /* PFTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527BF3041974E41D0005BFF9 /* PFTabBarViewController.m */; };
 		527E837A1989F29E00797DB3 /* icon_reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 527E83781989F29E00797DB3 /* icon_reload.png */; };
 		527E837B1989F29E00797DB3 /* icon_reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 527E83791989F29E00797DB3 /* icon_reload@2x.png */; };
+		528C31A6199228FB008670CD /* PFServicefoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528C31A5199228FB008670CD /* PFServicefoodViewController.xib */; };
+		528C31A819922966008670CD /* PFServiceroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528C31A719922966008670CD /* PFServiceroomViewController.xib */; };
+		528C31AA19922E20008670CD /* PFDetailRoomtypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528C31A919922E20008670CD /* PFDetailRoomtypeViewController.xib */; };
 		528C8BF0197E6B4B007DE577 /* PFServiceroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C8BEE197E6B4B007DE577 /* PFServiceroomViewController.m */; };
 		528C8BF1197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528C8BEF197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib */; };
 		528C8BF5197E71D5007DE577 /* PFServicefoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 528C8BF3197E71D5007DE577 /* PFServicefoodViewController.m */; };
@@ -201,6 +201,7 @@
 		52BA072519779CEA00677A5E /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072419779CEA00677A5E /* CoreImage.framework */; };
 		52BA072719779D6E00677A5E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072619779D6E00677A5E /* MobileCoreServices.framework */; };
 		52D09D55197D16FE003C47B8 /* PFDetailRoomtypeViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D09D54197D16FE003C47B8 /* PFDetailRoomtypeViewController_Wide.xib */; };
+		52D5549F1993161A00C53D06 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D5549E1993161A00C53D06 /* Social.framework */; };
 		52F5825E19768231002EFF81 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F5825C19768231002EFF81 /* map.png */; };
 		52F5825F19768231002EFF81 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52F5825D19768231002EFF81 /* map@2x.png */; };
 		52FC2C46197917D50016E93D /* PFDelannaApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FC2C45197917D50016E93D /* PFDelannaApi.m */; };
@@ -374,11 +375,8 @@
 		52273CDC1988AE800023F87A /* PFWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFWebViewController.xib; sourceTree = "<group>"; };
 		52273CDE1988AE8C0023F87A /* PFMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFMapViewController.xib; sourceTree = "<group>"; };
 		52273CE01988AE950023F87A /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
-		52273CE21988AEA20023F87A /* PFServiceroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServiceroomViewController.xib; sourceTree = "<group>"; };
-		52273CE41988AEAB0023F87A /* PFServicefoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServicefoodViewController.xib; sourceTree = "<group>"; };
 		52273CE61988AEB50023F87A /* PFDetailFoldertypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailFoldertypeViewController.xib; sourceTree = "<group>"; };
 		52273CE81988AEBF0023F87A /* PFServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServiceViewController.xib; sourceTree = "<group>"; };
-		52273CEA1988AECB0023F87A /* PFDetailRoomtypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailRoomtypeViewController.xib; sourceTree = "<group>"; };
 		52273CEC1988AED30023F87A /* PFRoomTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFRoomTypeViewController.xib; sourceTree = "<group>"; };
 		52273CF01988AEEB0023F87A /* PFSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFSettingViewController.xib; sourceTree = "<group>"; };
 		52273CF21988AEF30023F87A /* PFDetailOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailOverViewController.xib; sourceTree = "<group>"; };
@@ -405,6 +403,9 @@
 		527BF3041974E41D0005BFF9 /* PFTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTabBarViewController.m; sourceTree = "<group>"; };
 		527E83781989F29E00797DB3 /* icon_reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_reload.png; sourceTree = "<group>"; };
 		527E83791989F29E00797DB3 /* icon_reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_reload@2x.png"; sourceTree = "<group>"; };
+		528C31A5199228FB008670CD /* PFServicefoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServicefoodViewController.xib; sourceTree = "<group>"; };
+		528C31A719922966008670CD /* PFServiceroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServiceroomViewController.xib; sourceTree = "<group>"; };
+		528C31A919922E20008670CD /* PFDetailRoomtypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailRoomtypeViewController.xib; sourceTree = "<group>"; };
 		528C8BED197E6B4B007DE577 /* PFServiceroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFServiceroomViewController.h; sourceTree = "<group>"; };
 		528C8BEE197E6B4B007DE577 /* PFServiceroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFServiceroomViewController.m; sourceTree = "<group>"; };
 		528C8BEF197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFServiceroomViewController_Wide.xib; sourceTree = "<group>"; };
@@ -504,6 +505,7 @@
 		52BA07281977AD7800677A5E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		52BA072A1977AD8000677A5E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		52D09D54197D16FE003C47B8 /* PFDetailRoomtypeViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFDetailRoomtypeViewController_Wide.xib; sourceTree = "<group>"; };
+		52D5549E1993161A00C53D06 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		52F5825C19768231002EFF81 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		52F5825D19768231002EFF81 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		52FC2C44197917D50016E93D /* PFDelannaApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFDelannaApi.h; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D5549F1993161A00C53D06 /* Social.framework in Frameworks */,
 				525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */,
 				525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */,
 				52BA072719779D6E00677A5E /* MobileCoreServices.framework in Frameworks */,
@@ -603,6 +606,7 @@
 				52BA072419779CEA00677A5E /* CoreImage.framework */,
 				36131630196BA14A00DB175C /* Foundation.framework */,
 				52BA072619779D6E00677A5E /* MobileCoreServices.framework */,
+				52D5549E1993161A00C53D06 /* Social.framework */,
 				52BA07281977AD7800677A5E /* SystemConfiguration.framework */,
 				36131634196BA14A00DB175C /* UIKit.framework */,
 				36940841197641410071EFA6 /* UtilitySDK.framework */,
@@ -911,7 +915,7 @@
 				520C2463197654A50078C547 /* PFDetailRoomtypeViewController.h */,
 				520C2464197654A50078C547 /* PFDetailRoomtypeViewController.m */,
 				52D09D54197D16FE003C47B8 /* PFDetailRoomtypeViewController_Wide.xib */,
-				52273CEA1988AECB0023F87A /* PFDetailRoomtypeViewController.xib */,
+				528C31A919922E20008670CD /* PFDetailRoomtypeViewController.xib */,
 			);
 			path = Detailroomtype;
 			sourceTree = "<group>";
@@ -1138,7 +1142,7 @@
 				528C8BF2197E71D5007DE577 /* PFServicefoodViewController.h */,
 				528C8BF3197E71D5007DE577 /* PFServicefoodViewController.m */,
 				528C8BF4197E71D5007DE577 /* PFServicefoodViewController_Wide.xib */,
-				52273CE41988AEAB0023F87A /* PFServicefoodViewController.xib */,
+				528C31A5199228FB008670CD /* PFServicefoodViewController.xib */,
 			);
 			path = Servicefood;
 			sourceTree = "<group>";
@@ -1149,7 +1153,7 @@
 				528C8BED197E6B4B007DE577 /* PFServiceroomViewController.h */,
 				528C8BEE197E6B4B007DE577 /* PFServiceroomViewController.m */,
 				528C8BEF197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib */,
-				52273CE21988AEA20023F87A /* PFServiceroomViewController.xib */,
+				528C31A719922966008670CD /* PFServiceroomViewController.xib */,
 			);
 			path = Serviceroom;
 			sourceTree = "<group>";
@@ -1429,6 +1433,7 @@
 				520C2482197654A60078C547 /* bt_reserve@2x.png in Resources */,
 				52041CC4197FA278005118C8 /* th_services_on.png in Resources */,
 				520C2487197654A60078C547 /* chapter03.png in Resources */,
+				528C31AA19922E20008670CD /* PFDetailRoomtypeViewController.xib in Resources */,
 				52273CE71988AEB50023F87A /* PFDetailFoldertypeViewController.xib in Resources */,
 				52273CD61988A9820023F87A /* en_roomtype_off.png in Resources */,
 				52273CDF1988AE8C0023F87A /* PFMapViewController.xib in Resources */,
@@ -1468,23 +1473,21 @@
 				520C2489197654A60078C547 /* ic_mail.png in Resources */,
 				52F5825F19768231002EFF81 /* map@2x.png in Resources */,
 				52BA06A7197791BA00677A5E /* ic_location.png in Resources */,
+				528C31A819922966008670CD /* PFServiceroomViewController.xib in Resources */,
 				52273CF91988B19F0023F87A /* PFLanguageViewController.xib in Resources */,
 				52A84E3D197FACE9008C7A16 /* arrest.png in Resources */,
-				52273CEB1988AECB0023F87A /* PFDetailRoomtypeViewController.xib in Resources */,
 				520C24EA1976615F0078C547 /* bt_reservation.png in Resources */,
 				520C2496197654A60078C547 /* PFOverViewController_Wide.xib in Resources */,
 				520C248B197654A60078C547 /* ic_phone.png in Resources */,
 				52273CE91988AEBF0023F87A /* PFServiceViewController.xib in Resources */,
 				52BA069F19778AFB00677A5E /* bg_comment.png in Resources */,
 				520C24EC1976615F0078C547 /* icon_share@2x.png in Resources */,
-				52273CE31988AEA20023F87A /* PFServiceroomViewController.xib in Resources */,
 				520C249B197654A60078C547 /* PFRoomTypeCell.xib in Resources */,
 				520C248A197654A60078C547 /* ic_mail@2x.png in Resources */,
 				52273CC91988A9700023F87A /* en_services_on@2x.png in Resources */,
 				524D321C1978D2E90026C3B4 /* chapter_box03.png in Resources */,
 				520C24A5197654A60078C547 /* PFFoldertypeCell.xib in Resources */,
 				52041CC8197FA278005118C8 /* th_resevation_on@2x.png in Resources */,
-				52273CE51988AEAB0023F87A /* PFServicefoodViewController.xib in Resources */,
 				520C2486197654A60078C547 /* chapter02@2x.png in Resources */,
 				52041CBF197FA278005118C8 /* th_resevation_off.png in Resources */,
 				524D32191978D2E10026C3B4 /* chapter_box02.png in Resources */,
@@ -1506,6 +1509,7 @@
 				528C8BF1197E6B4B007DE577 /* PFServiceroomViewController_Wide.xib in Resources */,
 				520C248D197654A60078C547 /* ic_website.png in Resources */,
 				52A84E3E197FACE9008C7A16 /* arrest@2x.png in Resources */,
+				528C31A6199228FB008670CD /* PFServicefoodViewController.xib in Resources */,
 				520C24DF19765BA30078C547 /* PFLanguageViewController_Wide.xib in Resources */,
 				52273CD71988A9820023F87A /* en_roomtype_on.png in Resources */,
 				520C248F197654A60078C547 /* Powered.png in Resources */,
@@ -1763,6 +1767,8 @@
 					"$(inherited)",
 					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
 					"\"$(SRCROOT)/../Frameworks\"",
+					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks/Facebook",
+					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
@@ -1784,6 +1790,8 @@
 					"$(inherited)",
 					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
 					"\"$(SRCROOT)/../Frameworks\"",
+					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks/Facebook",
+					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";

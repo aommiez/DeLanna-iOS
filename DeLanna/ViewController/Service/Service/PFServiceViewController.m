@@ -171,8 +171,6 @@ BOOL refreshDataService;
         cell = [nib objectAtIndex:0];
     }
     
-    cell.delegate = self;
-    
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -180,7 +178,7 @@ BOOL refreshDataService;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
-    cell.thumbnails.tag = ASYNC_IMAGE_TAG;
+    //cell.thumbnails.tag = ASYNC_IMAGE_TAG;
     cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
     
     cell.Type.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
@@ -188,9 +186,7 @@ BOOL refreshDataService;
     return cell;
 }
 
-- (void)ButtonTappedOnCell:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.NoInternetView removeFromSuperview];
     [self.delegate HideTabbar];
     
@@ -204,6 +200,7 @@ BOOL refreshDataService;
         }
         foldertypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
         foldertypeView.folder_id = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"id"];
+        foldertypeView.checkinternet = self.checkinternet;
         foldertypeView.delegate = self;
         [self.navController pushViewController:foldertypeView animated:YES];
         
@@ -218,6 +215,7 @@ BOOL refreshDataService;
             servicefoodView = [[PFServicefoodViewController alloc] initWithNibName:@"PFServicefoodViewController" bundle:nil];
         }
         servicefoodView.obj = [self.arrObj objectAtIndex:indexPath.row];
+        servicefoodView.checkinternet = self.checkinternet;
         servicefoodView.delegate = self;
         [self.navController pushViewController:servicefoodView animated:YES];
         
@@ -232,6 +230,7 @@ BOOL refreshDataService;
             serviceroomView = [[PFServiceroomViewController alloc] initWithNibName:@"PFServiceroomViewController" bundle:nil];
         }
         serviceroomView.obj = [self.arrObj objectAtIndex:indexPath.row];
+        serviceroomView.checkinternet = self.checkinternet;
         serviceroomView.delegate = self;
         [self.navController pushViewController:serviceroomView animated:YES];
         
@@ -367,6 +366,10 @@ BOOL refreshDataService;
     } else {
         [self.NoInternetView removeFromSuperview];
     }
+}
+
+- (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{
+    [self.delegate PFImageViewController:self viewPicture:link];
 }
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current{

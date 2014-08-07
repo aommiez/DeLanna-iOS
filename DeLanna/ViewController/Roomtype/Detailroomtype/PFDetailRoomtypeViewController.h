@@ -16,6 +16,7 @@
 @protocol PFDetailRoomtypeViewControllerDelegate <NSObject>
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current;
+- (void)PFImageViewController:(id)sender viewPicture:(NSString *)link;
 - (void) PFDetailRoomtypeViewControllerBack;
 
 @end
@@ -34,6 +35,8 @@
 @property (strong, nonatomic) NSMutableArray *arrObj;
 @property (strong, nonatomic) NSDictionary *obj;
 
+@property NSUserDefaults *DetailroomtypeOffline;
+
 @property (strong, nonatomic) IBOutlet UIView *NoInternetView;
 
 @property (strong, nonatomic) IBOutlet UIView *waitView;
@@ -42,6 +45,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (strong, nonatomic) IBOutlet UIView *headerImgView;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
 @property (strong, nonatomic) NSMutableArray *arrgalleryimg;
@@ -54,6 +58,13 @@
 @property (strong, nonatomic) IBOutlet UILabel *titlefeature;
 @property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *feature;
 
+@property (strong, nonatomic) IBOutlet AsyncImageView *imageView1;
+@property (strong, nonatomic) IBOutlet UILabel *name1;
+@property (strong, nonatomic) IBOutlet UILabel *price1;
+@property (strong, nonatomic) IBOutlet UILabel *baht1;
+@property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *detail1;
+@property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *feature1;
+
 @property (strong, nonatomic) IBOutlet UILabel *reserve;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
 
@@ -61,6 +72,7 @@
 
 -(void)ShowDetailView:(UIImageView *)imgView;
 
+- (IBAction)fullimgTapped:(id)sender;
 - (IBAction)fullimgalbumTapped:(id)sender;
 - (IBAction)reserveTapped:(id)sender;
 

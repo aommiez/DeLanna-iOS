@@ -144,13 +144,23 @@ BOOL refreshDataFeed;
 }
 
 - (void)PFDelannaApi:(id)sender getTimeUpdateResponse:(NSDictionary *)response {
-    NSLog(@"%@",response);
+    //NSLog(@"%@",response);
     
     [self.NoInternetView removeFromSuperview];
     
     NSString *timeupdate = [[NSString alloc] initWithFormat:@"%@",[response objectForKey:@"feed_gallery"]];
     
     if (![[self.feedOffline objectForKey:@"checkTimeUpdate"] isEqualToString:timeupdate]) {
+        [self.feedOffline setObject:timeupdate forKey:@"checkTimeUpdate"];
+        [self.pageScrollView removeFromSuperview];
+        [self.view addSubview:self.waitView];
+        
+        CALayer *popup = [self.popupwaitView layer];
+        [popup setMasksToBounds:YES];
+        [popup setCornerRadius:7.0f];
+        
+        [self viewDidLoad];
+    } else if ([self.checkinternet isEqualToString:@"error"]) {
         [self.feedOffline setObject:timeupdate forKey:@"checkTimeUpdate"];
         [self.pageScrollView removeFromSuperview];
         [self.view addSubview:self.waitView];
