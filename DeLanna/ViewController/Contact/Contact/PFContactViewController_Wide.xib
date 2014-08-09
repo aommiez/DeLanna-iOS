@@ -113,7 +113,7 @@
             </viewControllers>
         </navigationController>
         <view contentMode="scaleToFill" id="Ve2-Sz-UQm">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="932"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="927"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="GW7-ad-U6Z">

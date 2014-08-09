@@ -130,6 +130,7 @@
 - (void)PFDelannaApi:(id)sender getServiceRoomResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
     [self.serviceroomOffline setObject:response forKey:@"serviceroomArray"];
+    [self.serviceroomOffline synchronize];
     
     [self.waitView removeFromSuperview];
 //    [self.NoInternetView removeFromSuperview];
@@ -151,7 +152,7 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail1.text;
-        descText.textAlignment = NSTextAlignmentCenter;
+        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail1.alpha = 0;
@@ -175,7 +176,7 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail.text;
-        descText.textAlignment = NSTextAlignmentCenter;
+        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail.alpha = 0;
@@ -263,7 +264,7 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail1.text;
-        descText.textAlignment = NSTextAlignmentCenter;
+        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail1.alpha = 0;
@@ -287,7 +288,7 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail.text;
-        descText.textAlignment = NSTextAlignmentCenter;
+        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail.alpha = 0;

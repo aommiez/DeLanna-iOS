@@ -110,6 +110,7 @@ BOOL refreshDataContact;
     [self.contactOffline setObject:[response objectForKey:@"phone"] forKey:@"phone"];
     [self.contactOffline setObject:[response objectForKey:@"website"] forKey:@"website"];
     [self.contactOffline setObject:[response objectForKey:@"email"] forKey:@"email"];
+    [self.contactOffline synchronize];
     
     self.phoneTxt.text = [response objectForKey:@"phone"];
     self.websiteTxt.text = [response objectForKey:@"website"];

@@ -103,6 +103,7 @@ BOOL refreshDataRoomtype;
     }
     
     [self.roomtypeOffline setObject:response forKey:@"roomtypeArray"];
+    [self.roomtypeOffline synchronize];
     
     if ( [[response objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
         noDataRoomtype = YES;

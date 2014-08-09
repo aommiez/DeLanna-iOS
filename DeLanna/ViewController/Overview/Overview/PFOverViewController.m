@@ -39,9 +39,9 @@ BOOL refreshDataFeed;
     self.DelannaApi.delegate = self;
     
     if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
-        self.navItem.title = @"Overview";
+        self.navItem.title = @"Promotion";
     } else {
-        self.navItem.title = @"ภาพรวม";
+        self.navItem.title = @"โปรโมชั่น";
     }
     
     // Navbar setup
@@ -60,7 +60,11 @@ BOOL refreshDataFeed;
     [popup setCornerRadius:7.0f];
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Setting_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Notification_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(notify)];
+    
     self.navItem.leftBarButtonItem = leftButton;
+    self.navItem.rightBarButtonItem = rightButton;
     
     loadFeed = NO;
     noDataFeed = NO;
@@ -114,6 +118,10 @@ BOOL refreshDataFeed;
     settingView.delegate = self;
     [self.navController pushViewController:settingView animated:YES];
 
+}
+
+- (void)notify {
+    
 }
 
 - (void)PagedImageScrollView:(id)sender current:(NSString *)current{
@@ -252,6 +260,7 @@ BOOL refreshDataFeed;
     self.checkinternet = @"connect";
     
     if (!refreshDataFeed) {
+        [self.arrObj removeAllObjects];
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
         }
@@ -263,6 +272,7 @@ BOOL refreshDataFeed;
     }
     
     [self.feedOffline setObject:response forKey:@"feedArray"];
+    [self.feedOffline synchronize];
     
     if ( [[response objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
         noDataFeed = YES;
@@ -284,6 +294,7 @@ BOOL refreshDataFeed;
     [self.view addSubview:self.NoInternetView];
     
     if (!refreshDataFeed) {
+        [self.arrObj removeAllObjects];
         for (int i=0; i<[[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"data"] objectAtIndex:i]];
         }

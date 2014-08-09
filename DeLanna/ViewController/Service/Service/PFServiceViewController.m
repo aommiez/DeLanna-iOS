@@ -66,6 +66,7 @@ BOOL refreshDataService;
     refreshDataService = NO;
     
     self.arrObj = [[NSMutableArray alloc] init];
+    self.arrObj1 = [[NSMutableArray alloc] init];
     
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
         [self.DelannaApi getService:@"en"];
@@ -103,6 +104,7 @@ BOOL refreshDataService;
     }
     
     [self.serviceOffline setObject:response forKey:@"serviceArray"];
+    [self.serviceOffline synchronize];
     
     if ( [[response objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
         noDataService = YES;

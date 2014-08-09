@@ -1,14 +1,14 @@
 //
-//  PFFoldertypeCell.m
+//  PFFoldertype1Cell.m
 //  DeLanna
 //
-//  Created by Pariwat on 7/16/14.
+//  Created by Pariwat on 8/8/14.
 //  Copyright (c) 2014 Platwo fusion. All rights reserved.
 //
 
-#import "PFFoldertypeCell.h"
+#import "PFFoldertype1Cell.h"
 
-@implementation PFFoldertypeCell
+@implementation PFFoldertype1Cell
 
 - (void)awakeFromNib
 {

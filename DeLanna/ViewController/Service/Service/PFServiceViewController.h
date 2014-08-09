@@ -30,6 +30,7 @@
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
 @property (strong, nonatomic) NSMutableArray *arrObj;
+@property (strong, nonatomic) NSMutableArray *arrObj1;
 @property (strong, nonatomic) NSDictionary *obj;
 
 @property NSUserDefaults *serviceOffline;

@@ -1,18 +1,18 @@
 //
-//  PFDetailFoldertypeViewController.m
+//  PFDetailFoldertype1ViewController.m
 //  DeLanna
 //
-//  Created by Pariwat on 7/16/14.
+//  Created by Pariwat on 8/8/14.
 //  Copyright (c) 2014 Platwo fusion. All rights reserved.
 //
 
-#import "PFDetailFoldertypeViewController.h"
+#import "PFDetailFoldertype1ViewController.h"
 
-@interface PFDetailFoldertypeViewController ()
+@interface PFDetailFoldertype1ViewController ()
 
 @end
 
-@implementation PFDetailFoldertypeViewController
+@implementation PFDetailFoldertype1ViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,7 +20,7 @@
     if (self) {
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        self.foldertypeOffline = [NSUserDefaults standardUserDefaults];
+        self.foldertype1Offline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -59,6 +59,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(NSUInteger)supportedInterfaceOrientations{
@@ -69,15 +70,15 @@
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
-//    [self.NoInternetView removeFromSuperview];
-//    self.checkinternet = @"connect";
+    //    [self.NoInternetView removeFromSuperview];
+    //    self.checkinternet = @"connect";
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
     }
     
-    [self.foldertypeOffline setObject:response forKey:@"foldertypeArray"];
-    [self.foldertypeOffline synchronize];
+    [self.foldertype1Offline setObject:response forKey:@"foldertypeArray"];
+    [self.foldertype1Offline synchronize];
     
     [self.tableView reloadData];
     
@@ -88,12 +89,12 @@
     
     [self.waitView removeFromSuperview];
     
-//    self.checkinternet = @"error";
-//    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-//    [self.view addSubview:self.NoInternetView];
+    //    self.checkinternet = @"error";
+    //    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
+    //    [self.view addSubview:self.NoInternetView];
     
-    for (int i=0; i<[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] count]; ++i) {
-        [self.arrObj addObject:[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] objectAtIndex:i]];
+    for (int i=0; i<[[[self.foldertype1Offline objectForKey:@"foldertypeArray"] objectForKey:@"data"] count]; ++i) {
+        [self.arrObj addObject:[[[self.foldertype1Offline objectForKey:@"foldertypeArray"] objectForKey:@"data"] objectAtIndex:i]];
     }
     
     [self.tableView reloadData];
@@ -110,7 +111,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *simpleTableIdentifier = @"SimpleTableItem";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
@@ -140,9 +140,9 @@
                               }];
         
         cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
-
+        
         return cell;
-
+        
     } else {
         PFFoldertypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PFFoldertypeCell"];
         if(cell == nil) {
@@ -180,11 +180,11 @@
     
     if ([[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"type"] isEqualToString:@"folder"]) {
         
-        PFDetailFoldertype1ViewController *foldertypeView = [[PFDetailFoldertype1ViewController alloc] init];
+        PFDetailFoldertypeViewController *foldertypeView = [[PFDetailFoldertypeViewController alloc] init];
         if(IS_WIDESCREEN) {
-            foldertypeView = [[PFDetailFoldertype1ViewController alloc] initWithNibName:@"PFDetailFoldertype1ViewController_Wide" bundle:nil];
+            foldertypeView = [[PFDetailFoldertypeViewController alloc] initWithNibName:@"PFDetailFoldertypeViewController_Wide" bundle:nil];
         } else {
-            foldertypeView = [[PFDetailFoldertype1ViewController alloc] initWithNibName:@"PFDetailFoldertype1ViewController" bundle:nil];
+            foldertypeView = [[PFDetailFoldertypeViewController alloc] initWithNibName:@"PFDetailFoldertypeViewController" bundle:nil];
         }
         foldertypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
         foldertypeView.delegate = self;
@@ -229,7 +229,7 @@
     [self.delegate PFGalleryViewController:self sum:sum current:current];
 }
 
-- (void)PFDetailFoldertype1ViewControllerBack {
+- (void)PFDetailFoldertypeViewControllerBack {
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -261,10 +261,11 @@
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
         // 'Back' button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
-        if([self.delegate respondsToSelector:@selector(PFDetailFoldertypeViewControllerBack)]){
-            [self.delegate PFDetailFoldertypeViewControllerBack];
+        if([self.delegate respondsToSelector:@selector(PFDetailFoldertype1ViewControllerBack)]){
+            [self.delegate PFDetailFoldertype1ViewControllerBack];
         }
     }
 }
+
 
 @end

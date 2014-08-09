@@ -207,8 +207,7 @@
 - (void)PFDelannaApi:(id)sender getRoomtypeByIDResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
     [self.DetailroomtypeOffline setObject:response forKey:@"DetailroomtypeArray"];
-    
-    [self.waitView removeFromSuperview];
+    [self.DetailroomtypeOffline synchronize];
     
     NSString *length = [NSString stringWithFormat:@"%@",[response objectForKey:@"length"]];
     int num = length.intValue;
@@ -349,12 +348,12 @@
         }
     }
     
+    [self.waitView removeFromSuperview];
+    
 }
 
 - (void)PFDelannaApi:(id)sender getRoomtypeByIDErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
-    
-    [self.waitView removeFromSuperview];
     
     NSString *length = [NSString stringWithFormat:@"%@",[[self.DetailroomtypeOffline objectForKey:@"DetailroomtypeArray"] objectForKey:@"length"]];
     int num = length.intValue;
@@ -494,6 +493,8 @@
             xOffset += 70;
         }
     }
+    
+    [self.waitView removeFromSuperview];
 
 }
 

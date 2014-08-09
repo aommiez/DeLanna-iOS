@@ -1,8 +1,8 @@
 //
-//  PFDetailFoldertypeViewController.h
+//  PFDetailFoldertype1ViewController.h
 //  DeLanna
 //
-//  Created by Pariwat on 7/16/14.
+//  Created by Pariwat on 8/8/14.
 //  Copyright (c) 2014 Platwo fusion. All rights reserved.
 //
 
@@ -13,26 +13,26 @@
 
 #import "PFFoldertypeCell.h"
 #import "PFFoldertype1Cell.h"
-#import "PFDetailFoldertype1ViewController.h"
+#import "PFDetailFoldertypeViewController.h"
 #import "PFServicefoodViewController.h"
 #import "PFServiceroomViewController.h"
 
-@protocol PFDetailFoldertypeViewControllerDelegate <NSObject>
+@protocol PFDetailFoldertype1ViewControllerDelegate <NSObject>
 
 - (void)PFGalleryViewController:(id)sender sum:(NSMutableArray *)sum current:(NSString *)current;
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link;
-- (void)PFDetailFoldertypeViewControllerBack;
+- (void)PFDetailFoldertype1ViewControllerBack;
 
 @end
 
-@interface PFDetailFoldertypeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PFDetailFoldertype1ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
 @property (strong, nonatomic) NSMutableArray *arrObj;
 @property (strong, nonatomic) NSDictionary *obj;
 
-@property NSUserDefaults *foldertypeOffline;
+@property NSUserDefaults *foldertype1Offline;
 
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
