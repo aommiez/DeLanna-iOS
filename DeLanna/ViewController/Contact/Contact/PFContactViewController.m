@@ -98,7 +98,7 @@ BOOL refreshDataContact;
 
 - (void)PFDelannaApi:(id)sender getContactResponse:(NSDictionary *)response {
     self.obj = response;
-    //NSLog(@"%@",response);
+    NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
     [self.NoInternetView removeFromSuperview];

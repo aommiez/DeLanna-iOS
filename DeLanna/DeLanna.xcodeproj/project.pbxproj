@@ -34,6 +34,7 @@
 		520C24B4197654DD0078C547 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AC197654DD0078C547 /* BBBadgeBarButtonItem.m */; };
 		520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AE197654DD0078C547 /* CMMapLauncher.m */; };
 		520C24B6197654DD0078C547 /* PFMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24B0197654DD0078C547 /* PFMapView.m */; };
+		52344CDC19962AAC00FFF8D4 /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52344CDB19962AAC00FFF8D4 /* PFContactViewController.xib */; };
 		525CC08819933442000C3EF1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525CC08719933442000C3EF1 /* FacebookSDK.framework */; };
 		525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072A1977AD8000677A5E /* CFNetwork.framework */; };
 		525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA07281977AD7800677A5E /* SystemConfiguration.framework */; };
@@ -88,8 +89,7 @@
 		52D12E7E1996167A0009D735 /* PFCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12DFB1996167A0009D735 /* PFCommentViewController.xib */; };
 		52D12E7F1996167A0009D735 /* PFCommentViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12DFC1996167A0009D735 /* PFCommentViewController_Wide.xib */; };
 		52D12E801996167A0009D735 /* PFContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D12DFF1996167A0009D735 /* PFContactViewController.m */; };
-		52D12E811996167A0009D735 /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E001996167A0009D735 /* PFContactViewController.xib */; };
-		52D12E821996167A0009D735 /* PFContactViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E011996167A0009D735 /* PFContactViewController_Wide.xib */; };
+		52D12E811996167A0009D735 /* PFContactViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E001996167A0009D735 /* PFContactViewController_Wide.xib */; };
 		52D12E831996167A0009D735 /* bg_comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E031996167A0009D735 /* bg_comment.png */; };
 		52D12E841996167A0009D735 /* bg_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E041996167A0009D735 /* bg_map.png */; };
 		52D12E851996167A0009D735 /* bt_reserve.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E051996167A0009D735 /* bt_reserve.png */; };
@@ -277,6 +277,7 @@
 		520C24AE197654DD0078C547 /* CMMapLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMMapLauncher.m; sourceTree = "<group>"; };
 		520C24AF197654DD0078C547 /* PFMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMapView.h; sourceTree = "<group>"; };
 		520C24B0197654DD0078C547 /* PFMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMapView.m; sourceTree = "<group>"; };
+		52344CDB19962AAC00FFF8D4 /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
 		525CC08719933442000C3EF1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../Frameworks/FacebookSDK.framework; sourceTree = "<group>"; };
 		527BF2FE1974E41D0005BFF9 /* notificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = notificationView.xib; sourceTree = "<group>"; };
 		527BF2FF1974E41D0005BFF9 /* PFCustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFCustomBadge.h; sourceTree = "<group>"; };
@@ -382,8 +383,7 @@
 		52D12DFC1996167A0009D735 /* PFCommentViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFCommentViewController_Wide.xib; sourceTree = "<group>"; };
 		52D12DFE1996167A0009D735 /* PFContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFContactViewController.h; sourceTree = "<group>"; };
 		52D12DFF1996167A0009D735 /* PFContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFContactViewController.m; sourceTree = "<group>"; };
-		52D12E001996167A0009D735 /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
-		52D12E011996167A0009D735 /* PFContactViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController_Wide.xib; sourceTree = "<group>"; };
+		52D12E001996167A0009D735 /* PFContactViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController_Wide.xib; sourceTree = "<group>"; };
 		52D12E031996167A0009D735 /* bg_comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_comment.png; sourceTree = "<group>"; };
 		52D12E041996167A0009D735 /* bg_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_map.png; sourceTree = "<group>"; };
 		52D12E051996167A0009D735 /* bt_reserve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_reserve.png; sourceTree = "<group>"; };
@@ -940,8 +940,8 @@
 			children = (
 				52D12DFE1996167A0009D735 /* PFContactViewController.h */,
 				52D12DFF1996167A0009D735 /* PFContactViewController.m */,
-				52D12E001996167A0009D735 /* PFContactViewController.xib */,
-				52D12E011996167A0009D735 /* PFContactViewController_Wide.xib */,
+				52D12E001996167A0009D735 /* PFContactViewController_Wide.xib */,
+				52344CDB19962AAC00FFF8D4 /* PFContactViewController.xib */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -1234,10 +1234,10 @@
 			isa = PBXGroup;
 			children = (
 				52D12ED5199618E20009D735 /* default.jpg */,
+				52D12EEB199618E30009D735 /* th */,
 				52D12ED6199618E20009D735 /* en */,
 				52D12EE9199618E30009D735 /* Notification_icon@2x.png */,
 				52D12EEA199618E30009D735 /* Setting_icon@2x.png */,
-				52D12EEB199618E30009D735 /* th */,
 			);
 			path = ImagesTab;
 			sourceTree = SOURCE_ROOT;
@@ -1453,8 +1453,8 @@
 				52D12E881996167A0009D735 /* chapter01@2x.png in Resources */,
 				52D12F0D199618E30009D735 /* en_services_off@2x.png in Resources */,
 				52D12EC61996167A0009D735 /* PFDetailFoldertype1ViewController.xib in Resources */,
-				52D12E821996167A0009D735 /* PFContactViewController_Wide.xib in Resources */,
 				52D12E8C1996167A0009D735 /* chapter03@2x.png in Resources */,
+				52344CDC19962AAC00FFF8D4 /* PFContactViewController.xib in Resources */,
 				52D12E7E1996167A0009D735 /* PFCommentViewController.xib in Resources */,
 				52D12E9A1996167A0009D735 /* arrest@2x.png in Resources */,
 				527BF3181974E41D0005BFF9 /* notificationView.xib in Resources */,
@@ -1468,7 +1468,7 @@
 				52D12E831996167A0009D735 /* bg_comment.png in Resources */,
 				52D12EB71996167A0009D735 /* PFRoomTypeCell.xib in Resources */,
 				52D12F0C199618E30009D735 /* en_roomtype_on@2x.png in Resources */,
-				52D12E811996167A0009D735 /* PFContactViewController.xib in Resources */,
+				52D12E811996167A0009D735 /* PFContactViewController_Wide.xib in Resources */,
 				52D12E7F1996167A0009D735 /* PFCommentViewController_Wide.xib in Resources */,
 				52D12EC91996167A0009D735 /* PFDetailFoldertypeViewController.xib in Resources */,
 				52D12F0B199618E30009D735 /* en_roomtype_off@2x.png in Resources */,
@@ -1742,6 +1742,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "88C0F540-742F-47FE-90A7-3DC97DEA0375";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1773,6 +1774,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "88C0F540-742F-47FE-90A7-3DC97DEA0375";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
