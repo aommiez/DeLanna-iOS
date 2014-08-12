@@ -34,7 +34,7 @@
 		520C24B4197654DD0078C547 /* BBBadgeBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AC197654DD0078C547 /* BBBadgeBarButtonItem.m */; };
 		520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AE197654DD0078C547 /* CMMapLauncher.m */; };
 		520C24B6197654DD0078C547 /* PFMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24B0197654DD0078C547 /* PFMapView.m */; };
-		52344CDC19962AAC00FFF8D4 /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52344CDB19962AAC00FFF8D4 /* PFContactViewController.xib */; };
+		52165355199AB6E000E0D4E3 /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52165354199AB6E000E0D4E3 /* PFContactViewController.xib */; };
 		525CC08819933442000C3EF1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525CC08719933442000C3EF1 /* FacebookSDK.framework */; };
 		525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072A1977AD8000677A5E /* CFNetwork.framework */; };
 		525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA07281977AD7800677A5E /* SystemConfiguration.framework */; };
@@ -277,7 +277,7 @@
 		520C24AE197654DD0078C547 /* CMMapLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMMapLauncher.m; sourceTree = "<group>"; };
 		520C24AF197654DD0078C547 /* PFMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMapView.h; sourceTree = "<group>"; };
 		520C24B0197654DD0078C547 /* PFMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMapView.m; sourceTree = "<group>"; };
-		52344CDB19962AAC00FFF8D4 /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
+		52165354199AB6E000E0D4E3 /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
 		525CC08719933442000C3EF1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../Frameworks/FacebookSDK.framework; sourceTree = "<group>"; };
 		527BF2FE1974E41D0005BFF9 /* notificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = notificationView.xib; sourceTree = "<group>"; };
 		527BF2FF1974E41D0005BFF9 /* PFCustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFCustomBadge.h; sourceTree = "<group>"; };
@@ -941,7 +941,7 @@
 				52D12DFE1996167A0009D735 /* PFContactViewController.h */,
 				52D12DFF1996167A0009D735 /* PFContactViewController.m */,
 				52D12E001996167A0009D735 /* PFContactViewController_Wide.xib */,
-				52344CDB19962AAC00FFF8D4 /* PFContactViewController.xib */,
+				52165354199AB6E000E0D4E3 /* PFContactViewController.xib */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -1454,7 +1454,7 @@
 				52D12F0D199618E30009D735 /* en_services_off@2x.png in Resources */,
 				52D12EC61996167A0009D735 /* PFDetailFoldertype1ViewController.xib in Resources */,
 				52D12E8C1996167A0009D735 /* chapter03@2x.png in Resources */,
-				52344CDC19962AAC00FFF8D4 /* PFContactViewController.xib in Resources */,
+				52165355199AB6E000E0D4E3 /* PFContactViewController.xib in Resources */,
 				52D12E7E1996167A0009D735 /* PFCommentViewController.xib in Resources */,
 				52D12E9A1996167A0009D735 /* arrest@2x.png in Resources */,
 				527BF3181974E41D0005BFF9 /* notificationView.xib in Resources */,
