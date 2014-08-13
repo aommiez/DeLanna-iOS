@@ -38,8 +38,6 @@
 @property (strong, nonatomic) IBOutlet UIView *waitView;
 @property (strong, nonatomic) IBOutlet UIView *popupwaitView;
 
-@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
@@ -54,8 +52,6 @@
 @property (strong, nonatomic) IBOutlet AsyncImageView *imageView1;
 @property (strong, nonatomic) IBOutlet UILabel *name1;
 @property (strong, nonatomic) IBOutlet UILabel_UILabelDynamicHeight *detail1;
-
-@property (strong, nonatomic) NSString *checkinternet;
 
 -(void)ShowDetailView:(UIImageView *)imgView;
 

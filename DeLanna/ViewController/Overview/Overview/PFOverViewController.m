@@ -17,7 +17,9 @@
 BOOL loadFeed;
 BOOL noDataFeed;
 BOOL refreshDataFeed;
-#define ASYNC_IMAGE_TAG 9999
+
+int promotionInt;
+NSTimer *timmer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -169,16 +171,6 @@ BOOL refreshDataFeed;
         [popup setCornerRadius:7.0f];
         
         [self viewDidLoad];
-    } else if ([self.checkinternet isEqualToString:@"error"]) {
-        [self.feedOffline setObject:timeupdate forKey:@"checkTimeUpdate"];
-        [self.pageScrollView removeFromSuperview];
-        [self.view addSubview:self.waitView];
-        
-        CALayer *popup = [self.popupwaitView layer];
-        [popup setMasksToBounds:YES];
-        [popup setCornerRadius:7.0f];
-        
-        [self viewDidLoad];
     }
     
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
@@ -192,17 +184,25 @@ BOOL refreshDataFeed;
 
 - (void)PFDelannaApi:(id)sender getTimeUpdateErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
-    
-    self.checkinternet = @"error";
+
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
+    
+    promotionInt = 5;
+    timmer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+}
+
+- (void)countDown {
+    promotionInt -= 1;
+    if (promotionInt == 0) {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
-    [self.NoInternetView removeFromSuperview];
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrcontactimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
@@ -225,10 +225,6 @@ BOOL refreshDataFeed;
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
-    
-    self.checkinternet = @"error";
-    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-    [self.view addSubview:self.NoInternetView];
     
     self.tableView.tableHeaderView = self.headerView;
     UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
@@ -257,8 +253,6 @@ BOOL refreshDataFeed;
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
-    [self.NoInternetView removeFromSuperview];
-    self.checkinternet = @"connect";
     
     if (!refreshDataFeed) {
         [self.arrObj removeAllObjects];
@@ -289,10 +283,6 @@ BOOL refreshDataFeed;
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
-    
-    self.checkinternet = @"error";
-    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-    [self.view addSubview:self.NoInternetView];
     
     if (!refreshDataFeed) {
         [self.arrObj removeAllObjects];
@@ -401,15 +391,11 @@ BOOL refreshDataFeed;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
-    //cell.thumbnails.tag = ASYNC_IMAGE_TAG;
-    //cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
     
-    //
     [DLImageLoader loadImageFromURL:urlimg
                           completed:^(NSError *error, NSData *imgData) {
                               cell.thumbnails.image = [UIImage imageWithData:imgData];
                           }];
-    //
 
     cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
 
@@ -428,7 +414,6 @@ BOOL refreshDataFeed;
     }
     self.navItem.title = @" ";
     detailoverView.obj = [self.arrObj objectAtIndex:indexPath.row];
-    detailoverView.checkinternet = self.checkinternet;
     detailoverView.delegate = self;
     [self.navController pushViewController:detailoverView animated:YES];
 }
@@ -538,13 +523,6 @@ BOOL refreshDataFeed;
         self.navItem.title = @"โปรโมชั่น";
     }
     
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
-    
     if ([[self.DelannaApi getReset] isEqualToString:@"YES"]) {
         [self.delegate resetApp];
     }
@@ -557,13 +535,6 @@ BOOL refreshDataFeed;
         self.navItem.title = @"Promotion";
     } else {
         self.navItem.title = @"โปรโมชั่น";
-    }
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
     }
 }
 

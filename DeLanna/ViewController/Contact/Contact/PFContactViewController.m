@@ -18,6 +18,9 @@ BOOL loadContact;
 BOOL noDataContact;
 BOOL refreshDataContact;
 
+int contactInt;
+NSTimer *timmer;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -163,6 +166,9 @@ BOOL refreshDataContact;
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
+    contactInt = 5;
+    timmer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
     
@@ -202,6 +208,13 @@ BOOL refreshDataContact;
     
     self.tableView.tableFooterView = self.footerView;
     
+}
+
+- (void)countDown {
+    contactInt -= 1;
+    if (contactInt == 0) {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)fullimage:(UIGestureRecognizer *)gesture {

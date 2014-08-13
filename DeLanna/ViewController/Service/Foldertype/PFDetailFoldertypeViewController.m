@@ -47,13 +47,6 @@
     } else {
         [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"th"];
     }
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,8 +62,6 @@
     //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
-//    [self.NoInternetView removeFromSuperview];
-//    self.checkinternet = @"connect";
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
@@ -87,10 +78,6 @@
     NSLog(@"%@",errorResponse);
     
     [self.waitView removeFromSuperview];
-    
-//    self.checkinternet = @"error";
-//    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-//    [self.view addSubview:self.NoInternetView];
     
     for (int i=0; i<[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] count]; ++i) {
         [self.arrObj addObject:[[[self.foldertypeOffline objectForKey:@"foldertypeArray"] objectForKey:@"data"] objectAtIndex:i]];
@@ -132,8 +119,6 @@
         
         NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
         
-        //cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
-        
         [DLImageLoader loadImageFromURL:urlimg
                               completed:^(NSError *error, NSData *imgData) {
                                   cell.thumbnails.image = [UIImage imageWithData:imgData];
@@ -158,8 +143,6 @@
         
         NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
         
-        //cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
-        
         [DLImageLoader loadImageFromURL:urlimg
                               completed:^(NSError *error, NSData *imgData) {
                                   cell.thumbnails.image = [UIImage imageWithData:imgData];
@@ -176,7 +159,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.NoInternetView removeFromSuperview];
     
     if ([[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"type"] isEqualToString:@"folder"]) {
         
@@ -233,39 +215,18 @@
 }
 
 - (void)PFDetailFoldertype1ViewControllerBack {
-    
     self.navigationItem.title = [self.obj objectForKey:@"name"];
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
+
 }
 
 - (void)PFServicefoodViewControllerBack {
-    
     self.navigationItem.title = [self.obj objectForKey:@"name"];
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
+
 }
 
 - (void)PFServiceroomViewControllerBack {
-    
     self.navigationItem.title = [self.obj objectForKey:@"name"];
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

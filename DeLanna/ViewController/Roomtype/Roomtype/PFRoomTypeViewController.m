@@ -17,7 +17,9 @@
 BOOL loadRoomtype;
 BOOL noDataRoomtype;
 BOOL refreshDataRoomtype;
-#define ASYNC_IMAGE_TAG 9999
+
+int roomtypeInt;
+NSTimer *timmer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -124,6 +126,9 @@ BOOL refreshDataRoomtype;
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
+    roomtypeInt = 5;
+    timmer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    
     if (!refreshDataRoomtype) {
         for (int i=0; i<[[[self.roomtypeOffline objectForKey:@"roomtypeArray"] objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[[self.roomtypeOffline objectForKey:@"roomtypeArray"] objectForKey:@"data"] objectAtIndex:i]];
@@ -143,6 +148,13 @@ BOOL refreshDataRoomtype;
     }
     
     [self reloadData:YES];
+}
+
+- (void)countDown {
+    roomtypeInt -= 1;
+    if (roomtypeInt == 0) {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)reloadData:(BOOL)animated
@@ -179,15 +191,11 @@ BOOL refreshDataRoomtype;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
 
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
-    //cell.thumbnails.tag = ASYNC_IMAGE_TAG;
-    //cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
-    
-    //
+
     [DLImageLoader loadImageFromURL:urlimg
                           completed:^(NSError *error, NSData *imgData) {
                               cell.thumbnails.image = [UIImage imageWithData:imgData];
                           }];
-    //
    
     cell.name.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.price.text = [[NSString alloc] initWithFormat:@"%@",[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"price"]];
@@ -208,7 +216,6 @@ BOOL refreshDataRoomtype;
     }
     self.navItem.title = @" ";
     detailroomtypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
-    detailroomtypeView.checkinternet = self.checkinternet;
     detailroomtypeView.delegate = self;
     [self.navController pushViewController:detailroomtypeView animated:YES];
 }
@@ -318,13 +325,6 @@ BOOL refreshDataRoomtype;
         self.navItem.title = @"Room Type";
     } else {
         self.navItem.title = @"ห้องพัก";
-    }
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
     }
 }
 

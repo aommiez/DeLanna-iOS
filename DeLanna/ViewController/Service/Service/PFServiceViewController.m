@@ -17,7 +17,9 @@
 BOOL loadService;
 BOOL noDataService;
 BOOL refreshDataService;
-#define ASYNC_IMAGE_TAG 9999
+
+int serviceInt;
+NSTimer *timmer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -125,6 +127,9 @@ BOOL refreshDataService;
     self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
     [self.view addSubview:self.NoInternetView];
     
+    serviceInt = 5;
+    timmer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+    
     if (!refreshDataService) {
         for (int i=0; i<[[[self.serviceOffline objectForKey:@"serviceArray"] objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[[self.serviceOffline objectForKey:@"serviceArray"] objectForKey:@"data"] objectAtIndex:i]];
@@ -144,6 +149,13 @@ BOOL refreshDataService;
     }
     
     [self reloadData:YES];
+}
+
+- (void)countDown {
+    serviceInt -= 1;
+    if (serviceInt == 0) {
+        [self.NoInternetView removeFromSuperview];
+    }
 }
 
 - (void)reloadData:(BOOL)animated
@@ -180,8 +192,6 @@ BOOL refreshDataService;
     cell.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@",[[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"thumb"] objectForKey:@"url"]];
-    //cell.thumbnails.tag = ASYNC_IMAGE_TAG;
-    //cell.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
     
     [DLImageLoader loadImageFromURL:urlimg
                           completed:^(NSError *error, NSData *imgData) {
@@ -208,7 +218,6 @@ BOOL refreshDataService;
         self.navItem.title = @" ";
         foldertypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
         foldertypeView.folder_id = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"id"];
-        foldertypeView.checkinternet = self.checkinternet;
         foldertypeView.delegate = self;
         [self.navController pushViewController:foldertypeView animated:YES];
         
@@ -224,7 +233,6 @@ BOOL refreshDataService;
         }
         self.navItem.title = @" ";
         servicefoodView.obj = [self.arrObj objectAtIndex:indexPath.row];
-        servicefoodView.checkinternet = self.checkinternet;
         servicefoodView.delegate = self;
         [self.navController pushViewController:servicefoodView animated:YES];
         
@@ -240,7 +248,6 @@ BOOL refreshDataService;
         }
         self.navItem.title = @" ";
         serviceroomView.obj = [self.arrObj objectAtIndex:indexPath.row];
-        serviceroomView.checkinternet = self.checkinternet;
         serviceroomView.delegate = self;
         [self.navController pushViewController:serviceroomView animated:YES];
         
@@ -353,13 +360,6 @@ BOOL refreshDataService;
     } else {
         self.navItem.title = @"บริการ";
     }
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
 }
 
 - (void) PFServicefoodViewControllerBack {
@@ -370,13 +370,6 @@ BOOL refreshDataService;
     } else {
         self.navItem.title = @"บริการ";
     }
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
 }
 
 - (void) PFServiceroomViewControllerBack {
@@ -386,13 +379,6 @@ BOOL refreshDataService;
         self.navItem.title = @"Service";
     } else {
         self.navItem.title = @"บริการ";
-    }
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
     }
 }
 

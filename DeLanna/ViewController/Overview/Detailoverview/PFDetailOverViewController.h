@@ -35,8 +35,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) IBOutlet UIView *NoInternetView;
-
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 
@@ -46,8 +44,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *reserve;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
-
-@property (strong, nonatomic) NSString *checkinternet;
 
 - (IBAction)fullimgalbumTapped:(id)sender;
 - (IBAction)reserveTapped:(id)sender;

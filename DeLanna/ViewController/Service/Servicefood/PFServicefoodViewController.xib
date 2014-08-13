@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PFServicefoodViewController">
             <connections>
-                <outlet property="NoInternetView" destination="ntw-Al-GqX" id="SmH-Xr-4up"/>
                 <outlet property="baht" destination="dBP-fn-pbZ" id="8uG-q0-nXN"/>
                 <outlet property="baht1" destination="BJR-WE-JFl" id="Zup-jK-h6m"/>
                 <outlet property="detail" destination="Sqa-a0-nra" id="k47-Lh-vlC"/>
@@ -186,21 +185,6 @@
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
-        <view alpha="0.75" contentMode="scaleToFill" id="ntw-Al-GqX">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtA-UY-QVS">
-                    <rect key="frame" x="10" y="5" width="300" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

@@ -57,14 +57,11 @@
     
     //1
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
-    //self.imageView1.imageURL = [NSURL URLWithString:urlimg];
-    
-    //
+
     [DLImageLoader loadImageFromURL:urlimg
                           completed:^(NSError *error, NSData *imgData) {
                               self.imageView1.image = [UIImage imageWithData:imgData];
                           }];
-    //
     
     self.imageView1.layer.masksToBounds = YES;
     self.imageView1.contentMode = UIViewContentModeScaleAspectFill;
@@ -73,13 +70,6 @@
     self.price1.text = [[NSString alloc] initWithFormat:@"%@",[self.obj objectForKey:@"price"]];
     self.baht1.text = @"Baht";
     self.detail1.text = [self.obj objectForKey:@"detail"];
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
 
 }
 
@@ -137,8 +127,6 @@
     [self.servicefoodOffline synchronize];
     
     [self.waitView removeFromSuperview];
-//    [self.NoInternetView removeFromSuperview];
-//    self.checkinternet = @"connect";
     
     NSString *length = [NSString stringWithFormat:@"%@",[response objectForKey:@"length"]];
     int num = length.intValue;
@@ -156,7 +144,6 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail1.text;
-        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail1.alpha = 0;
@@ -181,7 +168,6 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail.text;
-        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail.alpha = 0;
@@ -200,14 +186,11 @@
         int xOffset = 0;
         
         NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
-        //imageView.imageURL = [NSURL URLWithString:urlimg];
-        
-        //
+
         [DLImageLoader loadImageFromURL:urlimg
                               completed:^(NSError *error, NSData *imgData) {
                                   imageView.image = [UIImage imageWithData:imgData];
                               }];
-        //
         
         imageView.layer.masksToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -224,14 +207,11 @@
             img.frame = CGRectMake(xOffset, 0, 70, 70);
             
             NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
-            //img.imageURL = [[NSURL alloc] initWithString:urlimg];
-            
-            //
+
             [DLImageLoader loadImageFromURL:urlimg
                                   completed:^(NSError *error, NSData *imgData) {
                                       img.image = [UIImage imageWithData:imgData];
                                   }];
-            //
             
             [images insertObject:img atIndex:i];
             
@@ -250,10 +230,6 @@
     
     [self.waitView removeFromSuperview];
     
-//    self.checkinternet = @"error";
-//    self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-//    [self.view addSubview:self.NoInternetView];
-    
     NSString *length = [NSString stringWithFormat:@"%@",[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"length"]];
     int num = length.intValue;
     
@@ -270,7 +246,6 @@
         UILabel *descText = [[UILabel alloc] initWithFrame:frame];
         descText.textColor = RGB(139, 94, 60);
         descText.text = self.detail1.text;
-        //descText.textAlignment = NSTextAlignmentCenter;
         descText.numberOfLines = lines;
         [descText setFont:[UIFont systemFontOfSize:15]];
         self.detail1.alpha = 0;
@@ -314,14 +289,11 @@
         int xOffset = 0;
         
         NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"data"] objectAtIndex:0] objectForKey:@"url"],@"?width=800&height=600"];
-        //imageView.imageURL = [NSURL URLWithString:urlimg];
         
-        //
         [DLImageLoader loadImageFromURL:urlimg
                               completed:^(NSError *error, NSData *imgData) {
                                   imageView.image = [UIImage imageWithData:imgData];
                               }];
-        //
         
         imageView.layer.masksToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -338,14 +310,11 @@
             img.frame = CGRectMake(xOffset, 0, 70, 70);
             
             NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[[[self.servicefoodOffline objectForKey:@"servicefoodArray"] objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"],@"?width=800&height=600"];
-            //img.imageURL = [[NSURL alloc] initWithString:urlimg];
-            
-            //
+
             [DLImageLoader loadImageFromURL:urlimg
                                   completed:^(NSError *error, NSData *imgData) {
                                       img.image = [UIImage imageWithData:imgData];
                                   }];
-            //
             
             [images insertObject:img atIndex:i];
             

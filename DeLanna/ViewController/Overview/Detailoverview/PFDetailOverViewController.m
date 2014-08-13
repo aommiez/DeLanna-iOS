@@ -14,8 +14,6 @@
 
 @implementation PFDetailOverViewController
 
-#define ASYNC_IMAGE_TAG 9999
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,15 +51,11 @@
     self.thumbnails.contentMode = UIViewContentModeScaleAspectFill;
     
     NSString *urlimg = [[NSString alloc] initWithFormat:@"%@%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"],@"?width=800&height=600"];
-    //self.thumbnails.tag = ASYNC_IMAGE_TAG;
-    //self.thumbnails.imageURL = [[NSURL alloc] initWithString:urlimg];
     
-    //
     [DLImageLoader loadImageFromURL:urlimg
                           completed:^(NSError *error, NSData *imgData) {
                               self.thumbnails.image = [UIImage imageWithData:imgData];
                           }];
-    //
 
     self.name.text = [self.obj objectForKey:@"name"];
     self.detail.text = [self.obj objectForKey:@"detail"];
@@ -86,13 +80,7 @@
     
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
-    
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -187,8 +175,6 @@
 
 - (IBAction)reserveTapped:(id)sender{
     
-    [self.NoInternetView removeFromSuperview];
-    
     PFWebViewController *webView = [[PFWebViewController alloc] init];
     if(IS_WIDESCREEN) {
         webView = [[PFWebViewController alloc] initWithNibName:@"PFWebViewController_Wide" bundle:nil];
@@ -201,15 +187,8 @@
 }
 
 - (void)PFWebViewControllerBack {
-    
     self.navigationItem.title = [self.obj objectForKey:@"name"];
     
-    if ([self.checkinternet isEqualToString:@"error"]) {
-        self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
-        [self.view addSubview:self.NoInternetView];
-    } else {
-        [self.NoInternetView removeFromSuperview];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
