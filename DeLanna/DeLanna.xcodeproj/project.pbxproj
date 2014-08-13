@@ -108,8 +108,6 @@
 		52D12E921996167A0009D735 /* ic_website@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E121996167A0009D735 /* ic_website@2x.png */; };
 		52D12E931996167A0009D735 /* icon_reload.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E131996167A0009D735 /* icon_reload.png */; };
 		52D12E941996167A0009D735 /* icon_reload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E141996167A0009D735 /* icon_reload@2x.png */; };
-		52D12E951996167A0009D735 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E151996167A0009D735 /* map.png */; };
-		52D12E961996167A0009D735 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E161996167A0009D735 /* map@2x.png */; };
 		52D12E971996167A0009D735 /* Powered.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E171996167A0009D735 /* Powered.png */; };
 		52D12E981996167A0009D735 /* Powered@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E181996167A0009D735 /* Powered@2x.png */; };
 		52D12E991996167A0009D735 /* arrest.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E1B1996167A0009D735 /* arrest.png */; };
@@ -402,8 +400,6 @@
 		52D12E121996167A0009D735 /* ic_website@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_website@2x.png"; sourceTree = "<group>"; };
 		52D12E131996167A0009D735 /* icon_reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_reload.png; sourceTree = "<group>"; };
 		52D12E141996167A0009D735 /* icon_reload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_reload@2x.png"; sourceTree = "<group>"; };
-		52D12E151996167A0009D735 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
-		52D12E161996167A0009D735 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		52D12E171996167A0009D735 /* Powered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Powered.png; sourceTree = "<group>"; };
 		52D12E181996167A0009D735 /* Powered@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Powered@2x.png"; sourceTree = "<group>"; };
 		52D12E1B1996167A0009D735 /* arrest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrest.png; sourceTree = "<group>"; };
@@ -967,8 +963,6 @@
 				52D12E121996167A0009D735 /* ic_website@2x.png */,
 				52D12E131996167A0009D735 /* icon_reload.png */,
 				52D12E141996167A0009D735 /* icon_reload@2x.png */,
-				52D12E151996167A0009D735 /* map.png */,
-				52D12E161996167A0009D735 /* map@2x.png */,
 				52D12E171996167A0009D735 /* Powered.png */,
 				52D12E181996167A0009D735 /* Powered@2x.png */,
 			);
@@ -1463,7 +1457,6 @@
 				52D12ED31996167A0009D735 /* PFServiceroomViewController_Wide.xib in Resources */,
 				52D12EAD1996167A0009D735 /* PFOverViewController.xib in Resources */,
 				52D12E9C1996167A0009D735 /* PFMapViewController.xib in Resources */,
-				52D12E951996167A0009D735 /* map.png in Resources */,
 				52D12E871996167A0009D735 /* chapter01.png in Resources */,
 				52D12E831996167A0009D735 /* bg_comment.png in Resources */,
 				52D12EB71996167A0009D735 /* PFRoomTypeCell.xib in Resources */,
@@ -1525,7 +1518,6 @@
 				52D12EC11996167A0009D735 /* PFFoldertype1Cell.xib in Resources */,
 				52D12F1F199618E30009D735 /* th_services_off@2x.png in Resources */,
 				52D12F0A199618E30009D735 /* en_resevation_on@2x.png in Resources */,
-				52D12E961996167A0009D735 /* map@2x.png in Resources */,
 				52D12F04199618E30009D735 /* en_roomtype_on.png in Resources */,
 				52BA07231977993B00677A5E /* MWPhotoBrowser.bundle in Resources */,
 				52D12F14199618E30009D735 /* th_resevation_on.png in Resources */,

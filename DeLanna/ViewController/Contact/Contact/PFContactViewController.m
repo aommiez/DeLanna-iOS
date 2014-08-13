@@ -14,6 +14,10 @@
 
 @implementation PFContactViewController
 
+BOOL loadContact;
+BOOL noDataContact;
+BOOL refreshDataContact;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -81,6 +85,13 @@
     [self.mapofflineImage setMultipleTouchEnabled:YES];
     [self.mapofflineImage setUserInteractionEnabled:YES];
     
+    self.mapofflineImage.layer.masksToBounds = YES;
+    self.mapofflineImage.contentMode = UIViewContentModeScaleAspectFill;
+    
+    loadContact = NO;
+    noDataContact = NO;
+    refreshDataContact = NO;
+    
     [self.DelannaApi getContact];
 
 }
@@ -96,15 +107,13 @@
 
 - (void)PFDelannaApi:(id)sender getContactResponse:(NSDictionary *)response {
     self.obj = response;
-    NSLog(@"%@",response);
+    //NSLog(@"%@",response);
     
     [self.waitView removeFromSuperview];
     [self.NoInternetView removeFromSuperview];
     self.checkinternet = @"connect";
     
-    [self.contactOffline setObject:[response objectForKey:@"phone"] forKey:@"phone"];
-    [self.contactOffline setObject:[response objectForKey:@"website"] forKey:@"website"];
-    [self.contactOffline setObject:[response objectForKey:@"email"] forKey:@"email"];
+    [self.contactOffline setObject:response forKey:@"contactOffline"];
     [self.contactOffline synchronize];
     
     self.phoneTxt.text = [response objectForKey:@"phone"];
@@ -117,20 +126,30 @@
     NSString *getwidth = [[response objectForKey:@"picture"] objectForKey:@"width"];
     int width = [getwidth intValue];
     if (width == 300) {
-        self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, self.mapofflineImage.frame.size.width, height);
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+height);
+        self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, height);
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+height-10);
+        
+        [DLImageLoader loadImageFromURL:[[response objectForKey:@"picture"] objectForKey:@"url"]
+                              completed:^(NSError *error, NSData *imgData) {
+                                  self.mapofflineImage.image = [UIImage imageWithData:imgData];
+                              }];
+        
+        self.tableView.tableHeaderView = self.headerView;
     } else {
         int sumheight = (height*300)/width;
-        self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, self.mapofflineImage.frame.size.width, sumheight);
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height+sumheight);
+        self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, sumheight);
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+sumheight-10);
+        
+        [DLImageLoader loadImageFromURL:[[response objectForKey:@"picture"] objectForKey:@"url"]
+                              completed:^(NSError *error, NSData *imgData) {
+                                  self.mapofflineImage.image = [UIImage imageWithData:imgData];
+                              }];
+        
+        self.tableView.tableHeaderView = self.headerView;
     }
     
-    [DLImageLoader loadImageFromURL:[[response objectForKey:@"picture"] objectForKey:@"url"]
-                          completed:^(NSError *error, NSData *imgData) {
-                              self.mapofflineImage.image = [UIImage imageWithData:imgData];
-                          }];
-    
-    self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
 
 }
@@ -147,18 +166,46 @@
     self.tableView.tableHeaderView = self.headerView;
     self.tableView.tableFooterView = self.footerView;
     
-    self.phoneTxt.text = [self.contactOffline objectForKey:@"phone"];
-    self.websiteTxt.text = [self.contactOffline objectForKey:@"website"];
-    self.emailTxt.text = [self.contactOffline objectForKey:@"email"];
+    self.phoneTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"phone"];
+    self.websiteTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"website"];
+    self.emailTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"email"];
+    
+    NSString *getheight = [[[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"picture"] objectForKey:@"height"];
+    int height = [getheight intValue];
+    
+    NSString *getwidth = [[[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"picture"] objectForKey:@"width"];
+    int width = [getwidth intValue];
+    if (width == 300) {
+        self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, height);
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+height-10);
+        
+        [DLImageLoader loadImageFromURL:[[[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"picture"] objectForKey:@"url"]
+                              completed:^(NSError *error, NSData *imgData) {
+                                  self.mapofflineImage.image = [UIImage imageWithData:imgData];
+                              }];
+        
+        self.tableView.tableHeaderView = self.headerView;
+    } else {
+        int sumheight = (height*300)/width;
+        self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, sumheight);
+        
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+sumheight-10);
+        
+        [DLImageLoader loadImageFromURL:[[[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"picture"] objectForKey:@"url"]
+                              completed:^(NSError *error, NSData *imgData) {
+                                  self.mapofflineImage.image = [UIImage imageWithData:imgData];
+                              }];
+        
+        self.tableView.tableHeaderView = self.headerView;
+    }
+    
+    self.tableView.tableFooterView = self.footerView;
     
 }
 
 - (void)fullimage:(UIGestureRecognizer *)gesture {
     [self.delegate PFImageViewController:self viewPicture:[[self.obj objectForKey:@"picture"] objectForKey:@"url"]];
-}
-
-- (IBAction)fullimageTapped:(id)sender{
-    [self.delegate PFImageMapViewController:self];
 }
 
 - (IBAction)mapTapped:(id)sender{
@@ -299,6 +346,97 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 0;
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	//NSLog(@"%f",scrollView.contentOffset.y);
+	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ( scrollView.contentOffset.y < 0.0f ) {
+        //NSLog(@"refreshData < 0.0f");
+        [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        self.loadLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
+        self.act.alpha =1;
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    //NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < -60.0f ) {
+        refreshDataContact = YES;
+        
+        self.DelannaApi = [[PFDelannaApi alloc] init];
+        self.DelannaApi.delegate = self;
+        
+        [self.DelannaApi getContact];
+        
+        if ([[self.obj objectForKey:@"total"] intValue] == 0) {
+            [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            self.loadLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
+            self.act.alpha =1;
+        }
+    } else {
+        self.loadLabel.text = @"";
+        self.act.alpha = 0;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    if ( scrollView.contentOffset.y < -100.0f ) {
+        [UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.2];
+        self.tableView.frame = CGRectMake(0, 60, 320, self.tableView.frame.size.height);
+		[UIView commitAnimations];
+        [self performSelector:@selector(resizeTable) withObject:nil afterDelay:2];
+        
+        if ([[self.obj objectForKey:@"total"] intValue] == 0) {
+            [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            self.loadLabel.text = [NSString stringWithFormat:@"Last Updated: %@", [dateFormatter stringFromDate:[NSDate date]]];
+            self.act.alpha =1;
+        }
+    } else {
+        self.loadLabel.text = @"";
+        self.act.alpha = 0;
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    float offset = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height));
+    if (offset >= 0 && offset <= 5) {
+        if (!noDataContact) {
+            refreshDataContact = NO;
+            
+            self.DelannaApi = [[PFDelannaApi alloc] init];
+            self.DelannaApi.delegate = self;
+            
+            [self.DelannaApi getContact];
+            
+        }
+    }
+}
+
+- (void)resizeTable {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);
+    [UIView commitAnimations];
 }
 
 - (void) PFMapViewControllerBack {

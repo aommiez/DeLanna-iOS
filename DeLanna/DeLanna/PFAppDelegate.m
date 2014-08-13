@@ -395,42 +395,6 @@ BOOL newMedia;
 
 }
 
-- (void)PFImageMapViewController:(id)sender {
-    
-    SDImageCache *imageCache = [SDImageCache sharedImageCache];
-    [imageCache clearMemory];
-    [imageCache clearDisk];
-    [imageCache cleanDisk];
-    NSMutableArray *photos = [[NSMutableArray alloc] init];
-	NSMutableArray *thumbs = [[NSMutableArray alloc] init];
-    MWPhoto *photo;
-    BOOL displayActionButton = YES;
-    BOOL displaySelectionButtons = NO;
-    BOOL displayNavArrows = NO;
-    BOOL enableGrid = YES;
-    BOOL startOnGrid = NO;
-    BOOL uploadp = NO;
-    photo = [MWPhoto photoWithImage:[UIImage imageNamed:@"map.png"]];
-    [photos addObject:photo];
-    enableGrid = NO;
-    self.photos = photos;
-    self.thumbs = thumbs;
-    MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-    browser.displayActionButton = displayActionButton;
-    browser.displayNavArrows = displayNavArrows;
-    browser.displaySelectionButtons = displaySelectionButtons;
-    browser.alwaysShowControls = displaySelectionButtons;
-    browser.zoomPhotosToFill = NO;
-    browser.enableGrid = enableGrid;
-    browser.startOnGrid = startOnGrid;
-    browser.uploadButton = uploadp;
-    [browser setCurrentPhotoIndex:0];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
-    nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self.window.rootViewController presentViewController:nc animated:YES completion:nil];
-             
-}
-
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{
     
     SDImageCache *imageCache = [SDImageCache sharedImageCache];

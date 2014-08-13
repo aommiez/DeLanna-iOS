@@ -18,7 +18,6 @@
 
 @protocol PFContactViewControllerDelegate <NSObject>
 
-- (void)PFImageMapViewController:(id)sender;
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link;
 - (void)HideTabbar;
 - (void)ShowTabbar;
