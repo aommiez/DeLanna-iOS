@@ -37,12 +37,18 @@
         self.applanguage.text = @"App Language";
         self.contentlanguage.text = @"Content Language";
         self.applanguagestatus.text = @"EN";
+        
+        self.notificationsetting.text = @"Notification Setting";
+        self.notification.text = @"Notification";
     } else {
         self.navigationItem.title = @"ตั้งค่า";
         self.languagesetting.text = @"ตั้งค่าภาษา";
         self.applanguage.text = @"ภาษาแอพพลิเคชั่น";
         self.contentlanguage.text = @"ภาษาเนื้อหา";
         self.applanguagestatus.text = @"TH";
+        
+        self.notificationsetting.text = @"ตั้งค่าการแจ้งเตือน";
+        self.notification.text = @"การแจ้งเตือน";
     }
     
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {

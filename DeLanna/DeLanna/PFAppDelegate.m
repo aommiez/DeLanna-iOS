@@ -311,8 +311,8 @@ BOOL newMedia;
         if(IS_WIDESCREEN){
             
             PFTabBarItemButton *item0 = [self.tabBarViewController.itemButtons objectAtIndex:0];
-            [item0 setHighlightedImage:[UIImage imageNamed:@"en_overview_on"]];
-            [item0 setStanbyImage:[UIImage imageNamed:@"en_overview_off"]];
+            [item0 setHighlightedImage:[UIImage imageNamed:@"en_promotion_on"]];
+            [item0 setStanbyImage:[UIImage imageNamed:@"en_promotion_off"]];
             
             PFTabBarItemButton *item1 = [self.tabBarViewController.itemButtons objectAtIndex:1];
             [item1 setHighlightedImage:[UIImage imageNamed:@"en_roomtype_on"]];
@@ -329,8 +329,8 @@ BOOL newMedia;
         }else{
             
             PFTabBarItemButton *item0 = [self.tabBarViewController.itemButtons objectAtIndex:0];
-            [item0 setHighlightedImage:[UIImage imageNamed:@"en_overview_on"]];
-            [item0 setStanbyImage:[UIImage imageNamed:@"en_overview_off"]];
+            [item0 setHighlightedImage:[UIImage imageNamed:@"en_promotion_on"]];
+            [item0 setStanbyImage:[UIImage imageNamed:@"en_promotion_off"]];
             
             PFTabBarItemButton *item1 = [self.tabBarViewController.itemButtons objectAtIndex:1];
             [item1 setHighlightedImage:[UIImage imageNamed:@"en_roomtype_on"]];
@@ -349,8 +349,8 @@ BOOL newMedia;
         if(IS_WIDESCREEN){
             
             PFTabBarItemButton *item0 = [self.tabBarViewController.itemButtons objectAtIndex:0];
-            [item0 setHighlightedImage:[UIImage imageNamed:@"th_overview_on"]];
-            [item0 setStanbyImage:[UIImage imageNamed:@"th_overview_off"]];
+            [item0 setHighlightedImage:[UIImage imageNamed:@"th_promotion_on"]];
+            [item0 setStanbyImage:[UIImage imageNamed:@"th_promotion_off"]];
             
             PFTabBarItemButton *item1 = [self.tabBarViewController.itemButtons objectAtIndex:1];
             [item1 setHighlightedImage:[UIImage imageNamed:@"th_roomtype_on"]];
@@ -367,8 +367,8 @@ BOOL newMedia;
         }else{
             
             PFTabBarItemButton *item0 = [self.tabBarViewController.itemButtons objectAtIndex:0];
-            [item0 setHighlightedImage:[UIImage imageNamed:@"th_overview_on"]];
-            [item0 setStanbyImage:[UIImage imageNamed:@"th_overview_off"]];
+            [item0 setHighlightedImage:[UIImage imageNamed:@"th_promotion_on"]];
+            [item0 setStanbyImage:[UIImage imageNamed:@"th_promotion_off"]];
             
             PFTabBarItemButton *item1 = [self.tabBarViewController.itemButtons objectAtIndex:1];
             [item1 setHighlightedImage:[UIImage imageNamed:@"th_roomtype_on"]];

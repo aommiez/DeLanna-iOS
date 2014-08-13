@@ -34,6 +34,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *applanguagestatus;
 @property (strong, nonatomic) IBOutlet UILabel *contentlanguagestatus;
 
+@property (strong, nonatomic) IBOutlet UILabel *notificationsetting;
+@property (strong, nonatomic) IBOutlet UILabel *notification;
+
 - (IBAction)appsettingTapped:(id)sender;
 - (IBAction)contentsettingTapped:(id)sender;
 
