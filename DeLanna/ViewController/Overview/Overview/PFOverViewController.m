@@ -115,6 +115,7 @@ BOOL refreshDataFeed;
     } else {
         settingView = [[PFSettingViewController alloc] initWithNibName:@"PFSettingViewController" bundle:nil];
     }
+    self.navItem.title = @" ";
     settingView.delegate = self;
     [self.navController pushViewController:settingView animated:YES];
 
@@ -425,6 +426,7 @@ BOOL refreshDataFeed;
     } else {
         detailoverView = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController" bundle:nil];
     }
+    self.navItem.title = @" ";
     detailoverView.obj = [self.arrObj objectAtIndex:indexPath.row];
     detailoverView.checkinternet = self.checkinternet;
     detailoverView.delegate = self;
@@ -530,6 +532,12 @@ BOOL refreshDataFeed;
 - (void)PFSettingViewControllerBack {
     [self.delegate ShowTabbar];
     
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Promotion";
+    } else {
+        self.navItem.title = @"โปรโมชั่น";
+    }
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -544,6 +552,12 @@ BOOL refreshDataFeed;
 
 - (void)PFDetailOverViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Promotion";
+    } else {
+        self.navItem.title = @"โปรโมชั่น";
+    }
     
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);

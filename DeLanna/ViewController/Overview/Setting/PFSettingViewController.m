@@ -71,6 +71,7 @@
     } else {
         languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController" bundle:nil];
     }
+    self.navigationItem.title = @" ";
     languageView.delegate = self;
     languageView.statusSetting = @"app";
     [self.navigationController pushViewController:languageView animated:YES];
@@ -84,6 +85,7 @@
     } else {
         languageView = [[PFLanguageViewController alloc] initWithNibName:@"PFLanguageViewController" bundle:nil];
     }
+    self.navigationItem.title = @" ";
     languageView.delegate = self;
     languageView.statusSetting = @"content";
     [self.navigationController pushViewController:languageView animated:YES];

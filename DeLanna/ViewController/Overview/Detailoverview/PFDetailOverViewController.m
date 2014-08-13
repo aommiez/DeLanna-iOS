@@ -195,11 +195,14 @@
     } else {
         webView = [[PFWebViewController alloc] initWithNibName:@"PFWebViewController" bundle:nil];
     }
+    self.navigationItem.title = @" ";
     webView.delegate = self;
     [self.navigationController pushViewController:webView animated:YES];
 }
 
 - (void)PFWebViewControllerBack {
+    
+    self.navigationItem.title = [self.obj objectForKey:@"name"];
     
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);

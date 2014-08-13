@@ -219,6 +219,7 @@ BOOL refreshDataContact;
     } else {
         mapView = [[PFMapViewController alloc] initWithNibName:@"PFMapViewController" bundle:nil];
     }
+    self.navItem.title = @" ";
     mapView.delegate = self;
     [self.navController pushViewController:mapView animated:YES];
 }
@@ -316,6 +317,7 @@ BOOL refreshDataContact;
     } else {
         commentView = [[PFCommentViewController alloc] initWithNibName:@"PFCommentViewController" bundle:nil];
     }
+    self.navItem.title = @" ";
     commentView.delegate = self;
     [self.navController pushViewController:commentView animated:YES];
 }
@@ -331,6 +333,7 @@ BOOL refreshDataContact;
     } else {
         webView = [[PFWebViewController alloc] initWithNibName:@"PFWebViewController" bundle:nil];
     }
+    self.navItem.title = @" ";
     webView.delegate = self;
     [self.navController pushViewController:webView animated:YES];
 }
@@ -442,6 +445,12 @@ BOOL refreshDataContact;
 - (void) PFMapViewControllerBack {
     [self.delegate ShowTabbar];
     
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Reservation";
+    } else {
+        self.navItem.title = @"สำรองห้องพัก";
+    }
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -453,6 +462,12 @@ BOOL refreshDataContact;
 - (void) PFWebViewControllerBack {
     [self.delegate ShowTabbar];
     
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Reservation";
+    } else {
+        self.navItem.title = @"สำรองห้องพัก";
+    }
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -463,6 +478,12 @@ BOOL refreshDataContact;
 
 - (void) PFCommentViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Reservation";
+    } else {
+        self.navItem.title = @"สำรองห้องพัก";
+    }
 }
 
 @end

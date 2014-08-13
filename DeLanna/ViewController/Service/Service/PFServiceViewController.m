@@ -205,6 +205,7 @@ BOOL refreshDataService;
         } else {
             foldertypeView = [[PFDetailFoldertypeViewController alloc] initWithNibName:@"PFDetailFoldertypeViewController" bundle:nil];
         }
+        self.navItem.title = @" ";
         foldertypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
         foldertypeView.folder_id = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"id"];
         foldertypeView.checkinternet = self.checkinternet;
@@ -221,6 +222,7 @@ BOOL refreshDataService;
         } else {
             servicefoodView = [[PFServicefoodViewController alloc] initWithNibName:@"PFServicefoodViewController" bundle:nil];
         }
+        self.navItem.title = @" ";
         servicefoodView.obj = [self.arrObj objectAtIndex:indexPath.row];
         servicefoodView.checkinternet = self.checkinternet;
         servicefoodView.delegate = self;
@@ -236,6 +238,7 @@ BOOL refreshDataService;
         } else {
             serviceroomView = [[PFServiceroomViewController alloc] initWithNibName:@"PFServiceroomViewController" bundle:nil];
         }
+        self.navItem.title = @" ";
         serviceroomView.obj = [self.arrObj objectAtIndex:indexPath.row];
         serviceroomView.checkinternet = self.checkinternet;
         serviceroomView.delegate = self;
@@ -345,6 +348,12 @@ BOOL refreshDataService;
 - (void) PFDetailFoldertypeViewControllerBack {
     [self.delegate ShowTabbar];
     
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Service";
+    } else {
+        self.navItem.title = @"บริการ";
+    }
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -356,6 +365,12 @@ BOOL refreshDataService;
 - (void) PFServicefoodViewControllerBack {
     [self.delegate ShowTabbar];
     
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Service";
+    } else {
+        self.navItem.title = @"บริการ";
+    }
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -366,6 +381,12 @@ BOOL refreshDataService;
 
 - (void) PFServiceroomViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Service";
+    } else {
+        self.navItem.title = @"บริการ";
+    }
     
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);

@@ -186,6 +186,7 @@
         } else {
             foldertypeView = [[PFDetailFoldertype1ViewController alloc] initWithNibName:@"PFDetailFoldertype1ViewController" bundle:nil];
         }
+        self.navigationItem.title = @" ";
         foldertypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
         foldertypeView.delegate = self;
         [self.navigationController pushViewController:foldertypeView animated:YES];
@@ -200,6 +201,7 @@
         } else {
             servicefoodView = [[PFServicefoodViewController alloc] initWithNibName:@"PFServicefoodViewController" bundle:nil];
         }
+        self.navigationItem.title = @" ";
         servicefoodView.obj = [self.arrObj objectAtIndex:indexPath.row];
         servicefoodView.delegate = self;
         [self.navigationController pushViewController:servicefoodView animated:YES];
@@ -214,6 +216,7 @@
         } else {
             serviceroomView = [[PFServiceroomViewController alloc] initWithNibName:@"PFServiceroomViewController" bundle:nil];
         }
+        self.navigationItem.title = @" ";
         serviceroomView.obj = [self.arrObj objectAtIndex:indexPath.row];
         serviceroomView.delegate = self;
         [self.navigationController pushViewController:serviceroomView animated:YES];
@@ -230,6 +233,9 @@
 }
 
 - (void)PFDetailFoldertype1ViewControllerBack {
+    
+    self.navigationItem.title = [self.obj objectForKey:@"name"];
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -239,6 +245,9 @@
 }
 
 - (void)PFServicefoodViewControllerBack {
+    
+    self.navigationItem.title = [self.obj objectForKey:@"name"];
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];
@@ -248,6 +257,9 @@
 }
 
 - (void)PFServiceroomViewControllerBack {
+    
+    self.navigationItem.title = [self.obj objectForKey:@"name"];
+    
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
         [self.view addSubview:self.NoInternetView];

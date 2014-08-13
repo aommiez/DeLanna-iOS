@@ -206,6 +206,7 @@ BOOL refreshDataRoomtype;
     } else {
         detailroomtypeView = [[PFDetailRoomtypeViewController alloc] initWithNibName:@"PFDetailRoomtypeViewController" bundle:nil];
     }
+    self.navItem.title = @" ";
     detailroomtypeView.obj = [self.arrObj objectAtIndex:indexPath.row];
     detailroomtypeView.checkinternet = self.checkinternet;
     detailroomtypeView.delegate = self;
@@ -312,6 +313,12 @@ BOOL refreshDataRoomtype;
 
 - (void) PFDetailRoomtypeViewControllerBack {
     [self.delegate ShowTabbar];
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Room Type";
+    } else {
+        self.navItem.title = @"ห้องพัก";
+    }
     
     if ([self.checkinternet isEqualToString:@"error"]) {
         self.NoInternetView.frame = CGRectMake(0, 64, self.NoInternetView.frame.size.width, self.NoInternetView.frame.size.height);
