@@ -22,7 +22,7 @@
 #import "MWPhoto.h"
 #import "MWPhotoBrowser.h"
 
-@interface PFAppDelegate : UIResponder <UIApplicationDelegate,MWPhotoBrowserDelegate>
+@interface PFAppDelegate : UIResponder <UIApplicationDelegate,UIActionSheetDelegate,MWPhotoBrowserDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;

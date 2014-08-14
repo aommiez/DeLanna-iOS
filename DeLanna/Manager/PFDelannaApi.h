@@ -11,6 +11,10 @@
 
 @protocol PFDelannaApiDelegate <NSObject>
 
+#pragma mark - Notification Protocal Delegate
+- (void)PFDelannaApi:(id)sender getNotificationResponse:(NSDictionary *)response;
+- (void)PFDelannaApi:(id)sender getNotificationErrorResponse:(NSString *)errorResponse;
+
 #pragma mark - Overview Protocal Delegate
 - (void)PFDelannaApi:(id)sender getFeedResponse:(NSDictionary *)response;
 - (void)PFDelannaApi:(id)sender getFeedErrorResponse:(NSString *)errorResponse;
@@ -71,6 +75,11 @@
 #pragma mark - Content Language
 - (void)saveContentLanguage:(NSString *)contentlanguage;
 - (NSString *)getContentLanguage;
+
+#pragma mark - Notification
+- (void)getNotification;
+- (void)setOnNotification;
+- (void)setOffNotification;
 
 #pragma mark - Overview
 //- (void)getFeed:(NSString *)language;

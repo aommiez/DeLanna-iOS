@@ -57,6 +57,8 @@
         self.contentlanguagestatus.text = @"TH";
     }
     
+    [self.DelannaApi getNotification];
+    
     self.tableView.tableHeaderView = self.headerView;
 }
 
@@ -67,6 +69,30 @@
 
 -(NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
+}
+
+- (IBAction)pushNotificationChange:(id)sender {
+    if (self.pushNotification.on){
+        NSLog(@"1");
+        [self.DelannaApi setOnNotification];
+    } else {
+        NSLog(@"0");
+        [self.DelannaApi setOffNotification];
+    }
+}
+
+- (void)PFDelannaApi:(id)sender getNotificationResponse:(NSDictionary *)response {
+    NSLog(@"%@",response);
+    
+    if ([[response objectForKey:@"has"] intValue] == 0) {
+        self.pushNotification.on = NO;
+    } else {
+        self.pushNotification.on = YES;
+    }
+}
+
+- (void)PFDelannaApi:(id)sender getNotificationErrorResponse:(NSString *)errorResponse {
+    NSLog(@"%@",errorResponse);
 }
 
 - (IBAction)appsettingTapped:(id)sender{

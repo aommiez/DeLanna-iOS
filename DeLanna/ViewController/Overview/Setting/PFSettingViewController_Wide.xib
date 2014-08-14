@@ -14,6 +14,7 @@
                 <outlet property="languagesetting" destination="mI0-0H-Ku9" id="zeC-XJ-WEA"/>
                 <outlet property="notification" destination="CLV-9L-BNg" id="Gk5-5C-5BA"/>
                 <outlet property="notificationsetting" destination="6Ou-SJ-p2Q" id="nvD-Du-jhL"/>
+                <outlet property="pushNotification" destination="mWd-zo-QZe" id="lHo-3P-fFo"/>
                 <outlet property="tableView" destination="ntT-bY-kGL" id="rUZ-YC-1rc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -163,6 +164,9 @@
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mWd-zo-QZe">
                             <rect key="frame" x="254" y="7" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="pushNotificationChange:" destination="-1" eventType="valueChanged" id="1Wo-Cr-Sfd"/>
+                            </connections>
                         </switch>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

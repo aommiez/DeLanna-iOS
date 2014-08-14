@@ -37,6 +37,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *notificationsetting;
 @property (strong, nonatomic) IBOutlet UILabel *notification;
 
+@property (strong, nonatomic) IBOutlet UISwitch *pushNotification;
+
+- (IBAction)pushNotificationChange:(id)sender;
+
 - (IBAction)appsettingTapped:(id)sender;
 - (IBAction)contentsettingTapped:(id)sender;
 

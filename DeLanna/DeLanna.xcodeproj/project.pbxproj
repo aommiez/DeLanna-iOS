@@ -46,6 +46,7 @@
 		52988D4F19937B8000329B69 /* DLILCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4819937B8000329B69 /* DLILCacheManager.m */; };
 		52988D5019937B8000329B69 /* DLILOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4B19937B8000329B69 /* DLILOperation.m */; };
 		52988D5119937B8000329B69 /* DLImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4D19937B8000329B69 /* DLImageLoader.m */; };
+		52B466FC199CAC1A008AB7FE /* PFSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B466FB199CAC1A008AB7FE /* PFSettingViewController.xib */; };
 		52BA06FF1977993B00677A5E /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA06AC1977993B00677A5E /* MWCaptionView.m */; };
 		52BA07001977993B00677A5E /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA06AF1977993B00677A5E /* MWGridCell.m */; };
 		52BA07011977993B00677A5E /* MWGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA06B11977993B00677A5E /* MWGridViewController.m */; };
@@ -137,7 +138,6 @@
 		52D12EB11996167A0009D735 /* ic_corect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E421996167A0009D735 /* ic_corect@2x.png */; };
 		52D12EB21996167A0009D735 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E431996167A0009D735 /* next.png */; };
 		52D12EB31996167A0009D735 /* PFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D12E451996167A0009D735 /* PFSettingViewController.m */; };
-		52D12EB41996167A0009D735 /* PFSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E461996167A0009D735 /* PFSettingViewController.xib */; };
 		52D12EB51996167A0009D735 /* PFSettingViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E471996167A0009D735 /* PFSettingViewController_Wide.xib */; };
 		52D12EB61996167A0009D735 /* PFRoomTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D12E4B1996167A0009D735 /* PFRoomTypeCell.m */; };
 		52D12EB71996167A0009D735 /* PFRoomTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E4C1996167A0009D735 /* PFRoomTypeCell.xib */; };
@@ -292,6 +292,7 @@
 		52988D4B19937B8000329B69 /* DLILOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLILOperation.m; sourceTree = "<group>"; };
 		52988D4C19937B8000329B69 /* DLImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLImageLoader.h; sourceTree = "<group>"; };
 		52988D4D19937B8000329B69 /* DLImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLImageLoader.m; sourceTree = "<group>"; };
+		52B466FB199CAC1A008AB7FE /* PFSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFSettingViewController.xib; sourceTree = "<group>"; };
 		52BA06AB1977993B00677A5E /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		52BA06AC1977993B00677A5E /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
 		52BA06AD1977993B00677A5E /* MWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommon.h; sourceTree = "<group>"; };
@@ -436,7 +437,6 @@
 		52D12E431996167A0009D735 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		52D12E441996167A0009D735 /* PFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFSettingViewController.h; sourceTree = "<group>"; };
 		52D12E451996167A0009D735 /* PFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFSettingViewController.m; sourceTree = "<group>"; };
-		52D12E461996167A0009D735 /* PFSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFSettingViewController.xib; sourceTree = "<group>"; };
 		52D12E471996167A0009D735 /* PFSettingViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFSettingViewController_Wide.xib; sourceTree = "<group>"; };
 		52D12E4A1996167A0009D735 /* PFRoomTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFRoomTypeCell.h; sourceTree = "<group>"; };
 		52D12E4B1996167A0009D735 /* PFRoomTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFRoomTypeCell.m; sourceTree = "<group>"; };
@@ -1072,8 +1072,8 @@
 				52D12E3F1996167A0009D735 /* Images */,
 				52D12E441996167A0009D735 /* PFSettingViewController.h */,
 				52D12E451996167A0009D735 /* PFSettingViewController.m */,
-				52D12E461996167A0009D735 /* PFSettingViewController.xib */,
 				52D12E471996167A0009D735 /* PFSettingViewController_Wide.xib */,
+				52B466FB199CAC1A008AB7FE /* PFSettingViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1474,6 +1474,7 @@
 				52D12E861996167A0009D735 /* bt_reserve@2x.png in Resources */,
 				52D12F02199618E30009D735 /* en_resevation_on.png in Resources */,
 				52D12F00199618E30009D735 /* en_promotion_on.png in Resources */,
+				52B466FC199CAC1A008AB7FE /* PFSettingViewController.xib in Resources */,
 				52D12ECF1996167A0009D735 /* PFServicefoodViewController.xib in Resources */,
 				52D12F17199618E30009D735 /* th_services_off.png in Resources */,
 				52D12EA11996167A0009D735 /* bt_reservation.png in Resources */,
@@ -1494,7 +1495,6 @@
 				52D12F0E199618E30009D735 /* en_services_on@2x.png in Resources */,
 				52D12F07199618E30009D735 /* en_promotion_off@2x.png in Resources */,
 				52D12EB91996167A0009D735 /* PFDetailRoomtypeViewController.xib in Resources */,
-				52D12EB41996167A0009D735 /* PFSettingViewController.xib in Resources */,
 				52D12F1B199618E30009D735 /* th_resevation_off@2x.png in Resources */,
 				52D12F10199618E30009D735 /* Setting_icon@2x.png in Resources */,
 				52D12E991996167A0009D735 /* arrest.png in Resources */,

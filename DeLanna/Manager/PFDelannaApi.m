@@ -47,6 +47,60 @@
     return [self.userDefaults objectForKey:@"contentlanguage"];
 }
 
+#pragma mark - Notification
+- (void)getNotification {
+    
+    NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
+    NSString *type = @"ios";
+    
+    NSDictionary *parameters = @{@"key":key , @"type":type};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device/has",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self getNotificationResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self getNotificationErrorResponse:[error localizedDescription]];
+    }];
+}
+
+- (void)setOnNotification {
+
+    NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
+    NSString *type = @"ios";
+    
+    NSDictionary *parameters = @{@"key":key , @"type":type};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager POST:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+- (void)setOffNotification {
+    NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
+    NSString *type = @"ios";
+    
+    NSDictionary *parameters = @{@"key":key , @"type":type};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager DELETE:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
 #pragma mark - Overview
 - (void)getFeed:(NSString *)language limit:(NSString *)limit{
     NSString *urlStr = [[NSString alloc] init];
