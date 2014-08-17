@@ -53,8 +53,8 @@
     NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
     NSString *type = @"ios";
     
-    NSDictionary *parameters = @{@"key":key , @"type":type};
-    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device/has",API_URL];
+    NSDictionary *parameters = @{@"key":key,@"type":type};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -70,31 +70,33 @@
 
     NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
     NSString *type = @"ios";
+    NSString *admit = @"1";
     
-    NSDictionary *parameters = @{@"key":key , @"type":type};
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"admit":admit};
     NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
-    [self.manager POST:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [self.manager PUT:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+
 }
 
 - (void)setOffNotification {
+    
     NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
     NSString *type = @"ios";
+    NSString *admit = @"0";
     
-    NSDictionary *parameters = @{@"key":key , @"type":type};
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"admit":admit};
     NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
-    [self.manager DELETE:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [self.manager PUT:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Success: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

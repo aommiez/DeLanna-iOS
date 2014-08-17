@@ -73,10 +73,8 @@
 
 - (IBAction)pushNotificationChange:(id)sender {
     if (self.pushNotification.on){
-        NSLog(@"1");
         [self.DelannaApi setOnNotification];
     } else {
-        NSLog(@"0");
         [self.DelannaApi setOffNotification];
     }
 }
@@ -84,7 +82,7 @@
 - (void)PFDelannaApi:(id)sender getNotificationResponse:(NSDictionary *)response {
     NSLog(@"%@",response);
     
-    if ([[response objectForKey:@"has"] intValue] == 0) {
+    if ([[response objectForKey:@"admit"] intValue] == 0) {
         self.pushNotification.on = NO;
     } else {
         self.pushNotification.on = YES;
