@@ -13,6 +13,8 @@
 
 #import "PFOverViewCell.h"
 #import "PFSettingViewController.h"
+#import "PFNotificationViewController.h"
+
 #import "PFDetailOverViewController.h"
 
 @protocol PFOverViewControllerDelegate <NSObject>

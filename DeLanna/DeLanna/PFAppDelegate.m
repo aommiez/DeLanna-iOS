@@ -176,7 +176,13 @@ BOOL newMedia;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:dt forKey:@"deviceToken"];
+    [defaults setObject:@"EN" forKey:@"contentlanguage"];
     [defaults synchronize];
+    
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    [self.DelannaApi getNotification];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -186,7 +192,28 @@ BOOL newMedia;
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
-	NSLog(@"Received notification: %@", userInfo);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] forKey:@"badge"];
+    [defaults synchronize];
+	NSLog(@"Received notification: %@", [[userInfo objectForKey:@"aps"] objectForKey:@"badge"]);
+}
+
+- (void)PFDelannaApi:(id)sender getNotificationResponse:(NSDictionary *)response {
+    NSLog(@"%@",response);
+}
+
+- (void)PFDelannaApi:(id)sender getNotificationErrorResponse:(NSString *)errorResponse {
+    NSLog(@"%@",errorResponse);
+}
+
+- (void)PFDelannaApi:(id)sender checkBadgeResponse:(NSDictionary *)response {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[response objectForKey:@"length"] forKey:@"badge"];
+    [defaults synchronize];
+}
+
+- (void)PFDelannaApi:(id)sender checkBadgeErrorResponse:(NSString *)errorResponse {
+    NSLog(@"%@",errorResponse);
 }
 
 - (void)saveContext
@@ -299,6 +326,7 @@ BOOL newMedia;
 
 - (void)resetApp {
     [self.DelannaApi saveReset:@"NO"];
+    [self.DelannaApi setNotification];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

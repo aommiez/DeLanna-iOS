@@ -12,6 +12,7 @@
 
 @protocol PFLanguageViewControllerDelegate <NSObject>
 
+- (void)PFLanguageViewControllerBack;
 - (void)BackSetting;
 
 @end

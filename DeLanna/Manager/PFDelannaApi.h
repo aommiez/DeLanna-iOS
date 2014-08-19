@@ -15,9 +15,18 @@
 - (void)PFDelannaApi:(id)sender getNotificationResponse:(NSDictionary *)response;
 - (void)PFDelannaApi:(id)sender getNotificationErrorResponse:(NSString *)errorResponse;
 
+- (void)PFDelannaApi:(id)sender NotificationResponse:(NSDictionary *)response;
+- (void)PFDelannaApi:(id)sender NotificationErrorResponse:(NSString *)errorResponse;
+
+- (void)PFDelannaApi:(id)sender checkBadgeResponse:(NSDictionary *)response;
+- (void)PFDelannaApi:(id)sender checkBadgeErrorResponse:(NSString *)errorResponse;
+
 #pragma mark - Overview Protocal Delegate
 - (void)PFDelannaApi:(id)sender getFeedResponse:(NSDictionary *)response;
 - (void)PFDelannaApi:(id)sender getFeedErrorResponse:(NSString *)errorResponse;
+
+- (void)PFDelannaApi:(id)sender getFeedByIdResponse:(NSDictionary *)response;
+- (void)PFDelannaApi:(id)sender getFeedByIdErrorResponse:(NSString *)errorResponse;
 
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response;
 - (void)PFDelannaApi:(id)sender getFeedGalleryErrorResponse:(NSString *)errorResponse;
@@ -78,12 +87,16 @@
 
 #pragma mark - Notification
 - (void)getNotification;
+- (void)setNotification;
 - (void)setOnNotification;
 - (void)setOffNotification;
+- (void)Notification;
+- (void)checkBadge;
 
 #pragma mark - Overview
 //- (void)getFeed:(NSString *)language;
 - (void)getFeed:(NSString *)language limit:(NSString *)limit;
+- (void)getFeedById:(NSString *)news_id;
 - (void)getFeedDetail:(NSString *)language;
 - (void)getFeedGallery;
 - (void)getTimeUpdate;

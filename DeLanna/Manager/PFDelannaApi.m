@@ -50,10 +50,11 @@
 #pragma mark - Notification
 - (void)getNotification {
     
-    NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
     NSString *type = @"ios";
+    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
-    NSDictionary *parameters = @{@"key":key,@"type":type};
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
     NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -66,13 +67,51 @@
     }];
 }
 
+- (void)Notification {
+    
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
+    NSString *type = @"ios";
+    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
+    
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@notify",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self NotificationResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self NotificationErrorResponse:[error localizedDescription]];
+    }];
+}
+
+- (void)setNotification {
+    
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
+    NSString *type = @"ios";
+    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
+    
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager PUT:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self getNotificationResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self getNotificationErrorResponse:[error localizedDescription]];
+    }];
+}
+
 - (void)setOnNotification {
 
-    NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
     NSString *type = @"ios";
     NSString *admit = @"1";
+    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
-    NSDictionary *parameters = @{@"key":key,@"type":type,@"admit":admit};
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"admit":admit,@"lang":lang};
     NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -87,11 +126,12 @@
 
 - (void)setOffNotification {
     
-    NSString *key = @"6c34b61784dd0a7e26547c6a8e74e149e7dfcf52";
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
     NSString *type = @"ios";
     NSString *admit = @"0";
+    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
-    NSDictionary *parameters = @{@"key":key,@"type":type,@"admit":admit};
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"admit":admit,@"lang":lang};
     NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -100,6 +140,24 @@
         NSLog(@"Success: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+    }];
+}
+
+- (void)checkBadge {
+    
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
+    NSString *type = @"ios";
+    
+    NSDictionary *parameters = @{@"key":key,@"type":type};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@notify/unopened",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager  GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self checkBadgeResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self checkBadgeErrorResponse:[error localizedDescription]];
     }];
 }
 
@@ -117,6 +175,15 @@
         [self.delegate PFDelannaApi:self getFeedResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getFeedErrorResponse:[error localizedDescription]];
+    }];
+}
+
+- (void)getFeedById:(NSString *)news_id {
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@feed/%@",API_URL,news_id];
+    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self getFeedByIdResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self getFeedByIdErrorResponse:[error localizedDescription]];
     }];
 }
 

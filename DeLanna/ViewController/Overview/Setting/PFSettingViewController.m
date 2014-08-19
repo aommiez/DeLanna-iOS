@@ -80,7 +80,7 @@
 }
 
 - (void)PFDelannaApi:(id)sender getNotificationResponse:(NSDictionary *)response {
-    NSLog(@"%@",response);
+    //NSLog(@"%@",response);
     
     if ([[response objectForKey:@"admit"] intValue] == 0) {
         self.pushNotification.on = NO;
@@ -123,6 +123,16 @@
 
 - (void)BackSetting {
     [self viewDidLoad];
+}
+
+- (void)PFLanguageViewControllerBack {
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navigationItem.title = @"Setting";
+
+    } else {
+        self.navigationItem.title = @"ตั้งค่า";
+
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -46,6 +46,9 @@ NSTimer *timmer;
         self.navItem.title = @"โปรโมชั่น";
     }
     
+    [self.DelannaApi checkBadge];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkN:) userInfo:nil repeats:YES];
+    
     // Navbar setup
     [[self.navController navigationBar] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
     
@@ -63,10 +66,35 @@ NSTimer *timmer;
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Setting_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Notification_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(notify)];
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     
+    //notification if (noti = 0) else
+    if ([[def objectForKey:@"badge"] intValue] == 0) {
+    
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Notification_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(notify)];
+        self.navItem.rightBarButtonItem = rightButton;
+        
+    } else {
+    
+        UIButton *toggleKeyboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        toggleKeyboardButton.bounds = CGRectMake( 0, 0, 21, 21 );
+        [toggleKeyboardButton setTitle:[def objectForKey:@"badge"] forState:UIControlStateNormal];
+        [toggleKeyboardButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        
+        [toggleKeyboardButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        toggleKeyboardButton.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
+        
+        [toggleKeyboardButton setBackgroundColor:[UIColor clearColor]];
+        [toggleKeyboardButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+        [toggleKeyboardButton.layer setBorderWidth: 1.0];
+        [toggleKeyboardButton.layer setCornerRadius:10.0f];
+        [toggleKeyboardButton addTarget:self action:@selector(notify) forControlEvents:UIControlEventTouchUpInside];
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:toggleKeyboardButton];
+        self.navItem.rightBarButtonItem = rightButton;
+        
+    }
+
     self.navItem.leftBarButtonItem = leftButton;
-    self.navItem.rightBarButtonItem = rightButton;
     
     loadFeed = NO;
     noDataFeed = NO;
@@ -125,6 +153,47 @@ NSTimer *timmer;
 
 - (void)notify {
     
+    [self.NoInternetView removeFromSuperview];
+    [self.delegate HideTabbar];
+    
+    PFNotificationViewController *notifyView = [[PFNotificationViewController alloc] init];
+    if(IS_WIDESCREEN) {
+        notifyView = [[PFNotificationViewController alloc] initWithNibName:@"PFNotificationViewController_Wide" bundle:nil];
+    } else {
+        notifyView = [[PFNotificationViewController alloc] initWithNibName:@"PFNotificationViewController" bundle:nil];
+    }
+    self.navItem.title = @" ";
+    notifyView.delegate = self;
+    [self.navController pushViewController:notifyView animated:YES];
+}
+
+-(void)checkN:(NSTimer *)timer
+{
+    [self.DelannaApi checkBadge];
+}
+
+- (void)PFDelannaApi:(id)sender checkBadgeResponse:(NSDictionary *)response {
+    //NSLog(@"%@",response);
+    
+    NSLog(@"%@",[response objectForKey:@"length"]);
+    
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    if ([[def objectForKey:@"badge"] intValue] == [[response objectForKey:@"length"] intValue]) {
+
+    } else {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:[response objectForKey:@"length"] forKey:@"badge"];
+        [defaults synchronize];
+        [self viewDidLoad];
+    }
+}
+- (void)PFDelannaApi:(id)sender checkBadgeErrorResponse:(NSString *)errorResponse {
+    NSLog(@"%@",errorResponse);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"0" forKey:@"badge"];
+    [defaults synchronize];
+    [self viewDidLoad];
 }
 
 - (void)PagedImageScrollView:(id)sender current:(NSString *)current{
@@ -525,6 +594,16 @@ NSTimer *timmer;
     
     if ([[self.DelannaApi getReset] isEqualToString:@"YES"]) {
         [self.delegate resetApp];
+    }
+}
+
+- (void)PFNotificationViewControllerBack {
+    [self.delegate ShowTabbar];
+    
+    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+        self.navItem.title = @"Promotion";
+    } else {
+        self.navItem.title = @"โปรโมชั่น";
     }
 }
 

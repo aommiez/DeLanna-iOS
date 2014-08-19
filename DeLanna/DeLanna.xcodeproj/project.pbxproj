@@ -35,6 +35,17 @@
 		520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24AE197654DD0078C547 /* CMMapLauncher.m */; };
 		520C24B6197654DD0078C547 /* PFMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 520C24B0197654DD0078C547 /* PFMapView.m */; };
 		52165355199AB6E000E0D4E3 /* PFContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52165354199AB6E000E0D4E3 /* PFContactViewController.xib */; };
+		5253018E19A1DB0B00AA5528 /* PFNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253018019A1DB0B00AA5528 /* PFNotificationCell.m */; };
+		5253018F19A1DB0B00AA5528 /* PFNotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253018119A1DB0B00AA5528 /* PFNotificationCell.xib */; };
+		5253019019A1DB0B00AA5528 /* NotBoxNoReadIp4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5253018319A1DB0B00AA5528 /* NotBoxNoReadIp4.png */; };
+		5253019119A1DB0B00AA5528 /* NotBoxNoReadIp4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5253018419A1DB0B00AA5528 /* NotBoxNoReadIp4@2x.png */; };
+		5253019219A1DB0B00AA5528 /* NotBoxNoReadIp5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5253018519A1DB0B00AA5528 /* NotBoxNoReadIp5@2x.png */; };
+		5253019319A1DB0B00AA5528 /* NotBoxReadedIp4.png in Resources */ = {isa = PBXBuildFile; fileRef = 5253018619A1DB0B00AA5528 /* NotBoxReadedIp4.png */; };
+		5253019419A1DB0B00AA5528 /* NotBoxReadedIp4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5253018719A1DB0B00AA5528 /* NotBoxReadedIp4@2x.png */; };
+		5253019519A1DB0B00AA5528 /* NotBoxReadedIp5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5253018819A1DB0B00AA5528 /* NotBoxReadedIp5@2x.png */; };
+		5253019619A1DB0B00AA5528 /* PFNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253018B19A1DB0B00AA5528 /* PFNotificationViewController.m */; };
+		5253019719A1DB0B00AA5528 /* PFNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253018C19A1DB0B00AA5528 /* PFNotificationViewController.xib */; };
+		5253019819A1DB0B00AA5528 /* PFNotificationViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253018D19A1DB0B00AA5528 /* PFNotificationViewController_Wide.xib */; };
 		525CC08819933442000C3EF1 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525CC08719933442000C3EF1 /* FacebookSDK.framework */; };
 		525CC1C81977D6B600BB6492 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA072A1977AD8000677A5E /* CFNetwork.framework */; };
 		525CC1C91977D6C100BB6492 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52BA07281977AD7800677A5E /* SystemConfiguration.framework */; };
@@ -276,6 +287,19 @@
 		520C24AF197654DD0078C547 /* PFMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMapView.h; sourceTree = "<group>"; };
 		520C24B0197654DD0078C547 /* PFMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMapView.m; sourceTree = "<group>"; };
 		52165354199AB6E000E0D4E3 /* PFContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFContactViewController.xib; sourceTree = "<group>"; };
+		5253017F19A1DB0B00AA5528 /* PFNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNotificationCell.h; sourceTree = "<group>"; };
+		5253018019A1DB0B00AA5528 /* PFNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNotificationCell.m; sourceTree = "<group>"; };
+		5253018119A1DB0B00AA5528 /* PFNotificationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFNotificationCell.xib; sourceTree = "<group>"; };
+		5253018319A1DB0B00AA5528 /* NotBoxNoReadIp4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotBoxNoReadIp4.png; sourceTree = "<group>"; };
+		5253018419A1DB0B00AA5528 /* NotBoxNoReadIp4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotBoxNoReadIp4@2x.png"; sourceTree = "<group>"; };
+		5253018519A1DB0B00AA5528 /* NotBoxNoReadIp5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotBoxNoReadIp5@2x.png"; sourceTree = "<group>"; };
+		5253018619A1DB0B00AA5528 /* NotBoxReadedIp4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotBoxReadedIp4.png; sourceTree = "<group>"; };
+		5253018719A1DB0B00AA5528 /* NotBoxReadedIp4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotBoxReadedIp4@2x.png"; sourceTree = "<group>"; };
+		5253018819A1DB0B00AA5528 /* NotBoxReadedIp5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotBoxReadedIp5@2x.png"; sourceTree = "<group>"; };
+		5253018A19A1DB0B00AA5528 /* PFNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFNotificationViewController.h; sourceTree = "<group>"; };
+		5253018B19A1DB0B00AA5528 /* PFNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFNotificationViewController.m; sourceTree = "<group>"; };
+		5253018C19A1DB0B00AA5528 /* PFNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFNotificationViewController.xib; sourceTree = "<group>"; };
+		5253018D19A1DB0B00AA5528 /* PFNotificationViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFNotificationViewController_Wide.xib; sourceTree = "<group>"; };
 		525CC08719933442000C3EF1 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../Frameworks/FacebookSDK.framework; sourceTree = "<group>"; };
 		527BF2FE1974E41D0005BFF9 /* notificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = notificationView.xib; sourceTree = "<group>"; };
 		527BF2FF1974E41D0005BFF9 /* PFCustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFCustomBadge.h; sourceTree = "<group>"; };
@@ -705,6 +729,50 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		5253017D19A1DA9700AA5528 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5253018219A1DB0B00AA5528 /* Images */,
+				5253017E19A1DB0B00AA5528 /* Cell */,
+				5253018919A1DB0B00AA5528 /* Notification */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		5253017E19A1DB0B00AA5528 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5253017F19A1DB0B00AA5528 /* PFNotificationCell.h */,
+				5253018019A1DB0B00AA5528 /* PFNotificationCell.m */,
+				5253018119A1DB0B00AA5528 /* PFNotificationCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5253018219A1DB0B00AA5528 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5253018319A1DB0B00AA5528 /* NotBoxNoReadIp4.png */,
+				5253018419A1DB0B00AA5528 /* NotBoxNoReadIp4@2x.png */,
+				5253018519A1DB0B00AA5528 /* NotBoxNoReadIp5@2x.png */,
+				5253018619A1DB0B00AA5528 /* NotBoxReadedIp4.png */,
+				5253018719A1DB0B00AA5528 /* NotBoxReadedIp4@2x.png */,
+				5253018819A1DB0B00AA5528 /* NotBoxReadedIp5@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		5253018919A1DB0B00AA5528 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5253018A19A1DB0B00AA5528 /* PFNotificationViewController.h */,
+				5253018B19A1DB0B00AA5528 /* PFNotificationViewController.m */,
+				5253018C19A1DB0B00AA5528 /* PFNotificationViewController.xib */,
+				5253018D19A1DB0B00AA5528 /* PFNotificationViewController_Wide.xib */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		527BF2CE1974DE230005BFF9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1086,7 @@
 				52D12E2B1996167A0009D735 /* Detailoverview */,
 				52D12E301996167A0009D735 /* Language */,
 				52D12E3E1996167A0009D735 /* Setting */,
+				5253017D19A1DA9700AA5528 /* Notification */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -1461,6 +1530,7 @@
 				52D12E831996167A0009D735 /* bg_comment.png in Resources */,
 				52D12EB71996167A0009D735 /* PFRoomTypeCell.xib in Resources */,
 				52D12F0C199618E30009D735 /* en_roomtype_on@2x.png in Resources */,
+				5253019319A1DB0B00AA5528 /* NotBoxReadedIp4.png in Resources */,
 				52D12E811996167A0009D735 /* PFContactViewController_Wide.xib in Resources */,
 				52D12E7F1996167A0009D735 /* PFCommentViewController_Wide.xib in Resources */,
 				52D12EC91996167A0009D735 /* PFDetailFoldertypeViewController.xib in Resources */,
@@ -1471,9 +1541,11 @@
 				52D12EAE1996167A0009D735 /* PFOverViewController_Wide.xib in Resources */,
 				52D12EA31996167A0009D735 /* icon_share@2x.png in Resources */,
 				52D12EFE199618E30009D735 /* default.jpg in Resources */,
+				5253018F19A1DB0B00AA5528 /* PFNotificationCell.xib in Resources */,
 				52D12E861996167A0009D735 /* bt_reserve@2x.png in Resources */,
 				52D12F02199618E30009D735 /* en_resevation_on.png in Resources */,
 				52D12F00199618E30009D735 /* en_promotion_on.png in Resources */,
+				5253019219A1DB0B00AA5528 /* NotBoxNoReadIp5@2x.png in Resources */,
 				52B466FC199CAC1A008AB7FE /* PFSettingViewController.xib in Resources */,
 				52D12ECF1996167A0009D735 /* PFServicefoodViewController.xib in Resources */,
 				52D12F17199618E30009D735 /* th_services_off.png in Resources */,
@@ -1500,7 +1572,10 @@
 				52D12E991996167A0009D735 /* arrest.png in Resources */,
 				52D12F09199618E30009D735 /* en_resevation_off@2x.png in Resources */,
 				52D12F1E199618E30009D735 /* th_roomtype_on@2x.png in Resources */,
+				5253019819A1DB0B00AA5528 /* PFNotificationViewController_Wide.xib in Resources */,
 				52D12E941996167A0009D735 /* icon_reload@2x.png in Resources */,
+				5253019519A1DB0B00AA5528 /* NotBoxReadedIp5@2x.png in Resources */,
+				5253019419A1DB0B00AA5528 /* NotBoxReadedIp4@2x.png in Resources */,
 				52D12E8E1996167A0009D735 /* ic_mail@2x.png in Resources */,
 				52D12EBA1996167A0009D735 /* PFDetailRoomtypeViewController_Wide.xib in Resources */,
 				3613163D196BA14A00DB175C /* InfoPlist.strings in Resources */,
@@ -1530,10 +1605,12 @@
 				52D12EA91996167A0009D735 /* PFLanguageViewController_Wide.xib in Resources */,
 				52D12E841996167A0009D735 /* bg_map.png in Resources */,
 				52D12E9D1996167A0009D735 /* PFMapViewController_Wide.xib in Resources */,
+				5253019119A1DB0B00AA5528 /* NotBoxNoReadIp4@2x.png in Resources */,
 				52D12F19199618E30009D735 /* th_promotion_off@2x.png in Resources */,
 				52D12EBF1996167A0009D735 /* PFServiceCell.xib in Resources */,
 				52D12EA51996167A0009D735 /* PFDetailOverViewController.xib in Resources */,
 				52D12EC41996167A0009D735 /* chapter_box04.png in Resources */,
+				5253019019A1DB0B00AA5528 /* NotBoxNoReadIp4.png in Resources */,
 				52D12EA61996167A0009D735 /* PFDetailOverViewController_Wide.xib in Resources */,
 				52D12F06199618E30009D735 /* en_services_on.png in Resources */,
 				52D12E981996167A0009D735 /* Powered@2x.png in Resources */,
@@ -1542,6 +1619,7 @@
 				52D12EAB1996167A0009D735 /* PFOverViewCell.xib in Resources */,
 				52D12EB21996167A0009D735 /* next.png in Resources */,
 				52D12F1D199618E30009D735 /* th_roomtype_off@2x.png in Resources */,
+				5253019719A1DB0B00AA5528 /* PFNotificationViewController.xib in Resources */,
 				52D12F01199618E30009D735 /* en_resevation_off.png in Resources */,
 				52D12F0F199618E30009D735 /* Notification_icon@2x.png in Resources */,
 				52D12F1A199618E30009D735 /* th_promotion_on@2x.png in Resources */,
@@ -1586,6 +1664,7 @@
 				52BA071D1977993B00677A5E /* SDWebImagePrefetcher.m in Sources */,
 				52988D4E19937B8000329B69 /* DLILCache.m in Sources */,
 				52D12EBE1996167A0009D735 /* PFServiceCell.m in Sources */,
+				5253019619A1DB0B00AA5528 /* PFNotificationViewController.m in Sources */,
 				52D12EAC1996167A0009D735 /* PFOverViewController.m in Sources */,
 				52FC2C75197917FF0016E93D /* UIAlertView+AFNetworking.m in Sources */,
 				520C24B5197654DD0078C547 /* CMMapLauncher.m in Sources */,
@@ -1658,6 +1737,7 @@
 				52FC2C79197917FF0016E93D /* UIWebView+AFNetworking.m in Sources */,
 				52BA07031977993B00677A5E /* MWPhotoBrowser.m in Sources */,
 				52FC2C6D197917FF0016E93D /* AFNetworkActivityIndicatorManager.m in Sources */,
+				5253018E19A1DB0B00AA5528 /* PFNotificationCell.m in Sources */,
 				3644814F198113E800824315 /* ScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1790,7 +1870,7 @@
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
 				INFOPLIST_FILE = "DeLanna/DeLanna-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cee15b97-2a84-4a28-98a8-fccbe2dbc78f";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1813,7 +1893,7 @@
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
 				INFOPLIST_FILE = "DeLanna/DeLanna-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cee15b97-2a84-4a28-98a8-fccbe2dbc78f";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
