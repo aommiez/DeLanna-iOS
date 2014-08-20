@@ -126,9 +126,9 @@
     
     cell.topicLabel.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"preview_header"];
     
-//    NSString *myDate = [[[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"created_at"] objectForKey:@"date"];
-//    NSString *mySmallerDate = [myDate substringToIndex:16];
-//    cell.timeLabel.text = mySmallerDate;
+    NSString *myDate = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"created_at"];
+    NSString *mySmallerDate = [myDate substringToIndex:16];
+    cell.timeLabel.text = mySmallerDate;
     
     cell.msgLabel.text = [[self.arrObj objectAtIndex:indexPath.row] objectForKey:@"preview_content"];
     

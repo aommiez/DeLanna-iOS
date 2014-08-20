@@ -43,12 +43,6 @@
         self.navigationItem.rightBarButtonItem = rightButton;
     }
     
-//    NSDate *today = [NSDate date];
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//    [dateFormat setDateFormat:@"dd/MM/yyyy HH:mm"];
-//    NSString *dateString = [dateFormat stringFromDate:today];
-//    self.date.text = dateString;
-    
     [self.comment becomeFirstResponder];
 
 }
@@ -66,11 +60,20 @@
     if (self.comment.text.length > 10) {
         [self.DelannaApi sendComment:self.comment.text];
     } else {
-        [[[UIAlertView alloc] initWithTitle:@"De Lanna Hotel"
-                                    message:@"Please fill more than 10 characters."
-                                   delegate:nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil] show];
+        
+        if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
+            [[[UIAlertView alloc] initWithTitle:@"De Lanna Hotel"
+                                        message:@"Please fill more than 10 characters."
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil] show];
+        } else {
+            [[[UIAlertView alloc] initWithTitle:@"De Lanna Hotel"
+                                        message:@"กรุณาใส่มากกว่า 10 ตัวอักษร"
+                                       delegate:nil
+                              cancelButtonTitle:@"ตกลง"
+                              otherButtonTitles:nil] show];
+        }
     }
 }
 

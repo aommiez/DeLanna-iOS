@@ -184,7 +184,7 @@
         self.feature1.numberOfLines = lines1;
         
         UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
-        descText1.textColor = RGB(245, 211, 40);
+        descText1.textColor = RGB(247, 148, 30);
         descText1.text = self.feature1.text;
         descText1.numberOfLines = lines1;
         [descText1 setFont:[UIFont systemFontOfSize:15]];
@@ -226,7 +226,7 @@
         self.feature.numberOfLines = lines1;
         
         UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
-        descText1.textColor = RGB(245, 211, 40);
+        descText1.textColor = RGB(247, 148, 30);
         descText1.text = self.feature.text;
         descText1.numberOfLines = lines1;
         [descText1 setFont:[UIFont systemFontOfSize:15]];
@@ -324,7 +324,7 @@
         self.feature1.numberOfLines = lines1;
         
         UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
-        descText1.textColor = RGB(245, 211, 40);
+        descText1.textColor = RGB(247, 148, 30);
         descText1.text = self.feature1.text;
         descText1.numberOfLines = lines1;
         [descText1 setFont:[UIFont systemFontOfSize:15]];
@@ -366,7 +366,7 @@
         self.feature.numberOfLines = lines1;
         
         UILabel *descText1 = [[UILabel alloc] initWithFrame:frame1];
-        descText1.textColor = RGB(245, 211, 40);
+        descText1.textColor = RGB(247, 148, 30);
         descText1.text = self.feature.text;
         descText1.numberOfLines = lines1;
         [descText1 setFont:[UIFont systemFontOfSize:15]];

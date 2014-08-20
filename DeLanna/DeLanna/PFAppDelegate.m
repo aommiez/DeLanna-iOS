@@ -170,9 +170,9 @@ BOOL newMedia;
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"My token is : %@", deviceToken);
     NSString *dt = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     dt = [dt stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"My token is : %@", dt);
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:dt forKey:@"deviceToken"];
