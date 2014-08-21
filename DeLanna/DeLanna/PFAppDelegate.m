@@ -188,6 +188,20 @@ BOOL newMedia;
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
 	NSLog(@"Failed to get token, error: %@", error);
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HHmmssddMMyyyy"];
+    NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:strDate forKey:@"deviceToken"];
+    [defaults setObject:@"EN" forKey:@"contentlanguage"];
+    [defaults synchronize];
+    
+    self.DelannaApi = [[PFDelannaApi alloc] init];
+    self.DelannaApi.delegate = self;
+    
+    [self.DelannaApi getNotification];
 }
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo

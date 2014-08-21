@@ -46,8 +46,8 @@ NSTimer *timmer;
         self.navItem.title = @"โปรโมชั่น";
     }
     
-    [self.DelannaApi checkBadge];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkN:) userInfo:nil repeats:YES];
+    //[self.DelannaApi checkBadge];
+    //[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkN:) userInfo:nil repeats:YES];
     
     // Navbar setup
     [[self.navController navigationBar] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
@@ -64,38 +64,6 @@ NSTimer *timmer;
     [popup setMasksToBounds:YES];
     [popup setCornerRadius:7.0f];
     
-//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Setting_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(setting)];
-//    
-//    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-//    NSString *badge = [[NSString alloc] initWithFormat:@"%@",[def objectForKey:@"badge"]];
-//    
-//    //notification if (noti = 0) else
-//    if ([[def objectForKey:@"badge"] intValue] == 0) {
-//    
-//        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Notification_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(notify)];
-//        self.navItem.rightBarButtonItem = rightButton;
-//    
-//    } else {
-//    
-//        UIButton *toggleKeyboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        toggleKeyboardButton.bounds = CGRectMake( 0, 0, 21, 21 );
-//        [toggleKeyboardButton setTitle:badge forState:UIControlStateNormal];
-//        [toggleKeyboardButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
-//        
-//        [toggleKeyboardButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-//        toggleKeyboardButton.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
-//        
-//        [toggleKeyboardButton setBackgroundColor:[UIColor clearColor]];
-//        [toggleKeyboardButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-//        [toggleKeyboardButton.layer setBorderWidth: 1.0];
-//        [toggleKeyboardButton.layer setCornerRadius:10.0f];
-//        [toggleKeyboardButton addTarget:self action:@selector(notify) forControlEvents:UIControlEventTouchUpInside];
-//        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:toggleKeyboardButton];
-//        self.navItem.rightBarButtonItem = rightButton;
-//        
-//    }
-//
-//    self.navItem.leftBarButtonItem = leftButton;
     [self BarButtonItem];
     
     loadFeed = NO;
@@ -140,7 +108,7 @@ NSTimer *timmer;
     
     //notification if (noti = 0) else
     if ([[def objectForKey:@"badge"] intValue] == 0) {
-        
+    
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Notification_icon"] style:UIBarButtonItemStyleDone target:self action:@selector(notify)];
         self.navItem.rightBarButtonItem = rightButton;
         
