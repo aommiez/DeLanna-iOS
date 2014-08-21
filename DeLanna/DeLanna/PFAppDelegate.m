@@ -189,12 +189,18 @@ BOOL newMedia;
 {
 	NSLog(@"Failed to get token, error: %@", error);
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HHmmssddMMyyyy"];
-    NSString *strDate = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    
+    NSMutableString *randomString = [NSMutableString stringWithCapacity:63];
+    
+    for (int i=0; i<63; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform(36) % [letters length]]];
+    }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:strDate forKey:@"deviceToken"];
+    if ([[defaults objectForKey:@"deviceToken"] isEqualToString:@""] || [[defaults objectForKey:@"deviceToken"] isEqualToString:@"(null)"]) {
+        [defaults setObject:randomString forKey:@"deviceToken"];
+    }
     [defaults setObject:@"EN" forKey:@"contentlanguage"];
     [defaults synchronize];
     
