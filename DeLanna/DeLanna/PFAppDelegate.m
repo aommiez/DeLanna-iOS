@@ -207,7 +207,7 @@ BOOL newMedia;
     self.DelannaApi = [[PFDelannaApi alloc] init];
     self.DelannaApi.delegate = self;
     
-    [self.DelannaApi getNotification];
+    [self.DelannaApi getNotificationNoDeviceToken];
 }
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo

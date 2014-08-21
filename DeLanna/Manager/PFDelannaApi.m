@@ -67,6 +67,25 @@
     }];
 }
 
+- (void)getNotificationNoDeviceToken {
+    
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
+    NSString *type = @"no";
+    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
+    
+    NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
+    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
+    self.manager = [AFHTTPRequestOperationManager manager];
+    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+    [self.manager GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.delegate PFDelannaApi:self getNotificationResponse:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.delegate PFDelannaApi:self getNotificationErrorResponse:[error localizedDescription]];
+    }];
+}
+
 - (void)Notification {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
