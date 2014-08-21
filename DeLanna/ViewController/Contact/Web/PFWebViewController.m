@@ -42,6 +42,8 @@
                                          [UIFont fontWithName:@"Helvetica" size:17.0],NSFontAttributeName,nil] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightButton;
     
+    [self.view addSubview:self.waitView];
+    
     CALayer *popup = [self.popupwaitView layer];
     [popup setMasksToBounds:YES];
     [popup setCornerRadius:7.0f];
