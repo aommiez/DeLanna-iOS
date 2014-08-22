@@ -176,6 +176,7 @@ BOOL newMedia;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:dt forKey:@"deviceToken"];
+    [defaults setObject:@"ios" forKey:@"type"];
     [defaults setObject:@"EN" forKey:@"contentlanguage"];
     [defaults synchronize];
     
@@ -201,13 +202,14 @@ BOOL newMedia;
     if ([[defaults objectForKey:@"deviceToken"] isEqualToString:@""] || [[defaults objectForKey:@"deviceToken"] isEqualToString:@"(null)"]) {
         [defaults setObject:randomString forKey:@"deviceToken"];
     }
+    [defaults setObject:@"no" forKey:@"type"];
     [defaults setObject:@"EN" forKey:@"contentlanguage"];
     [defaults synchronize];
     
     self.DelannaApi = [[PFDelannaApi alloc] init];
     self.DelannaApi.delegate = self;
     
-    [self.DelannaApi getNotificationNoDeviceToken];
+    [self.DelannaApi getNotification];
 }
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo

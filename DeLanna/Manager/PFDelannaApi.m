@@ -51,26 +51,7 @@
 - (void)getNotification {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"ios";
-    NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
-    
-    NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
-    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@device",API_URL];
-    self.manager = [AFHTTPRequestOperationManager manager];
-    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
-    [self.manager GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.delegate PFDelannaApi:self getNotificationResponse:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate PFDelannaApi:self getNotificationErrorResponse:[error localizedDescription]];
-    }];
-}
-
-- (void)getNotificationNoDeviceToken {
-    
-    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"no";
+    NSString *type = [self.userDefaults objectForKey:@"type"];
     NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
     NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
@@ -89,7 +70,7 @@
 - (void)Notification {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"ios";
+    NSString *type = [self.userDefaults objectForKey:@"type"];
     NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
     NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
@@ -108,7 +89,7 @@
 - (void)setNotification {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"ios";
+    NSString *type = [self.userDefaults objectForKey:@"type"];
     NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
     NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
@@ -126,7 +107,7 @@
 - (void)setOnNotification {
 
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"ios";
+    NSString *type = [self.userDefaults objectForKey:@"type"];
     NSString *admit = @"1";
     NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
@@ -146,7 +127,7 @@
 - (void)setOffNotification {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"ios";
+    NSString *type = [self.userDefaults objectForKey:@"type"];
     NSString *admit = @"0";
     NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
@@ -165,7 +146,7 @@
 - (void)checkBadge {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = @"ios";
+    NSString *type = [self.userDefaults objectForKey:@"type"];
     
     NSDictionary *parameters = @{@"key":key,@"type":type};
     NSString *strUrl = [[NSString alloc] initWithFormat:@"%@notify/unopened",API_URL];

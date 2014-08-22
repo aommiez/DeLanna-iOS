@@ -87,7 +87,6 @@
 
 #pragma mark - Notification
 - (void)getNotification;
-- (void)getNotificationNoDeviceToken;
 - (void)setNotification;
 - (void)setOnNotification;
 - (void)setOffNotification;
