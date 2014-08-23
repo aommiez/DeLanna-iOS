@@ -21,6 +21,7 @@
         // Custom initialization
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         self.manager = [AFHTTPRequestOperationManager manager];
+        self.notifyOffline = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -69,7 +70,7 @@
 }
 
 - (void)PFDelannaApi:(id)sender NotificationResponse:(NSDictionary *)response {
-    NSLog(@"%@",response);
+    //NSLog(@"%@",response);
     self.obj = response;
     
     [self.waitView removeFromSuperview];
@@ -79,11 +80,23 @@
 
     }
     
+    [self.notifyOffline setObject:response forKey:@"notificationArray"];
+    [self.notifyOffline synchronize];
+    
     [self.tableView reloadData];
 }
 
 - (void)PFDelannaApi:(id)sender NotificationErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
+    
+    [self.waitView removeFromSuperview];
+    
+    for (int i=0; i<[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] count]; ++i) {
+        [self.arrObj addObject:[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] objectAtIndex:i]];
+        
+    }
+    
+    [self.tableView reloadData];
 }
 
 - (void)PFDelannaApi:(id)sender getFeedByIdResponse:(NSDictionary *)response {
