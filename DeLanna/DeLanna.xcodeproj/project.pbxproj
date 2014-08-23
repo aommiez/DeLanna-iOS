@@ -1861,16 +1861,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
 					"\"$(SRCROOT)/../Frameworks\"",
-					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks/Facebook",
 					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks",
+					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
+					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks/Facebook",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
 				INFOPLIST_FILE = "DeLanna/DeLanna-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cee15b97-2a84-4a28-98a8-fccbe2dbc78f";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1884,16 +1884,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
 					"\"$(SRCROOT)/../Frameworks\"",
-					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks/Facebook",
 					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks",
+					"/Users/MRG/Documents/Apps/DeLanna-iOS/Frameworks",
+					"/Users/macbookpro/Documents/Pla2App/DeLanna-iOS/Frameworks/Facebook",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DeLanna/DeLanna-Prefix.pch";
 				INFOPLIST_FILE = "DeLanna/DeLanna-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cee15b97-2a84-4a28-98a8-fccbe2dbc78f";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
