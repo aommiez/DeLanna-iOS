@@ -199,7 +199,7 @@ BOOL newMedia;
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([[defaults objectForKey:@"deviceToken"] isEqualToString:@""] || [[defaults objectForKey:@"deviceToken"] isEqualToString:@"(null)"]) {
+    if ([[defaults objectForKey:@"deviceToken"] length] == 0) {
         [defaults setObject:randomString forKey:@"deviceToken"];
     }
     [defaults setObject:@"no" forKey:@"type"];
