@@ -145,20 +145,23 @@
 
 - (void)checkBadge {
     
-    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
-    NSString *type = [self.userDefaults objectForKey:@"type"];
-    
-    NSDictionary *parameters = @{@"key":key,@"type":type};
-    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@notify/unopened",API_URL];
-    self.manager = [AFHTTPRequestOperationManager manager];
-    self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
-    [self.manager  GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.delegate PFDelannaApi:self checkBadgeResponse:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate PFDelannaApi:self checkBadgeErrorResponse:[error localizedDescription]];
-    }];
+    if (![[self.userDefaults objectForKey:@"deviceToken"] length] == 0) {
+        NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
+        NSString *type = [self.userDefaults objectForKey:@"type"];
+        
+        NSDictionary *parameters = @{@"key":key,@"type":type};
+        NSString *strUrl = [[NSString alloc] initWithFormat:@"%@notify/unopened",API_URL];
+        self.manager = [AFHTTPRequestOperationManager manager];
+        self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
+        [self.manager  GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [self.delegate PFDelannaApi:self checkBadgeResponse:responseObject];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [self.delegate PFDelannaApi:self checkBadgeErrorResponse:[error localizedDescription]];
+        }];
+    }
+
 }
 
 #pragma mark - Overview
