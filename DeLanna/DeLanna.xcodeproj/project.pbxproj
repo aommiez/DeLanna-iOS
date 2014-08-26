@@ -58,6 +58,12 @@
 		52988D5019937B8000329B69 /* DLILOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4B19937B8000329B69 /* DLILOperation.m */; };
 		52988D5119937B8000329B69 /* DLImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 52988D4D19937B8000329B69 /* DLImageLoader.m */; };
 		52B466FC199CAC1A008AB7FE /* PFSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B466FB199CAC1A008AB7FE /* PFSettingViewController.xib */; };
+		52B6F1A219AC4499008511EA /* loading_delanna.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B6F1A019AC4499008511EA /* loading_delanna.png */; };
+		52B6F1A319AC4499008511EA /* loading_delanna@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52B6F1A119AC4499008511EA /* loading_delanna@2x.png */; };
+		52B6F1A819AC4D8D008511EA /* PFLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B6F1A619AC4D8D008511EA /* PFLoadingViewController.m */; };
+		52B6F1A919AC4D8D008511EA /* PFLoadingViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6F1A719AC4D8D008511EA /* PFLoadingViewController_Wide.xib */; };
+		52B6F1AB19AC5059008511EA /* PFOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6F1AA19AC5059008511EA /* PFOverViewController.xib */; };
+		52B6F1AD19AC506A008511EA /* PFLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B6F1AC19AC506A008511EA /* PFLoadingViewController.xib */; };
 		52BA06FF1977993B00677A5E /* MWCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA06AC1977993B00677A5E /* MWCaptionView.m */; };
 		52BA07001977993B00677A5E /* MWGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA06AF1977993B00677A5E /* MWGridCell.m */; };
 		52BA07011977993B00677A5E /* MWGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BA06B11977993B00677A5E /* MWGridViewController.m */; };
@@ -142,7 +148,6 @@
 		52D12EAA1996167A0009D735 /* PFOverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D12E381996167A0009D735 /* PFOverViewCell.m */; };
 		52D12EAB1996167A0009D735 /* PFOverViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E391996167A0009D735 /* PFOverViewCell.xib */; };
 		52D12EAC1996167A0009D735 /* PFOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D12E3B1996167A0009D735 /* PFOverViewController.m */; };
-		52D12EAD1996167A0009D735 /* PFOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E3C1996167A0009D735 /* PFOverViewController.xib */; };
 		52D12EAE1996167A0009D735 /* PFOverViewController_Wide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E3D1996167A0009D735 /* PFOverViewController_Wide.xib */; };
 		52D12EAF1996167A0009D735 /* bt_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E401996167A0009D735 /* bt_setting.png */; };
 		52D12EB01996167A0009D735 /* bt_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D12E411996167A0009D735 /* bt_setting@2x.png */; };
@@ -317,6 +322,13 @@
 		52988D4C19937B8000329B69 /* DLImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLImageLoader.h; sourceTree = "<group>"; };
 		52988D4D19937B8000329B69 /* DLImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLImageLoader.m; sourceTree = "<group>"; };
 		52B466FB199CAC1A008AB7FE /* PFSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFSettingViewController.xib; sourceTree = "<group>"; };
+		52B6F1A019AC4499008511EA /* loading_delanna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_delanna.png; sourceTree = "<group>"; };
+		52B6F1A119AC4499008511EA /* loading_delanna@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading_delanna@2x.png"; sourceTree = "<group>"; };
+		52B6F1A519AC4D8D008511EA /* PFLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFLoadingViewController.h; sourceTree = "<group>"; };
+		52B6F1A619AC4D8D008511EA /* PFLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFLoadingViewController.m; sourceTree = "<group>"; };
+		52B6F1A719AC4D8D008511EA /* PFLoadingViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFLoadingViewController_Wide.xib; sourceTree = "<group>"; };
+		52B6F1AA19AC5059008511EA /* PFOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFOverViewController.xib; sourceTree = "<group>"; };
+		52B6F1AC19AC506A008511EA /* PFLoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFLoadingViewController.xib; sourceTree = "<group>"; };
 		52BA06AB1977993B00677A5E /* MWCaptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCaptionView.h; sourceTree = "<group>"; };
 		52BA06AC1977993B00677A5E /* MWCaptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWCaptionView.m; sourceTree = "<group>"; };
 		52BA06AD1977993B00677A5E /* MWCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWCommon.h; sourceTree = "<group>"; };
@@ -453,7 +465,6 @@
 		52D12E391996167A0009D735 /* PFOverViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFOverViewCell.xib; sourceTree = "<group>"; };
 		52D12E3A1996167A0009D735 /* PFOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFOverViewController.h; sourceTree = "<group>"; };
 		52D12E3B1996167A0009D735 /* PFOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFOverViewController.m; sourceTree = "<group>"; };
-		52D12E3C1996167A0009D735 /* PFOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFOverViewController.xib; sourceTree = "<group>"; };
 		52D12E3D1996167A0009D735 /* PFOverViewController_Wide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFOverViewController_Wide.xib; sourceTree = "<group>"; };
 		52D12E401996167A0009D735 /* bt_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_setting.png; sourceTree = "<group>"; };
 		52D12E411996167A0009D735 /* bt_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_setting@2x.png"; sourceTree = "<group>"; };
@@ -1075,6 +1086,8 @@
 				52D12E271996167A0009D735 /* bt_reservation.png */,
 				52D12E281996167A0009D735 /* bt_reservation@2x.png */,
 				52D12E291996167A0009D735 /* icon_share@2x.png */,
+				52B6F1A019AC4499008511EA /* loading_delanna.png */,
+				52B6F1A119AC4499008511EA /* loading_delanna@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1119,8 +1132,12 @@
 				52D12E361996167A0009D735 /* Cell */,
 				52D12E3A1996167A0009D735 /* PFOverViewController.h */,
 				52D12E3B1996167A0009D735 /* PFOverViewController.m */,
-				52D12E3C1996167A0009D735 /* PFOverViewController.xib */,
 				52D12E3D1996167A0009D735 /* PFOverViewController_Wide.xib */,
+				52B6F1AA19AC5059008511EA /* PFOverViewController.xib */,
+				52B6F1A519AC4D8D008511EA /* PFLoadingViewController.h */,
+				52B6F1A619AC4D8D008511EA /* PFLoadingViewController.m */,
+				52B6F1A719AC4D8D008511EA /* PFLoadingViewController_Wide.xib */,
+				52B6F1AC19AC506A008511EA /* PFLoadingViewController.xib */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -1524,7 +1541,6 @@
 				52D12F20199618E30009D735 /* th_services_on@2x.png in Resources */,
 				52D12EBD1996167A0009D735 /* PFRoomTypeViewController_Wide.xib in Resources */,
 				52D12ED31996167A0009D735 /* PFServiceroomViewController_Wide.xib in Resources */,
-				52D12EAD1996167A0009D735 /* PFOverViewController.xib in Resources */,
 				52D12E9C1996167A0009D735 /* PFMapViewController.xib in Resources */,
 				52D12E871996167A0009D735 /* chapter01.png in Resources */,
 				52D12E831996167A0009D735 /* bg_comment.png in Resources */,
@@ -1544,6 +1560,7 @@
 				5253018F19A1DB0B00AA5528 /* PFNotificationCell.xib in Resources */,
 				52D12E861996167A0009D735 /* bt_reserve@2x.png in Resources */,
 				52D12F02199618E30009D735 /* en_resevation_on.png in Resources */,
+				52B6F1AD19AC506A008511EA /* PFLoadingViewController.xib in Resources */,
 				52D12F00199618E30009D735 /* en_promotion_on.png in Resources */,
 				5253019219A1DB0B00AA5528 /* NotBoxNoReadIp5@2x.png in Resources */,
 				52B466FC199CAC1A008AB7FE /* PFSettingViewController.xib in Resources */,
@@ -1577,6 +1594,7 @@
 				5253019519A1DB0B00AA5528 /* NotBoxReadedIp5@2x.png in Resources */,
 				5253019419A1DB0B00AA5528 /* NotBoxReadedIp4@2x.png in Resources */,
 				52D12E8E1996167A0009D735 /* ic_mail@2x.png in Resources */,
+				52B6F1A219AC4499008511EA /* loading_delanna.png in Resources */,
 				52D12EBA1996167A0009D735 /* PFDetailRoomtypeViewController_Wide.xib in Resources */,
 				3613163D196BA14A00DB175C /* InfoPlist.strings in Resources */,
 				52D12F12199618E30009D735 /* th_promotion_on.png in Resources */,
@@ -1585,6 +1603,7 @@
 				52D12EA01996167A0009D735 /* PFWebViewController_Wide.xib in Resources */,
 				52D12ECA1996167A0009D735 /* PFDetailFoldertypeViewController_Wide.xib in Resources */,
 				52D12ECC1996167A0009D735 /* PFServiceViewController.xib in Resources */,
+				52B6F1A919AC4D8D008511EA /* PFLoadingViewController_Wide.xib in Resources */,
 				52D12E891996167A0009D735 /* chapter02.png in Resources */,
 				52D12EFF199618E30009D735 /* en_promotion_off.png in Resources */,
 				52D12EB51996167A0009D735 /* PFSettingViewController_Wide.xib in Resources */,
@@ -1601,8 +1620,10 @@
 				52D12ECD1996167A0009D735 /* PFServiceViewController_Wide.xib in Resources */,
 				36131648196BA14B00DB175C /* Images.xcassets in Resources */,
 				52D12E911996167A0009D735 /* ic_website.png in Resources */,
+				52B6F1AB19AC5059008511EA /* PFOverViewController.xib in Resources */,
 				52D12ED21996167A0009D735 /* PFServiceroomViewController.xib in Resources */,
 				52D12EA91996167A0009D735 /* PFLanguageViewController_Wide.xib in Resources */,
+				52B6F1A319AC4499008511EA /* loading_delanna@2x.png in Resources */,
 				52D12E841996167A0009D735 /* bg_map.png in Resources */,
 				52D12E9D1996167A0009D735 /* PFMapViewController_Wide.xib in Resources */,
 				5253019119A1DB0B00AA5528 /* NotBoxNoReadIp4@2x.png in Resources */,
@@ -1694,6 +1715,7 @@
 				52BA070D1977993B00677A5E /* PSTCollectionViewData.m in Sources */,
 				52FC2C6F197917FF0016E93D /* AFSecurityPolicy.m in Sources */,
 				52BA07121977993B00677A5E /* PSTGridLayoutInfo.m in Sources */,
+				52B6F1A819AC4D8D008511EA /* PFLoadingViewController.m in Sources */,
 				52D12ECE1996167A0009D735 /* PFServicefoodViewController.m in Sources */,
 				52FC2C73197917FF0016E93D /* AFURLSessionManager.m in Sources */,
 				36131646196BA14B00DB175C /* DeLanna.xcdatamodeld in Sources */,

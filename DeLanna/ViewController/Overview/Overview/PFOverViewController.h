@@ -16,6 +16,7 @@
 #import "PFNotificationViewController.h"
 
 #import "PFDetailOverViewController.h"
+#import "PFLoadingViewController.h"
 
 @protocol PFOverViewControllerDelegate <NSObject>
 
@@ -38,8 +39,7 @@
 @property NSUserDefaults *feedOffline;
 @property NSUserDefaults *feeddetailOffline;
 
-@property (strong, nonatomic) IBOutlet UIView *waitView;
-@property (strong, nonatomic) IBOutlet UIView *popupwaitView;
+@property (strong, nonatomic) PFLoadingViewController *loadingView;
 
 @property (strong, nonatomic) IBOutlet UIView *NoInternetView;
 
@@ -65,5 +65,7 @@
 
 @property (strong, nonatomic) NSString *paging;
 @property (strong, nonatomic) NSString *more;
+
+@property (strong, nonatomic) NSString *refresh;
 
 @end

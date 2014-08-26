@@ -58,12 +58,6 @@ NSTimer *timmer;
     [[self.navController navigationBar] setTranslucent:YES];
     [self.view addSubview:self.navController.view];
     
-    [self.view addSubview:self.waitView];
-    
-    CALayer *popup = [self.popupwaitView layer];
-    [popup setMasksToBounds:YES];
-    [popup setCornerRadius:7.0f];
-    
     [self BarButtonItem];
     
     loadFeed = NO;
@@ -92,6 +86,19 @@ NSTimer *timmer;
     
     UITapGestureRecognizer *moredetailTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(moredetailTap:)];
     [self.headerView addGestureRecognizer:moredetailTap];
+    
+    if (![self.refresh isEqualToString:@"refresh"]) {
+        [self.delegate HideTabbar];
+        self.loadingView = [[PFLoadingViewController alloc] init];
+        //splash screen
+        if(IS_WIDESCREEN) {
+            self.loadingView = [[PFLoadingViewController alloc] initWithNibName:@"PFLoadingViewController_Wide" bundle:nil];
+        } else {
+            self.loadingView = [[PFLoadingViewController alloc] initWithNibName:@"PFLoadingViewController" bundle:nil];
+        }
+        
+        [self.view addSubview:self.loadingView.view];
+    }
     
 }
 
@@ -189,7 +196,6 @@ NSTimer *timmer;
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:[response objectForKey:@"length"] forKey:@"badge"];
         [defaults synchronize];
-        //[self viewDidLoad];
         [self BarButtonItem];
     }
 }
@@ -199,7 +205,6 @@ NSTimer *timmer;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"0" forKey:@"badge"];
     [defaults synchronize];
-    //[self viewDidLoad];
     [self BarButtonItem];
 }
 
@@ -240,11 +245,8 @@ NSTimer *timmer;
     if (![[self.feedOffline objectForKey:@"checkTimeUpdate"] isEqualToString:timeupdate]) {
         [self.feedOffline setObject:timeupdate forKey:@"checkTimeUpdate"];
         [self.pageScrollView removeFromSuperview];
-        [self.view addSubview:self.waitView];
         
-        CALayer *popup = [self.popupwaitView layer];
-        [popup setMasksToBounds:YES];
-        [popup setCornerRadius:7.0f];
+        self.refresh = @"refresh";
         
         [self viewDidLoad];
     }
@@ -277,8 +279,10 @@ NSTimer *timmer;
 
 - (void)PFDelannaApi:(id)sender getFeedGalleryResponse:(NSDictionary *)response {
     //NSLog(@"%@",response);
-    
-    [self.waitView removeFromSuperview];
+
+    //splash screen
+    [self.delegate ShowTabbar];
+    [self.loadingView.view removeFromSuperview];
     
     for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
         [self.arrcontactimg addObject:[[[response objectForKey:@"data"] objectAtIndex:i] objectForKey:@"url"]];
@@ -299,8 +303,10 @@ NSTimer *timmer;
 
 - (void)PFDelannaApi:(id)sender getFeedGalleryErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
-    
-    [self.waitView removeFromSuperview];
+
+    //splash screen
+    [self.delegate ShowTabbar];
+    [self.loadingView.view removeFromSuperview];
     
     self.tableView.tableHeaderView = self.headerView;
     UIView *fv = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 55)];
@@ -327,8 +333,10 @@ NSTimer *timmer;
 - (void)PFDelannaApi:(id)sender getFeedResponse:(NSDictionary *)response {
     self.obj = response;
     //NSLog(@"%@",response);
-    
-    [self.waitView removeFromSuperview];
+
+    //splash screen
+    [self.delegate ShowTabbar];
+    [self.loadingView.view removeFromSuperview];
     
     if (!refreshDataFeed) {
         [self.arrObj removeAllObjects];
@@ -358,7 +366,9 @@ NSTimer *timmer;
 - (void)PFDelannaApi:(id)sender getFeedErrorResponse:(NSString *)errorResponse {
     NSLog(@"%@",errorResponse);
     
-    [self.waitView removeFromSuperview];
+    //splash screen
+    [self.delegate ShowTabbar];
+    [self.loadingView.view removeFromSuperview];
     
     if (!refreshDataFeed) {
         [self.arrObj removeAllObjects];
