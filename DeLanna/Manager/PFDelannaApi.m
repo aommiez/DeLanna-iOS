@@ -67,19 +67,24 @@
     }];
 }
 
-- (void)Notification {
+- (void)Notification:(NSString *)limit link:(NSString *)link {
     
     NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
     NSString *type = [self.userDefaults objectForKey:@"type"];
     NSString *lang = [self.userDefaults objectForKey:@"contentlanguage"];
     
+    if ([link isEqualToString:@"NO"] ) {
+        self.urlStr = [[NSString alloc] initWithFormat:@"%@notify?limit=%@",API_URL,limit];
+    } else if ([limit isEqualToString:@"NO"]) {
+        self.urlStr = link;
+    }
+    
     NSDictionary *parameters = @{@"key":key,@"type":type,@"lang":lang};
-    NSString *strUrl = [[NSString alloc] initWithFormat:@"%@notify",API_URL];
     self.manager = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [self.manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-Auth-Token"];
-    [self.manager GET:strUrl parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.manager GET:self.urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self NotificationResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self NotificationErrorResponse:[error localizedDescription]];
@@ -164,17 +169,33 @@
 
 }
 
-#pragma mark - Overview
-- (void)getFeed:(NSString *)language limit:(NSString *)limit{
-    NSString *urlStr = [[NSString alloc] init];
+- (void)display_notify_number {
     
-    if ([limit isEqualToString:@""]) {
-        urlStr = [[NSString alloc] initWithFormat:@"%@feed?lang=%@",API_URL,language];
-    } else {
-        urlStr = [[NSString alloc] initWithFormat:@"%@feed?limit=%@&lang=%@",API_URL,limit,language];
+    NSString *key = [self.userDefaults objectForKey:@"deviceToken"];
+    NSString *type = [self.userDefaults objectForKey:@"type"];
+    
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@device/reset/display_notify_number",API_URL];
+    
+    NSDictionary *parameters = @{@"type":type , @"key":key};
+    
+    [self.manager GET:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success");
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error");
+    }];
+}
+
+#pragma mark - Overview
+- (void)getFeed:(NSString *)language limit:(NSString *)limit link:(NSString *)link {
+    
+    if ([link isEqualToString:@"NO"] ) {
+        self.urlStr = [[NSString alloc] initWithFormat:@"%@feed?limit=%@&lang=%@",API_URL,limit,language];
+    } else if ([limit isEqualToString:@"NO"]) {
+        self.urlStr = link;
     }
     
-    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.manager GET:self.urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getFeedResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getFeedErrorResponse:[error localizedDescription]];
@@ -218,9 +239,15 @@
 }
 
 #pragma mark - Roomtype
-- (void)getRoomtype:(NSString *)language {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@roomtype?lang=%@",API_URL,language];
-    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void)getRoomtype:(NSString *)language limit:(NSString *)limit link:(NSString *)link {
+    
+    if ([link isEqualToString:@"NO"] ) {
+        self.urlStr = [[NSString alloc] initWithFormat:@"%@roomtype?limit=%@&lang=%@",API_URL,limit,language];
+    } else if ([limit isEqualToString:@"NO"]) {
+        self.urlStr = link;
+    }
+    
+    [self.manager GET:self.urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getRoomtypeResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getRoomtypeErrorResponse:[error localizedDescription]];
@@ -237,18 +264,30 @@
 }
 
 #pragma mark - Service
-- (void)getService:(NSString *)language {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@node?lang=%@",API_URL,language];
-    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void)getService:(NSString *)language limit:(NSString *)limit link:(NSString *)link {
+    
+    if ([link isEqualToString:@"NO"] ) {
+        self.urlStr = [[NSString alloc] initWithFormat:@"%@node?limit=%@&lang=%@",API_URL,limit,language];
+    } else if ([limit isEqualToString:@"NO"]) {
+        self.urlStr = link;
+    }
+    
+    [self.manager GET:self.urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getServiceResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getServiceErrorResponse:[error localizedDescription]];
     }];
 }
 
-- (void)getServiceFoldertype:(NSString *)servicefoldertype_id language:(NSString *)language {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@node/%@/children?lang=%@",API_URL,servicefoldertype_id,language];
-    [self.manager GET:urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void)getServiceFoldertype:(NSString *)servicefoldertype_id language:(NSString *)language limit:(NSString *)limit link:(NSString *)link {
+    
+    if ([link isEqualToString:@"NO"] ) {
+        self.urlStr = [[NSString alloc] initWithFormat:@"%@node/%@/children?limit=%@&lang=%@",API_URL,servicefoldertype_id,limit,language];
+    } else if ([limit isEqualToString:@"NO"]) {
+        self.urlStr = link;
+    }
+    
+    [self.manager GET:self.urlStr parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.delegate PFDelannaApi:self getServiceFoldertypeResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getServiceFoldertypeErrorResponse:[error localizedDescription]];
@@ -280,17 +319,6 @@
         [self.delegate PFDelannaApi:self getContactResponse:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self.delegate PFDelannaApi:self getContactErrorResponse:[error localizedDescription]];
-    }];
-}
-
-- (void)sendComment:(NSString *)comment {
-    NSLog(@"%@",comment);
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"%@contact/comment",API_URL];
-    NSDictionary *parameters = @{@"message":comment };
-    [self.manager POST:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.delegate PFDelannaApi:self sendCommentResponse:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate PFDelannaApi:self sendCommentErrorResponse:[error localizedDescription]];
     }];
 }
 

@@ -14,6 +14,10 @@
 
 @implementation PFDetailFoldertype1ViewController
 
+BOOL loadFolder;
+BOOL noDataFolder;
+BOOL refreshDataFolder;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,13 +43,17 @@
     
     self.arrObj = [[NSMutableArray alloc] init];
     
+    loadFolder = NO;
+    noDataFolder = NO;
+    refreshDataFolder = NO;
+    
     self.DelannaApi = [[PFDelannaApi alloc] init];
     self.DelannaApi.delegate = self;
     
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-        [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"en"];
+        [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"en" limit:@"15" link:@"NO"];
     } else {
-        [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"th"];
+        [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"th" limit:@"15" link:@"NO"];
     }
 }
 
@@ -64,8 +72,24 @@
     
     [self.waitView removeFromSuperview];
     
-    for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
-        [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
+    self.checkinternet = @"connect";
+    
+    if (!refreshDataFolder) {
+        for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
+        }
+    } else {
+        [self.arrObj removeAllObjects];
+        for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
+        }
+    }
+    
+    if ( [[response objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
+        noDataFolder = YES;
+    } else {
+        noDataFolder = NO;
+        self.paging = [[response objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self.foldertype1Offline setObject:response forKey:@"foldertype1Array"];
@@ -80,8 +104,24 @@
     
     [self.waitView removeFromSuperview];
     
-    for (int i=0; i<[[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"data"] count]; ++i) {
-        [self.arrObj addObject:[[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"data"] objectAtIndex:i]];
+    self.checkinternet = @"error";
+    
+    if (!refreshDataFolder) {
+        for (int i=0; i<[[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"data"] objectAtIndex:i]];
+        }
+    } else {
+        [self.arrObj removeAllObjects];
+        for (int i=0; i<[[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"data"] objectAtIndex:i]];
+        }
+    }
+    
+    if ( [[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
+        noDataFolder = YES;
+    } else {
+        noDataFolder = NO;
+        self.paging = [[[self.foldertype1Offline objectForKey:@"foldertype1Array"] objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self.tableView reloadData];
@@ -204,6 +244,73 @@
         [self.navigationController pushViewController:serviceroomView animated:YES];
         
     }
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	//NSLog(@"%f",scrollView.contentOffset.y);
+	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ( scrollView.contentOffset.y < 0.0f ) {
+        //NSLog(@"refreshData < 0.0f");
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    //NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < -60.0f ) {
+        refreshDataFolder = YES;
+        
+        self.DelannaApi = [[PFDelannaApi alloc] init];
+        self.DelannaApi.delegate = self;
+        
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"en" limit:@"15" link:@"NO"];
+        } else {
+            [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"th" limit:@"15" link:@"NO"];
+        }
+
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    if ( scrollView.contentOffset.y < -100.0f ) {
+
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    float offset = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height));
+    if (offset >= 0 && offset <= 5) {
+        if (!noDataFolder) {
+            refreshDataFolder = NO;
+            
+            self.DelannaApi = [[PFDelannaApi alloc] init];
+            self.DelannaApi.delegate = self;
+            
+            if ([self.checkinternet isEqualToString:@"connect"]) {
+                if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                    [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"en" limit:@"NO" link:self.paging];
+                } else {
+                    [self.DelannaApi getServiceFoldertype:[self.obj objectForKey:@"id"] language:@"th" limit:@"NO" link:self.paging];
+                }
+            }
+        }
+    }
+}
+
+- (void)resizeTable {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);
+    [UIView commitAnimations];
 }
 
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{

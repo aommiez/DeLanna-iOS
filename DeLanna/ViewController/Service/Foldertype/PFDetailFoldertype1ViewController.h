@@ -42,4 +42,7 @@
 @property (strong, nonatomic) NSString *titlename;
 @property (strong, nonatomic) NSString *folder_id;
 
+@property (strong, nonatomic) NSString *paging;
+@property (strong, nonatomic) NSString *checkinternet;
+
 @end

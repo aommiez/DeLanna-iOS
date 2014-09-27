@@ -72,6 +72,7 @@
 @property (assign, nonatomic) id delegate;
 @property AFHTTPRequestOperationManager *manager;
 @property NSUserDefaults *userDefaults;
+@property NSString *urlStr;
 
 #pragma mark - Reset App
 - (void)saveReset:(NSString *)reset;
@@ -90,29 +91,29 @@
 - (void)setNotification;
 - (void)setOnNotification;
 - (void)setOffNotification;
-- (void)Notification;
+- (void)Notification:(NSString *)limit link:(NSString *)link;
 - (void)checkBadge;
+- (void)display_notify_number;
 
 #pragma mark - Overview
 //- (void)getFeed:(NSString *)language;
-- (void)getFeed:(NSString *)language limit:(NSString *)limit;
+- (void)getFeed:(NSString *)language limit:(NSString *)limit link:(NSString *)link;
 - (void)getFeedById:(NSString *)news_id;
 - (void)getFeedDetail:(NSString *)language;
 - (void)getFeedGallery;
 - (void)getTimeUpdate;
 
 #pragma mark - Roomtype
-- (void)getRoomtype:(NSString *)language;
+- (void)getRoomtype:(NSString *)language limit:(NSString *)limit link:(NSString *)link;
 - (void)getRoomtypeByID:(NSString *)roomtype_id;
 
 #pragma mark - Service
-- (void)getService:(NSString *)language;
-- (void)getServiceFoldertype:(NSString *)servicefoldertype_id language:(NSString *)language;
+- (void)getService:(NSString *)language limit:(NSString *)limit link:(NSString *)link;
+- (void)getServiceFoldertype:(NSString *)servicefoldertype_id language:(NSString *)language limit:(NSString *)limit link:(NSString *)link;
 - (void)getServiceFood:(NSString *)servicefood_id;
 - (void)getServiceRoom:(NSString *)serviceroom_id;
 
 #pragma mark - Contact
 - (void)getContact;
-- (void)sendComment:(NSString *)comment;
 
 @end

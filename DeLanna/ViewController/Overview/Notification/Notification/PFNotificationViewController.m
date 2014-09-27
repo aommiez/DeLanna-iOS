@@ -14,6 +14,10 @@
 
 @implementation PFNotificationViewController
 
+BOOL loadNoti;
+BOOL noDataNoti;
+BOOL refreshDataNoti;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -44,10 +48,15 @@
     [popup setMasksToBounds:YES];
     [popup setCornerRadius:7.0f];
     
+    loadNoti = NO;
+    noDataNoti = NO;
+    refreshDataNoti = NO;
+    
     self.DelannaApi = [[PFDelannaApi alloc] init];
     self.DelannaApi.delegate = self;
     
-    [self.DelannaApi Notification];
+    [self.DelannaApi display_notify_number];
+    [self.DelannaApi Notification:@"15" link:@"NO"];
     
     self.arrObj = [[NSMutableArray alloc] init];
 
@@ -70,14 +79,29 @@
 }
 
 - (void)PFDelannaApi:(id)sender NotificationResponse:(NSDictionary *)response {
-    //NSLog(@"%@",response);
+    NSLog(@"noti %@",response);
     self.obj = response;
+    
+    self.checkinternet = @"connect";
     
     [self.waitView removeFromSuperview];
     
-    for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
-        [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
-
+    if (!refreshDataNoti) {
+        for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
+        }
+    } else {
+        [self.arrObj removeAllObjects];
+        for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
+        }
+    }
+    
+    if ( [[response objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
+        noDataNoti = YES;
+    } else {
+        noDataNoti = NO;
+        self.paging = [[response objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self.notifyOffline setObject:response forKey:@"notificationArray"];
@@ -91,9 +115,24 @@
     
     [self.waitView removeFromSuperview];
     
-    for (int i=0; i<[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] count]; ++i) {
-        [self.arrObj addObject:[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] objectAtIndex:i]];
-        
+    self.checkinternet = @"error";
+    
+    if (!refreshDataNoti) {
+        for (int i=0; i<[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] objectAtIndex:i]];
+        }
+    } else {
+        [self.arrObj removeAllObjects];
+        for (int i=0; i<[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] count]; ++i) {
+            [self.arrObj addObject:[[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"data"] objectAtIndex:i]];
+        }
+    }
+    
+    if ( [[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
+        noDataNoti = YES;
+    } else {
+        noDataNoti = NO;
+        self.paging = [[[self.notifyOffline objectForKey:@"notificationArray"] objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self.tableView reloadData];
@@ -109,7 +148,7 @@
     } else {
         mmdetail = [[PFDetailOverViewController alloc] initWithNibName:@"PFDetailOverViewController" bundle:nil];
     }
-    
+    self.navigationItem.title = @" ";
     mmdetail.obj = response;
     mmdetail.delegate = self;
     
@@ -171,6 +210,64 @@
     
 }
 
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //NSLog(@"%f",scrollView.contentOffset.y);
+    //[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ( scrollView.contentOffset.y < 0.0f ) {
+        //NSLog(@"refreshData < 0.0f");
+    }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    //NSLog(@"%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y < -60.0f ) {
+        refreshDataNoti = YES;
+        
+        self.DelannaApi = [[PFDelannaApi alloc] init];
+        self.DelannaApi.delegate = self;
+        
+        [self.DelannaApi Notification:@"15" link:@"NO"];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    if ( scrollView.contentOffset.y < -100.0f ) {
+        
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    float offset = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height));
+    if (offset >= 0 && offset <= 5) {
+        if (!noDataNoti) {
+            refreshDataNoti = NO;
+            
+            self.DelannaApi = [[PFDelannaApi alloc] init];
+            self.DelannaApi.delegate = self;
+            
+            if ([self.checkinternet isEqualToString:@"connect"]) {
+                [self.DelannaApi Notification:@"NO" link:self.paging];
+            }
+        }
+    }
+}
+
+- (void)resizeTable {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.2];
+    self.tableView.frame = CGRectMake(0, 0, 320, self.tableView.frame.size.height);
+    [UIView commitAnimations];
+}
+
 - (void)PFImageViewController:(id)sender viewPicture:(NSString *)link{
     [self.delegate PFImageViewController:self viewPicture:link];
 }
@@ -185,6 +282,7 @@
         // 'Back' button was pressed.  We know this is true because self is no longer
         // in the navigation stack.
         if([self.delegate respondsToSelector:@selector(PFNotificationViewControllerBack)]){
+            [self.DelannaApi Notification:@"15" link:@"NO"];
             [self.delegate PFNotificationViewControllerBack];
         }
     }

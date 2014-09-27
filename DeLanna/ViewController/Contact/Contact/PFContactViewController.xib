@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,12 +8,13 @@
             <connections>
                 <outlet property="NoInternetView" destination="nOW-fs-FX8" id="awc-7i-9Bq"/>
                 <outlet property="ReservationTxt" destination="4ew-Ge-XkV" id="Yi0-8O-Okr"/>
+                <outlet property="act" destination="j0x-ha-qdf" id="kBQ-NT-pPf"/>
                 <outlet property="buttonView" destination="oEz-zU-foT" id="IX7-0g-r9K"/>
-                <outlet property="commentTxt" destination="9QD-lI-i4E" id="aqb-z3-wbD"/>
-                <outlet property="commentView" destination="rat-iK-M7q" id="8yg-u4-yGO"/>
                 <outlet property="emailTxt" destination="0XO-kK-vbm" id="P56-W7-DGK"/>
+                <outlet property="faxTxt" destination="2ZE-gz-fOq" id="cvB-4X-ZUa"/>
                 <outlet property="footerView" destination="azn-dE-fII" id="wTP-47-bNJ"/>
                 <outlet property="headerView" destination="Ve2-Sz-UQm" id="QwB-Xj-D9o"/>
+                <outlet property="loadLabel" destination="lKl-D9-5Qs" id="QcB-6r-fLZ"/>
                 <outlet property="mapImage" destination="efl-kM-vjj" id="uCa-if-ANG"/>
                 <outlet property="mapofflineImage" destination="hNV-Xt-hFp" id="szp-2a-CjA"/>
                 <outlet property="navBar" destination="UsS-Xn-Lyi" id="VPI-92-b2o"/>
@@ -58,6 +59,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lKl-D9-5Qs">
+                    <rect key="frame" x="70" y="81" width="225" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" id="j0x-ha-qdf">
+                    <rect key="frame" x="45" y="82" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
+            </subviews>
             <color key="backgroundColor" red="0.53333333333333333" green="0.30980392156862746" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -99,7 +113,7 @@
             </viewControllers>
         </navigationController>
         <view contentMode="scaleToFill" id="Ve2-Sz-UQm">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="472"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="GW7-ad-U6Z">
@@ -124,7 +138,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="oEz-zU-foT">
-                    <rect key="frame" x="10" y="190" width="300" height="137"/>
+                    <rect key="frame" x="10" y="191" width="300" height="183"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SG9-c1-EYd">
@@ -149,8 +163,23 @@
                             <color key="textColor" red="0.54509803921568623" green="0.36862745098039218" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oyw-ph-pxW">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chapter02.png" id="3Nn-9r-JtW">
                             <rect key="frame" x="0.0" y="46" width="300" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_fax.png" id="GKN-yS-le1">
+                            <rect key="frame" x="10" y="56" width="25" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2ZE-gz-fOq">
+                            <rect key="frame" x="60" y="58" width="230" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.5450980392" green="0.36862745099999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oyw-ph-pxW">
+                            <rect key="frame" x="0.0" y="92" width="300" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" image="chapter02.png">
@@ -161,18 +190,18 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_website.png" id="c6b-Uh-UGx">
-                            <rect key="frame" x="10" y="56" width="25" height="25"/>
+                            <rect key="frame" x="10" y="100" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ny9-JH-K89">
-                            <rect key="frame" x="60" y="58" width="230" height="21"/>
+                            <rect key="frame" x="60" y="102" width="230" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.5450980392" green="0.36862745099999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eM9-ET-GPI">
-                            <rect key="frame" x="0.0" y="92" width="300" height="45"/>
+                            <rect key="frame" x="0.0" y="138" width="300" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <state key="normal" image="chapter03.png">
@@ -183,11 +212,11 @@
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_mail.png" id="BLH-BK-2Ip">
-                            <rect key="frame" x="10" y="102" width="25" height="25"/>
+                            <rect key="frame" x="10" y="147" width="25" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0XO-kK-vbm">
-                            <rect key="frame" x="60" y="104" width="230" height="21"/>
+                            <rect key="frame" x="60" y="149" width="230" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.5450980392" green="0.36862745099999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,32 +225,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="rat-iK-M7q">
-                    <rect key="frame" x="10" y="337" width="300" height="60"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jbe-q1-Vyy">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="bg_comment.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="commentTapped:" destination="-1" eventType="touchUpInside" id="nen-e1-gT5"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sent us review or comment." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9QD-lI-i4E">
-                            <rect key="frame" x="10" y="5" width="280" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <color key="textColor" red="0.76862745098039209" green="0.60392156862745094" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" red="0.98431372549999996" green="1" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jLo-ZD-5FE">
-                    <rect key="frame" x="10" y="407" width="300" height="45"/>
+                    <rect key="frame" x="10" y="384" width="300" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" image="bt_reserve.png">
@@ -232,15 +237,15 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4ew-Ge-XkV">
-                    <rect key="frame" x="40" y="417" width="240" height="21"/>
+                    <rect key="frame" x="40" y="396" width="240" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hNV-Xt-hFp">
-                    <rect key="frame" x="10" y="461" width="300" height="10"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <rect key="frame" x="10" y="439" width="300" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.53333333329999999" green="0.30980392159999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,11 +290,11 @@
     </objects>
     <resources>
         <image name="Powered.png" width="200" height="25"/>
-        <image name="bg_comment.png" width="300" height="60"/>
         <image name="bt_reserve.png" width="304" height="45"/>
         <image name="chapter01.png" width="304" height="45"/>
         <image name="chapter02.png" width="304" height="45"/>
         <image name="chapter03.png" width="304" height="45"/>
+        <image name="ic_fax.png" width="25" height="25"/>
         <image name="ic_mail.png" width="25" height="25"/>
         <image name="ic_phone.png" width="25" height="25"/>
         <image name="ic_website.png" width="26" height="25"/>

@@ -36,4 +36,7 @@
 @property (strong, nonatomic) NSMutableArray *arrObj;
 @property (strong, nonatomic) NSDictionary *obj;
 
+@property (retain, nonatomic) NSString *paging;
+@property (strong, nonatomic) NSString *checkinternet;
+
 @end

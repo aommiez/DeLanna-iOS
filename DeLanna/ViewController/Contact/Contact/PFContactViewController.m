@@ -42,11 +42,9 @@ NSTimer *timmer;
     if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
         self.navItem.title = @"Reservation";
         self.ReservationTxt.text = @"Hotel Reservation";
-        self.commentTxt.text = @"Sent us review or comment.";
     } else {
         self.navItem.title = @"สำรองห้องพัก";
         self.ReservationTxt.text = @"สำรองห้องพัก";
-        self.commentTxt.text = @"แสดงความคิดเห็น";
     }
     
     [self.view addSubview:self.waitView];
@@ -74,10 +72,6 @@ NSTimer *timmer;
     CALayer *buttonView = [self.buttonView layer];
     [buttonView setMasksToBounds:YES];
     [buttonView setCornerRadius:7.0f];
-    
-    CALayer *commentView = [self.commentView layer];
-    [commentView setMasksToBounds:YES];
-    [commentView setCornerRadius:7.0f];
     
     CALayer *reserveButton = [self.reserveButton layer];
     [reserveButton setMasksToBounds:YES];
@@ -120,6 +114,7 @@ NSTimer *timmer;
     [self.contactOffline synchronize];
     
     self.phoneTxt.text = [response objectForKey:@"phone"];
+    self.faxTxt.text = [response objectForKey:@"fax"];
     self.websiteTxt.text = [response objectForKey:@"website"];
     self.emailTxt.text = [response objectForKey:@"email"];
     
@@ -131,7 +126,7 @@ NSTimer *timmer;
     if (width == 300) {
         self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, height);
         
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+height-10);
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 450+height-10);
         
         [DLImageLoader loadImageFromURL:[[response objectForKey:@"picture"] objectForKey:@"url"]
                               completed:^(NSError *error, NSData *imgData) {
@@ -143,7 +138,7 @@ NSTimer *timmer;
         int sumheight = (height*300)/width;
         self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, sumheight);
         
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+sumheight-10);
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 450+sumheight-10);
         
         [DLImageLoader loadImageFromURL:[[response objectForKey:@"picture"] objectForKey:@"url"]
                               completed:^(NSError *error, NSData *imgData) {
@@ -173,6 +168,7 @@ NSTimer *timmer;
     self.tableView.tableFooterView = self.footerView;
     
     self.phoneTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"phone"];
+    self.faxTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"fax"];
     self.websiteTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"website"];
     self.emailTxt.text = [[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"email"];
     
@@ -184,7 +180,7 @@ NSTimer *timmer;
     if (width == 300) {
         self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, height);
         
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+height-10);
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 450+height-10);
         
         [DLImageLoader loadImageFromURL:[[[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"picture"] objectForKey:@"url"]
                               completed:^(NSError *error, NSData *imgData) {
@@ -196,7 +192,7 @@ NSTimer *timmer;
         int sumheight = (height*300)/width;
         self.mapofflineImage.frame = CGRectMake(self.mapofflineImage.frame.origin.x, self.mapofflineImage.frame.origin.y, 300, sumheight);
         
-        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 472+sumheight-10);
+        self.headerView.frame = CGRectMake(self.headerView.frame.origin.x, self.headerView.frame.origin.y, 320, 450+sumheight-10);
         
         [DLImageLoader loadImageFromURL:[[[self.contactOffline objectForKey:@"contactOffline"] objectForKey:@"picture"] objectForKey:@"url"]
                               completed:^(NSError *error, NSData *imgData) {
@@ -266,11 +262,11 @@ NSTimer *timmer;
         [self.delegate HideTabbar];
         NSLog(@"Send Email");
         // Email Subject
-        NSString *emailTitle = @"De Lanna Hotel";
+        NSString *emailTitle = nil;
         // Email Content
-        NSString *messageBody = @"De Lanna Hotel!";
+        NSString *messageBody = nil;
         // To address
-        NSArray *toRecipents = [NSArray arrayWithObject:self.emailTxt.text];
+        NSArray *toRecipents = [self.emailTxt.text componentsSeparatedByString: @","];
         
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
         
@@ -318,21 +314,6 @@ NSTimer *timmer;
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:NULL];
     [self.delegate ShowTabbar];
-}
-
-- (IBAction)commentTapped:(id)sender{
-    
-    [self.delegate HideTabbar];
-    
-    PFCommentViewController *commentView = [[PFCommentViewController alloc] init];
-    if(IS_WIDESCREEN) {
-        commentView = [[PFCommentViewController alloc] initWithNibName:@"PFCommentViewController_Wide" bundle:nil];
-    } else {
-        commentView = [[PFCommentViewController alloc] initWithNibName:@"PFCommentViewController" bundle:nil];
-    }
-    self.navItem.title = @" ";
-    commentView.delegate = self;
-    [self.navController pushViewController:commentView animated:YES];
 }
 
 - (IBAction)reserveTapped:(id)sender{
@@ -412,10 +393,11 @@ NSTimer *timmer;
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
     if ( scrollView.contentOffset.y < -100.0f ) {
+
         [UIView beginAnimations:nil context:NULL];
-		[UIView setAnimationDuration:0.2];
+        [UIView setAnimationDuration:0.2];
         self.tableView.frame = CGRectMake(0, 60, 320, self.tableView.frame.size.height);
-		[UIView commitAnimations];
+        [UIView commitAnimations];
         [self performSelector:@selector(resizeTable) withObject:nil afterDelay:2];
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
@@ -486,16 +468,6 @@ NSTimer *timmer;
         [self.view addSubview:self.NoInternetView];
     } else {
         [self.NoInternetView removeFromSuperview];
-    }
-}
-
-- (void) PFCommentViewControllerBack {
-    [self.delegate ShowTabbar];
-    
-    if (![[self.DelannaApi getLanguage] isEqualToString:@"TH"]) {
-        self.navItem.title = @"Reservation";
-    } else {
-        self.navItem.title = @"สำรองห้องพัก";
     }
 }
 

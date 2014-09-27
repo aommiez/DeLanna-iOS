@@ -70,9 +70,9 @@ NSTimer *timmer;
     self.arrObj = [[NSMutableArray alloc] init];
     
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-        [self.DelannaApi getRoomtype:@"en"];
+        [self.DelannaApi getRoomtype:@"en" limit:@"15" link:@"NO"];
     } else {
-        [self.DelannaApi getRoomtype:@"th"];
+        [self.DelannaApi getRoomtype:@"th" limit:@"15" link:@"NO"];
     }
 }
 
@@ -107,11 +107,11 @@ NSTimer *timmer;
     [self.roomtypeOffline setObject:response forKey:@"roomtypeArray"];
     [self.roomtypeOffline synchronize];
     
-    if ( [[response objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
+    if ( [[response objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
         noDataRoomtype = YES;
     } else {
         noDataRoomtype = NO;
-        self.paging = [[response objectForKey:@"paginate"] objectForKey:@"next"];
+        self.paging = [[response objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self reloadData:YES];
@@ -140,11 +140,11 @@ NSTimer *timmer;
         }
     }
     
-    if ( [[[self.roomtypeOffline objectForKey:@"roomtypeArray"] objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
+    if ( [[[self.roomtypeOffline objectForKey:@"roomtypeArray"] objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
         noDataRoomtype = YES;
     } else {
         noDataRoomtype = NO;
-        self.paging = [[[self.roomtypeOffline objectForKey:@"roomtypeArray"] objectForKey:@"paginate"] objectForKey:@"next"];
+        self.paging = [[[self.roomtypeOffline objectForKey:@"roomtypeArray"] objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self reloadData:YES];
@@ -250,9 +250,9 @@ NSTimer *timmer;
         self.DelannaApi.delegate = self;
         
         if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-            [self.DelannaApi getRoomtype:@"en"];
+            [self.DelannaApi getRoomtype:@"en" limit:@"15" link:@"NO"];
         } else {
-            [self.DelannaApi getRoomtype:@"th"];
+            [self.DelannaApi getRoomtype:@"th" limit:@"15" link:@"NO"];
         }
         
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
@@ -302,10 +302,12 @@ NSTimer *timmer;
             self.DelannaApi = [[PFDelannaApi alloc] init];
             self.DelannaApi.delegate = self;
             
-            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-                [self.DelannaApi getRoomtype:@"en"];
-            } else {
-                [self.DelannaApi getRoomtype:@"th"];
+            if ([self.checkinternet isEqualToString:@"connect"]) {
+                if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                    [self.DelannaApi getRoomtype:@"en" limit:@"NO" link:self.paging];
+                } else {
+                    [self.DelannaApi getRoomtype:@"th" limit:@"NO" link:self.paging];
+                }
             }
         }
     }

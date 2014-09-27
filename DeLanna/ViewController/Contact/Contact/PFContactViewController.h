@@ -14,7 +14,6 @@
 
 #import "PFMapViewController.h"
 #import "PFWebViewController.h"
-#import "PFCommentViewController.h"
 
 @protocol PFContactViewControllerDelegate <NSObject>
 
@@ -24,7 +23,7 @@
 
 @end
 
-@interface PFContactViewController : UIViewController <MFMailComposeViewControllerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface PFContactViewController : UIViewController <MFMailComposeViewControllerDelegate,UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>
 
 @property (assign, nonatomic) id delegate;
 @property (strong, nonatomic) PFDelannaApi *DelannaApi;
@@ -51,13 +50,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mapImage;
 
 @property (strong, nonatomic) IBOutlet UILabel *phoneTxt;
+@property (strong, nonatomic) IBOutlet UILabel *faxTxt;
 @property (strong, nonatomic) IBOutlet UILabel *websiteTxt;
 @property (strong, nonatomic) IBOutlet UILabel *emailTxt;
 
 @property (strong, nonatomic) IBOutlet UIView *buttonView;
-@property (strong, nonatomic) IBOutlet UIView *commentView;
 
-@property (strong, nonatomic) IBOutlet UILabel *commentTxt;
 @property (strong, nonatomic) IBOutlet UILabel *ReservationTxt;
 @property (strong, nonatomic) IBOutlet UIButton *reserveButton;
 
@@ -65,12 +63,10 @@
 
 @property (strong, nonatomic) NSString *checkinternet;
 
-- (IBAction)fullimageTapped:(id)sender;
 - (IBAction)mapTapped:(id)sender;
 - (IBAction)phoneTapped:(id)sender;
 - (IBAction)websiteTapped:(id)sender;
 - (IBAction)emailTapped:(id)sender;
-- (IBAction)commentTapped:(id)sender;
 - (IBAction)reserveTapped:(id)sender;
 - (IBAction)powerbyTapped:(id)sender;
 

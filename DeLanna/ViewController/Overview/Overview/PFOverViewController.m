@@ -47,7 +47,7 @@ NSTimer *timmer;
     }
     
     [self.DelannaApi checkBadge];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkN:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(checkN:) userInfo:nil repeats:YES];
 
     // Navbar setup
     [[self.navController navigationBar] setBarTintColor:[UIColor colorWithRed:212.0f/255.0f green:185.0f/255.0f blue:0.0f/255.0f alpha:1.0f]];
@@ -71,11 +71,11 @@ NSTimer *timmer;
     if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
         [self.DelannaApi getFeedGallery];
         [self.DelannaApi getFeedDetail:@"en"];
-        [self.DelannaApi getFeed:@"en" limit:@"0"];
+        [self.DelannaApi getFeed:@"en" limit:@"15" link:@"NO"];
     } else {
         [self.DelannaApi getFeedGallery];
         [self.DelannaApi getFeedDetail:@"th"];
-        [self.DelannaApi getFeed:@"th" limit:@"0"];
+        [self.DelannaApi getFeed:@"th" limit:@"15" link:@"NO"];
     }
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureCaptured:)];
@@ -120,21 +120,12 @@ NSTimer *timmer;
         self.navItem.rightBarButtonItem = rightButton;
         
     } else {
-        
-        UIButton *toggleKeyboardButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        toggleKeyboardButton.bounds = CGRectMake( 0, 0, 21, 21 );
-        [toggleKeyboardButton setTitle:badge forState:UIControlStateNormal];
-        [toggleKeyboardButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        
-        [toggleKeyboardButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        toggleKeyboardButton.contentVerticalAlignment = UIControlContentHorizontalAlignmentCenter;
-        
-        [toggleKeyboardButton setBackgroundColor:[UIColor clearColor]];
-        [toggleKeyboardButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-        [toggleKeyboardButton.layer setBorderWidth: 1.0];
-        [toggleKeyboardButton.layer setCornerRadius:10.0f];
-        [toggleKeyboardButton addTarget:self action:@selector(notify) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:toggleKeyboardButton];
+    
+        UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        [customButton addTarget:self action:@selector(notify) forControlEvents:UIControlEventTouchUpInside];
+        [customButton setImage:[UIImage imageNamed:@"Notification_icon"] forState:UIControlStateNormal];
+        BBBadgeBarButtonItem *rightButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+        rightButton.badgeValue = badge;
         self.navItem.rightBarButtonItem = rightButton;
         
     }
@@ -251,13 +242,13 @@ NSTimer *timmer;
         [self viewDidLoad];
     }
     
-    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
-        [self.DelannaApi getFeedDetail:@"en"];
-        [self.DelannaApi getFeed:@"en" limit:@"0"];
-    } else {
-        [self.DelannaApi getFeedDetail:@"th"];
-        [self.DelannaApi getFeed:@"th" limit:@"0"];
-    }
+//    if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+//        [self.DelannaApi getFeedDetail:@"en"];
+//        [self.DelannaApi getFeed:@"en" limit:@"15" link:@"NO"];
+//    } else {
+//        [self.DelannaApi getFeedDetail:@"th"];
+//        [self.DelannaApi getFeed:@"th" limit:@"15" link:@"NO"];
+//    }
 }
 
 - (void)PFDelannaApi:(id)sender getTimeUpdateErrorResponse:(NSString *)errorResponse {
@@ -332,14 +323,13 @@ NSTimer *timmer;
 
 - (void)PFDelannaApi:(id)sender getFeedResponse:(NSDictionary *)response {
     self.obj = response;
-    //NSLog(@"%@",response);
+    //NSLog(@"feed %@",response);
 
     //splash screen
     [self.delegate ShowTabbar];
     [self.loadingView.view removeFromSuperview];
     
     if (!refreshDataFeed) {
-        [self.arrObj removeAllObjects];
         for (int i=0; i<[[response objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[response objectForKey:@"data"] objectAtIndex:i]];
         }
@@ -353,25 +343,24 @@ NSTimer *timmer;
     [self.feedOffline setObject:response forKey:@"feedArray"];
     [self.feedOffline synchronize];
     
-    if ( [[response objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
+    if ( [[response objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
         noDataFeed = YES;
     } else {
         noDataFeed = NO;
-        self.paging = [[response objectForKey:@"paginate"] objectForKey:@"next"];
+        self.paging = [[response objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self reloadData:YES];
 }
 
 - (void)PFDelannaApi:(id)sender getFeedErrorResponse:(NSString *)errorResponse {
-    NSLog(@"%@",errorResponse);
+    NSLog(@"error feed %@",errorResponse);
     
     //splash screen
     [self.delegate ShowTabbar];
     [self.loadingView.view removeFromSuperview];
     
     if (!refreshDataFeed) {
-        [self.arrObj removeAllObjects];
         for (int i=0; i<[[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"data"] count]; ++i) {
             [self.arrObj addObject:[[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"data"] objectAtIndex:i]];
         }
@@ -382,11 +371,11 @@ NSTimer *timmer;
         }
     }
     
-    if ( [[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"paginate"] objectForKey:@"next"] == nil ) {
+    if ( [[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"paging"] objectForKey:@"next"] == nil ) {
         noDataFeed = YES;
     } else {
         noDataFeed = NO;
-        self.paging = [[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"paginate"] objectForKey:@"next"];
+        self.paging = [[[self.feedOffline objectForKey:@"feedArray"] objectForKey:@"paging"] objectForKey:@"next"];
     }
     
     [self reloadData:YES];
@@ -536,6 +525,14 @@ NSTimer *timmer;
         
         [self.DelannaApi getTimeUpdate];
         
+        if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+            [self.DelannaApi getFeedDetail:@"en"];
+            [self.DelannaApi getFeed:@"en" limit:@"15" link:@"NO"];
+        } else {
+            [self.DelannaApi getFeedDetail:@"th"];
+            [self.DelannaApi getFeed:@"th" limit:@"15" link:@"NO"];
+        }
+        
         if ([[self.obj objectForKey:@"total"] intValue] == 0) {
             [NSDateFormatter setDefaultFormatterBehavior:NSDateFormatterBehaviorDefault];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -584,6 +581,14 @@ NSTimer *timmer;
             self.DelannaApi.delegate = self;
             
             [self.DelannaApi getTimeUpdate];
+            
+            if (![[self.DelannaApi getContentLanguage] isEqualToString:@"TH"]) {
+                [self.DelannaApi getFeedDetail:@"en"];
+                [self.DelannaApi getFeed:@"en" limit:@"NO" link:self.paging];
+            } else {
+                [self.DelannaApi getFeedDetail:@"th"];
+                [self.DelannaApi getFeed:@"th" limit:@"NO" link:self.paging];
+            }
 
         }
     }
