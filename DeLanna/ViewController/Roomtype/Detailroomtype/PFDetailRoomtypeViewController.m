@@ -98,7 +98,7 @@
 - (void)share {
     
     NSString *urlString = [[NSString alloc]init];
-    urlString = [[NSString alloc]initWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%@",[[self.obj objectForKey:@"thumb"] objectForKey:@"url"]]];
+    urlString = [[NSString alloc]initWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%@",[[self.obj objectForKey:@"node"] objectForKey:@"share"]]];
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [controller addURL:[NSURL URLWithString:urlString]];
